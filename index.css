@@ -1,0 +1,10 @@
+.content {
+    display: none;
+}
+.content.active {
+    display: block;
+}
+
+.templates {
+    display: none;
+}
