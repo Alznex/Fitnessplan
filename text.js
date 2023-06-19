@@ -40,19 +40,13 @@ function save() {
     for (let i = 0; i < inputs.length; i++){
         let name = inputs[i].name;
         if (name == "ID"){
+            uebung[name] = inputs[i].value;
             if (uebung["ID"] == ""){
                 uebung["ID"] = generateUniqueId();
                 continue;
             }
-            uebung[name] = inputs[i].value;
         }else if(name == "Name"){
             uebung[name] = inputs[i].value.trim();
-        }else if(name == "Gewicht"){
-            uebung[name] = inputs[i].value;
-        }else if(name == "Sets"){
-            uebung[name] = inputs[i].value;
-        }else if(name == "Reps"){
-            uebung[name] = inputs[i].value;
         }else {
             uebung[name] = inputs[i].value;
         }

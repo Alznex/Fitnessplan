@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
+  hinzufuegen_button = document.getElementById("hinzufuegen")
+
   document.getElementById("homepage").addEventListener('click', e => {
     show("home")
+    hinzufuegen_button.classList.add('active');
   });
 
   document.getElementById("hinzufuegen").addEventListener('click', e => {
@@ -10,10 +13,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   document.getElementById("speichern").addEventListener('click', e =>{
     show("home")
+    hinzufuegen_button.classList.add('active');
   });
 
   document.getElementById("loeschen").addEventListener('click', e =>{
     show("home")
+    hinzufuegen_button.classList.add('active');
   });
   render()
 });
@@ -34,7 +39,18 @@ function render() {
             let uebung_name = value.replace(/\s/g, '-')
             uebung_div.id = uebung_name
           }
-          setDataElementValue(uebung_div, key, value)
+          if (key == "Gewicht"){
+            value_gewicht = value + "kg"
+            setDataElementValue(uebung_div, key, value_gewicht)
+          }else if (key == "Sets"){
+            value_sets = value + " Sets"
+            setDataElementValue(uebung_div, key, value_sets)
+          }else if (key == "Reps"){
+            value_reps = value + " Reps"
+            setDataElementValue(uebung_div, key, value_reps)
+          }else {
+            setDataElementValue(uebung_div, key, value)
+          }
         }
       }
     }
