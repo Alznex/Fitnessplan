@@ -54,7 +54,7 @@ function save() {
 
     for (let i = 0; i < select_koerperteil.length; i++){
         let name = select_koerperteil.name;
-        uebung[name] = select_koerperteil.options[select_koerperteil.selectedIndex].text;
+        uebung[name] = select_koerperteil.options[select_koerperteil.selectedIndex].label;
     }
 
     let name = "Wochentag";
@@ -123,6 +123,7 @@ function loeschen(uebung) {
     delete alle_uebungen[uebung];
     localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen));
     render()
+    addEventUebung()
 }
   
 function generateUniqueId() {

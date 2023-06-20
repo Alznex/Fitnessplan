@@ -36,11 +36,11 @@
             <!-- zum anzeigen und bearbeiten einer Übung -->
             <div class="uebung columns">
                 <div class="absatz">
-                    <div class="angaben">Name</div>        <input class="normal_input" id="uebungname" name="Name">
+                    <div class="angaben">Name</div>        <input class="normal_input" id="uebungname" name="Name" required/>
                 </div>
                 <div class="absatz" id="uebungkoerperteil">
                     <div class="angaben">Körperteil</div>        
-                    <select id="koerperteil" name="koerperteil">
+                    <select id="koerperteil" name="koerperteil" required>
                         <option value="none" selected disabled hidden>Körperteil</option>
                         <option value="Arme">Arme</option>
                         <option value="Bauch">Bauch</option>
@@ -81,20 +81,20 @@
                     </div>
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Sets</div>    <input type="number" class="normal_input" id="uebungsets" name="Sets">
+                    <div class="angaben">Sets</div>    <input type="text" required class="normal_input" id="uebungsets" name="Sets" />
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Reps</div>     <input type="number" class="normal_input" id="uebungreps" name="Reps">
+                    <div class="angaben">Reps</div>     <input class="normal_input" id="uebungreps" name="Reps" required/>
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Gewicht</div> <input type="number" class="normal_input" id="uebunggewicht" name="Gewicht">
+                    <div class="angaben">Gewicht</div> <input class="normal_input" id="uebunggewicht" name="Gewicht" required/>
                 </div>
                 <div class="absatz">
                     <div class="angaben">Info</div>    <input class="normal_input" id="uebunginfo" name="Info">
                 </div >
                 <input class="normal_input content" id="ID" name="ID">
                 <div class="absatz">
-                    <div class="button" id="speichern">Speichern</div>
+                    <input class="button" id="speichern">Speichern</div>
                     <div class="button" id="loeschen">Löschen</div>
                 </div>
 
