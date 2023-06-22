@@ -81,9 +81,7 @@ function bearbeiten(uebung){
     show("uebung")
     for (let uebungen in alle_uebungen){
         if (alle_uebungen[uebungen].Name == uebung){
-            document.getElementById("loeschen").addEventListener('click', e =>{
-                loeschen(uebungen)
-            });
+            
             for (input_id in inputs){
                 for (const [key, value] of Object.entries(alle_uebungen[uebungen])){
                     if (input_id == 0 && key == "Name"){
@@ -111,6 +109,9 @@ function bearbeiten(uebung){
                     selector.value = alle_uebungen[uebungen].koerperteil
                 }
             } 
+            document.getElementById("loeschen").addEventListener('click', e =>{
+                loeschen(uebungen)
+            });
         }
     }
 }
