@@ -81,7 +81,9 @@ function bearbeiten(uebung){
     show("uebung")
     for (let uebungen in alle_uebungen){
         if (alle_uebungen[uebungen].Name == uebung){
-            document.getElementById("loeschen").removeEventListener()
+            document.getElementById("loeschen").removeEventListener('click', e =>{
+                loeschen(uebung)
+            });
             document.getElementById("loeschen").addEventListener('click', e =>{
                 loeschen(uebung)
             });
