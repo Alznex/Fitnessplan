@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         save();
     });
     
+    document.getElementById("loeschen").addEventListener('click', e =>{
+        uebungen = document.getElementById("ID")
+        loeschen(uebungen)
+    });
+
     addEventUebung()
   });
 
@@ -81,9 +86,6 @@ function bearbeiten(uebung){
     show("uebung")
     for (let uebungen in alle_uebungen){
         if (alle_uebungen[uebungen].Name == uebung){
-            document.getElementById("loeschen").addEventListener('click', e =>{
-                loeschen(uebungen)
-            });
             for (input_id in inputs){
                 for (const [key, value] of Object.entries(alle_uebungen[uebungen])){
                     if (input_id == 0 && key == "Name"){
