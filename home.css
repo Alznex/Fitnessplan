@@ -11,7 +11,7 @@ header {
 
 .heute, .wochentag{
     margin: 3%;
-    background-color:#1b1b1b;
+    background-color:#2E3033;
     border-radius: 1em;
     padding: 1%;
 }
@@ -21,7 +21,7 @@ h2{
 }
 .uebung {
     margin-left: 3%;
-    background-color:#1b1b1b;
+    background-color:#2E3033;
     display: flex;
 }
 
