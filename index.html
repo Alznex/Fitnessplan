@@ -36,11 +36,10 @@
             <!-- zum anzeigen und bearbeiten einer Übung -->
             <div class="uebung columns">
                 <div class="absatz">
-                    <div class="angaben">Name</div>        <input class="normal_input" id="uebungname" name="Name" required/>
+                    <input class="normal_input" id="uebungname" placeholder="Name" name="Name"/>
                 </div>
-                <div class="absatz" id="uebungkoerperteil">
-                    <div class="angaben">Körperteil</div>        
-                    <select id="koerperteil" name="koerperteil" required>
+                <div class="absatz" id="uebungkoerperteil">        
+                    <select class="uebungkoerperteil" id="koerperteil" name="koerperteil" >
                         <option value="none" selected disabled hidden>Körperteil</option>
                         <option value="Arme">Arme</option>
                         <option value="Bauch">Bauch</option>
@@ -49,7 +48,7 @@
                         <option value="Rücken">Rücken</option>
                     </select>
                 </div>
-                <div class="absatz" id="uebungwochentag">
+                <div class="absatz uebungwochentag" id="uebungwochentag">
                     <div class="angaben">Wochentag</div>        
                     <div>
                         <input type="checkbox" class="wochentage-selector" id="montag" name="wochentag" value="Montag">
@@ -81,16 +80,16 @@
                     </div>
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Sets</div>    <input type="text" required class="normal_input" id="uebungsets" name="Sets" />
+                    <input type="text" class="normal_input" id="uebungsets" placeholder="Sets" name="Sets" />
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Reps</div>     <input class="normal_input" id="uebungreps" name="Reps" required/>
+                    <input class="normal_input" id="uebungreps" placeholder="Reps" name="Reps"/>
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Gewicht</div> <input class="normal_input" id="uebunggewicht" name="Gewicht" required/>
+                    <input class="normal_input" id="uebunggewicht" placeholder="Gewicht" name="Gewicht"/>
                 </div>
                 <div class="absatz">
-                    <div class="angaben">Info</div>    <input class="normal_input" id="uebunginfo" name="Info">
+                    <input class="normal_input" id="uebunginfo" placeholder="Beschreibung" name="Info">
                 </div >
                 <input class="normal_input content" id="ID" name="ID">
                 <div class="absatz">

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="home.css" rel="stylesheet" type="text/css">
+    <script src="index.js" lang="text/javascript"></script>
+    <script src="text.js" lang="text/javascript"></script>
+    
+<head>
+	<title>Gym App</title>
+</head>
+<body>
+    <header> 
+        <h1 id="homepage" class="uebungen">Fittnesplaner</h1>
+    </header>
+    <div class="templates">
+        <div id="wochentag-template" class="wochentag">
+            <h2 data-id="wochentag">Wochentag</h2>
+        </div>
+        <div id="uebung-row-template" class="uebungen">
+            <div class="uebung rows"> 
+                <div class="kategorien" >
+                    <input type="checkbox">
+                    <span data-id="Name">Name</span>
+                </div>
+                <div class="kategorien" data-id="Gewicht">Gewicht</div>
+                <div class="kategorien" data-id="Sets">Sets</div>
+                <div class="kategorien" data-id="Reps">Reps</div>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div class="hinzufuegen content active" id="hinzufuegen">+ Hinzufügen</div>
+        <div id="home" class="content active">
+        </div>
+        <div id="uebung" class="content">
+            <!-- zum anzeigen und bearbeiten einer Übung -->
+            <div class="uebung columns">
+                <div class="absatz">
+                    <input class="normal_input" id="uebungname" placeholder="Name" name="Name"/>
+                </div>
+                <div class="absatz" id="uebungkoerperteil">        
+                    <select id="koerperteil" name="koerperteil" >
+                        <option value="none" selected disabled hidden>Körperteil</option>
+                        <option value="Arme">Arme</option>
+                        <option value="Bauch">Bauch</option>
+                        <option value="Beine">Beine</option>
+                        <option value="Brust">Brust</option>
+                        <option value="Rücken">Rücken</option>
+                    </select>
+                </div>
+                <div class="absatz uebungwochentag" id="uebungwochentag">
+                    <div class="angaben">Wochentag</div>        
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="montag" name="wochentag" value="Montag">
+                        <label for="montag">Montag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="dienstag" name="wochentag" value="Dienstag">
+                        <label for="dienstag">Dienstag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="mittwoch" name="wochentag" value="Mittwoch">
+                        <label for="mittwoch">Mittwoch</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="donnerstag" name="wochentag" value="Donnerstag">
+                        <label for="donnerstag">Donnerstag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="freitag" name="wochentag" value="Freitag">
+                        <label for="freitag">Freitag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="samstag" name="wochentag" value="Samstag">
+                        <label for="samstag">Samstag</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="wochentage-selector" id="sonntag" name="wochentag" value="Sonntag">
+                        <label for="sonntag">Sonntag</label>
+                    </div>
+                </div>
+                <div class="absatz">
+                    <input type="text" class="normal_input" id="uebungsets" placeholder="Sets" name="Sets" />
+                </div>
+                <div class="absatz">
+                    <input class="normal_input" id="uebungreps" placeholder="Reps" name="Reps"/>
+                </div>
+                <div class="absatz">
+                    <input class="normal_input" id="uebunggewicht" placeholder="Gewicht" name="Gewicht"/>
+                </div>
+                <div class="absatz">
+                    <div class="angaben">Info</div>    <input class="normal_input" id="uebunginfo" name="Info">
+                </div >
+                <input class="normal_input content" id="ID" name="ID">
+                <div class="absatz">
+                    <div class="button" id="speichern">Speichern</div>
+                    <div class="button" id="loeschen">Löschen</div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>    

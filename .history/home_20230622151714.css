@@ -108,8 +108,10 @@ option{
 }
 
 .uebungkoerperteil{
+    appearance: none;
     border-radius: 1em;
     width: 100%;
+    font-family: inherit;
 
     font-size: 100%;
 }

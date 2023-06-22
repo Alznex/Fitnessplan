@@ -106,10 +106,3 @@ option{
     display: flex;
     flex-direction: column;
 }
-
-.uebungkoerperteil{
-    border-radius: 1em;
-    width: 100%;
-
-    font-size: 100%;
-}

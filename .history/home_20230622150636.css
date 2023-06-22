@@ -33,7 +33,7 @@ h2{
     flex-direction: column;
     border-radius: 1em;
     padding: 1%; 
-    font-size: 320%;
+    font-size: 220%;
 }
 
 .rows{
@@ -50,7 +50,6 @@ h2{
     border-color: transparent;
     border-radius: 1em;
     flex: 2;
-    font-size: 100%;
 }
 
 .absatz{
@@ -105,11 +104,4 @@ option{
 .uebungwochentag{
     display: flex;
     flex-direction: column;
-}
-
-.uebungkoerperteil{
-    border-radius: 1em;
-    width: 100%;
-
-    font-size: 100%;
 }

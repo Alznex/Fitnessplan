@@ -108,6 +108,7 @@ option{
 }
 
 .uebungkoerperteil{
+    appearance: none;
     border-radius: 1em;
     width: 100%;
 
