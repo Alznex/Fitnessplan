@@ -63,7 +63,22 @@ function render() {
     if (Array.isArray(alle_uebungen[uebung].Wochentag) && alle_uebungen[uebung].Wochentag.length == 0){
       let uebung_div = appendTemplate("uebung-row-template", "nicht_zugeordnet")
         for (const [key, value] of Object.entries(alle_uebungen[uebung])){  
+          if (key == "Name"){
+            let uebung_name = value.replace(/\s/g, '-')
+            uebung_div.id = uebung_name
+          }
+          if (key == "Gewicht"){
+            value_gewicht = value + "kg"
+            setDataElementValue(uebung_div, key, value_gewicht)
+          }else if (key == "Sets"){
+            value_sets = value + " Sets"
+            setDataElementValue(uebung_div, key, value_sets)
+          }else if (key == "Reps"){
+            value_reps = value + " Reps"
+            setDataElementValue(uebung_div, key, value_reps)
+          }else {
             setDataElementValue(uebung_div, key, value)
+          }
         }
     }
   } 

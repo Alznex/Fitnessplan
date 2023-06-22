@@ -73,7 +73,8 @@ function save() {
     addEventUebung()
 }
 
-function bearbeiten(uebung){ //funktionirt nicht
+function bearbeiten(uebung){
+    clearInput()
     let inputs = document.querySelectorAll(".normal_input")
     let checkbox = document.querySelectorAll(".wochentage-selector")
     let selector = document.getElementById("koerperteil")
@@ -100,21 +101,16 @@ function bearbeiten(uebung){ //funktionirt nicht
                     }
                 }
             }
-            for (let checkboxes of checkbox){
-                for (let uebung in alle_uebungen){
-                        if (alle_uebungen[uebung].Wochentag == checkboxes.value){
-                            checkbox[checkboxes.childElementCount].checked = true;
-                        }
+            for (let i = 0; i < checkbox.length; i++ ){
+                if (alle_uebungen[uebungen].Wochentag.includes (checkbox[i].value)){
+                    checkbox[i].checked = true;
                 }
             }
             for (selector_values of selector){
-                for (let uebung in alle_uebungen){
-                    if (alle_uebungen[uebung].koerperteil == selector_values.label){
-                        selector.value = alle_uebungen[uebung].koerperteil
-                    }
+                if (alle_uebungen[uebungen].koerperteil == selector_values.label){
+                    selector.value = alle_uebungen[uebungen].koerperteil
                 }
-            }
-            
+            } 
         }
     }
 }
