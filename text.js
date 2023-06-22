@@ -14,6 +14,9 @@ function addEventUebung(){
           bearbeiten(name);
         });
       });
+      document.getElementById("loeschen").removeEventListener('click', e =>{
+                loeschen(uebungen)
+            });
 }
 const wochentage = [
     "Montag",
