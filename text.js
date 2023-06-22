@@ -82,18 +82,18 @@ function bearbeiten(uebung){
     for (let uebungen in alle_uebungen){
         if (alle_uebungen[uebungen].Name == uebung){
             document.getElementById("loeschen").addEventListener('click', e =>{
-                loeschen(uebungen)
+                loeschen(uebung)
             });
             for (input_id in inputs){
                 for (const [key, value] of Object.entries(alle_uebungen[uebungen])){
                     if (input_id == 0 && key == "Name"){
                         inputs[input_id].value = value
                     }else if(input_id == 1 && key == "Sets"){
-                        inputs[input_id].value = value.replace(/\D/g,'');
+                        inputs[input_id].value = value;
                     }else if(input_id == 2 && key == "Reps"){
-                        inputs[input_id].value = value.replace(/\D/g,'');
+                        inputs[input_id].value = value;
                     }else if(input_id == 3 && key == "Gewicht"){  
-                        inputs[input_id].value = value.replace(/\D/g,'');
+                        inputs[input_id].value = value;
                     }else if(input_id == 4 && key == "Info"){
                         inputs[input_id].value = value
                     }else if(input_id == 5 && key == "ID"){
