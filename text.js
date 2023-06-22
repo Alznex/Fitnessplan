@@ -74,9 +74,6 @@ function save() {
 }
 
 function bearbeiten(uebung){
-      document.getElementById("loeschen").removeEventListener('click', e =>{
-                loeschen(uebungen)
-            });
     clearInput()
     let inputs = document.querySelectorAll(".normal_input")
     let checkbox = document.querySelectorAll(".wochentage-selector")
