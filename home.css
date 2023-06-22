@@ -77,7 +77,7 @@ h2{
 
 .wochentage-selector:checked {
 
-    content: url('/img/check.png')
+    content: url('./img/check.png')
 }
 
 option{
