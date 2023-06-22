@@ -11,7 +11,7 @@ header {
 
 .heute, .wochentag{
     margin: 3%;
-    background-color:dimgray;
+    background-color:#141414;
     border-radius: 1em;
     padding: 1%;
 }
@@ -21,7 +21,7 @@ h2{
 }
 .uebung {
     margin-left: 3%;
-    background-color:dimgray;
+    background-color:#141414;
     display: flex;
 }
 
@@ -64,22 +64,20 @@ h2{
     font-size: 220%;
 }
 
-input[type=checkbox] {
+.wochentage-selector{
     top: 2em;
     width: 1.5em;
     height: 1.3em;
-    background-color: white;
-    border-radius: 50%;
     vertical-align: middle;
-    border: 1px solid #ddd;
     appearance: none;
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
 }
 
-input[type=checkbox]:checked {
-    background-color: black;
+.wochentage-selector:checked {
+
+    content: url('/img/check.png')
 }
 
 option{
@@ -112,4 +110,16 @@ option{
     width: 100%;
 
     font-size: 100%;
+}
+
+.speichern{
+    border-radius: 1em;
+    padding: 1%;
+    background-color: green;
+}
+
+.loeschen{
+    border-radius: 1em;
+    padding: 1%;
+    background-color: red;
 }
