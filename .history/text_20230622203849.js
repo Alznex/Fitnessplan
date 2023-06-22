@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         save();
     });
 
-    document.getElementById("loeschen").addEventListener('click', e =>{
-        let uebungen_loeschen = document.getElementById("ID");
-        loeschen(uebungen_loeschen.value)
-    });
-
     addEventUebung()
   });
 
@@ -74,17 +69,21 @@ function save() {
     // Speichere das Array im Local Storage
     localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen));
 
-    render();
-    addEventUebung();
+    render()
+    addEventUebung()
 }
 
 function bearbeiten(uebung){
-    clearInput();
-    let inputs = document.querySelectorAll(".normal_input");
-    let checkbox = document.querySelectorAll(".wochentage-selector");
-    let selector = document.getElementById("koerperteil");
-    show("uebung");
-
+    clearInput()
+    let inputs = document.querySelectorAll(".normal_input")
+    let checkbox = document.querySelectorAll(".wochentage-selector")
+    let selector = document.getElementById("koerperteil")
+    
+    document.getElementById("loeschen").addEventListener('click', e =>{
+        uebungen_loeschen = document.getElementById("ID")
+        loeschen(uebungen_loeschen)
+    });
+    show("uebung")
     for (let uebungen in alle_uebungen){
         if (alle_uebungen[uebungen].Name == uebung){
             for (input_id in inputs){

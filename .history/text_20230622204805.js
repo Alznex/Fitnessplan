@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         save();
     });
 
-    document.getElementById("loeschen").addEventListener('click', e =>{
-        let uebungen_loeschen = document.getElementById("ID");
-        loeschen(uebungen_loeschen.value)
-    });
-
     addEventUebung()
   });
 
@@ -77,6 +72,11 @@ function save() {
     render();
     addEventUebung();
 }
+
+document.getElementById("loeschen").addEventListener('click', e =>{
+    let uebungen_loeschen = document.getElementById("ID");
+    loeschen(uebungen_loeschen)
+});
 
 function bearbeiten(uebung){
     clearInput();

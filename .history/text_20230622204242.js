@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         save();
     });
 
-    document.getElementById("loeschen").addEventListener('click', e =>{
-        let uebungen_loeschen = document.getElementById("ID");
-        loeschen(uebungen_loeschen.value)
-    });
-
     addEventUebung()
   });
 
@@ -83,6 +78,11 @@ function bearbeiten(uebung){
     let inputs = document.querySelectorAll(".normal_input");
     let checkbox = document.querySelectorAll(".wochentage-selector");
     let selector = document.getElementById("koerperteil");
+    let uebungen_loeschen = document.getElementById("ID");
+
+    document.getElementById("loeschen").addEventListener('click', e =>{
+        loeschen(uebungen_loeschen)
+    });
     show("uebung");
 
     for (let uebungen in alle_uebungen){

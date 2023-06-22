@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.getElementById("loeschen").addEventListener('click', e =>{
         let uebungen_loeschen = document.getElementById("ID");
-        loeschen(uebungen_loeschen.value)
+        loeschen(uebungen_loeschen)
     });
 
     addEventUebung()
