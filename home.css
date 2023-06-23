@@ -60,7 +60,7 @@ h2{
     background-color: transparent;
     flex: 2;
     font-size: 100%;
-    border-color: #141414;
+    border-color: white;
 }
 
 .gewicht{
@@ -90,18 +90,13 @@ h2{
 }
 
 .wochentage-selector{
-    top: 2em;
-    width: 1.5em;
-    height: 1.3em;
-    vertical-align: middle;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
+    width: 2em;                  
+    height: 2em;  
+    clip-path: circle(46% at 50% 50%);
+    border-color: transparent;
 }
 
 .wochentage-selector:checked {
-
     content: url('img/check.png')
 }
 
