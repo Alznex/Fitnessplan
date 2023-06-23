@@ -61,7 +61,7 @@ h2{
     flex: 2;
     font-size: 100%;
     border-color: white;
-    color: white;
+    outline: none;
 }
 
 .gewicht{
