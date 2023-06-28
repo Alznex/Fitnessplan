@@ -14,9 +14,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function addEventUebung(){
     document.querySelectorAll(".uebungen").forEach(div => {
         div.addEventListener('click', e => {
-          let name = div.id;
-          name = name.replace(/-/g, " ")
-          bearbeiten(name);
+            if (div.classList.contains('uebungen')) {
+                let name = div.id;
+                name = name.replace(/-/g, " ")
+                bearbeiten(name);
+              }
         });
       });
 }
