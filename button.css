@@ -1,0 +1,19 @@
+.button{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+.button:hover{
+    cursor: pointer;
+}
+
+.speichern{
+    border-radius: 1em;
+    padding: 1%;
+    background-color: green;
+}
+
+.loeschen{
+    border-radius: 1em;
+    padding: 1%;
+    background-color: red;
+}
