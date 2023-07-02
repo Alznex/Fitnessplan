@@ -33,12 +33,15 @@
 
 /* Wochentag check */
 .wochentage-selector{
-    width: 2em;                  
-    height: 2em;  
-    clip-path: circle(46% at 50% 50%);
-    border-color: transparent;
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    content: url('img/uncheck.png');
 }
 
 .wochentage-selector:checked {
+    appearance: none;
+    width: 2em;
+    height: 2em;
     content: url('img/check.png')
 }
