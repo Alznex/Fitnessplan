@@ -17,3 +17,16 @@
     padding: 1%;
     background-color: red;
 }
+
+/* Google */
+.data{
+    display: none;
+}
+
+.g-signin2{
+    position: absolute;
+    top: 17%;
+    left: 90%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
