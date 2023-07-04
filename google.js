@@ -11,7 +11,7 @@ function gapiLoaded() {
    * discovery doc to initialize the API.
    */
   async function initializeGapiClient() {
-    let API_KEY = document.getElementById("API_KEY")
+    let API_KEY = document.getElementById("API_KEY").value
     let client_id = "992099953263-kfvfhm63aige76ilpjlp2upt62cfigg6.apps.googleusercontent.com"
 
     await gapi.client.init({
@@ -19,7 +19,6 @@ function gapiLoaded() {
       discoveryDocs: [DISCOVERY_DOC],
     });
     gapiInited = true;
-    maybeEnableButtons();
   }
 
  /**
