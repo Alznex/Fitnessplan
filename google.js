@@ -3,7 +3,7 @@
  let gapiInited = false;
 
 function gapiLoaded() {
-    
+    gapi.load('client', initializeGapiClient);
   }
 
   /**
@@ -26,7 +26,7 @@ function gapiLoaded() {
        * Print metadata for first 10 files.
        */
  async function listFiles() {
-    gapi.load('client', initializeGapiClient);
+
     let response;
     try {
       response = await gapi.client.drive.files.list({
