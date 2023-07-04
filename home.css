@@ -5,8 +5,9 @@ body{
 }
 
 header {
+    display: flex;
     margin: 5%;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .heute, .wochentag{
