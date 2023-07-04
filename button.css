@@ -19,10 +19,6 @@
 }
 
 /* Google */
-.data{
-    display: none;
-}
-
 .g-signin2{
     position: absolute;
     top: 17%;
