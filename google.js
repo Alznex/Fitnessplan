@@ -34,7 +34,7 @@ function gapiLoaded() {
         'fields': 'files(id, name)',
       });
     } catch (err) {
-      document.getElementById('main').innerText = err.message;
+      document.getElementById('main').innerText = JSON.parse(err.body).error.message;
       return;
     }
     const files = response.result.files;
