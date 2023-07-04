@@ -18,6 +18,7 @@ function gapiLoaded() {
       apiKey: API_KEY,
       discoveryDocs: [DISCOVERY_DOC],
     });
+    
     gapiInited = true;
   }
 
