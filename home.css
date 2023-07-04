@@ -6,7 +6,7 @@ body{
 
 header {
     margin: 5%;
-    font-size: 220%;
+    font-size: 2em;
 }
 
 .heute, .wochentag{
@@ -16,8 +16,8 @@ header {
     padding: 1%;
 }
 
-h2{
-    font-size: 260%;
+.header{
+    font-size: 2.4em;
 }
 .uebung {
     margin-left: 3%;

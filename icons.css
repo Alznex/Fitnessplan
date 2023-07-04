@@ -1,5 +1,6 @@
 /* Hinzufüegen Button*/
 .gg-add {
+    margin-left: 5%;
     box-sizing: border-box;
     position: relative;
     display: block;
