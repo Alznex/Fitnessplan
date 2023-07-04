@@ -1,4 +1,6 @@
 function login(){
+    const responsePayload = decodeJwtResponse(response.credential);
+    
     let ID = responsePayload.sub;
     let name = responsePayload.name;
     let alias = responsePayload.given_name;
