@@ -10,7 +10,7 @@
 
     <script src="index.js" lang="text/javascript"></script>
     <script src="text.js" lang="text/javascript"></script>
-    <script src="google.js" lang="text/javascript"></script>
+    <script src="google_test.js" lang="text/javascript"></script>
 
     <script src="https://accounts.google.com/gsi/client" async></script>
     <script async defer src="https://apis.google.com/js/api.js"></script>
@@ -29,22 +29,9 @@
 <body>
     <header> 
         <div id="homepage" class="header">Fitnessplan</div> 
-        <div id="g_id_onload"
-            data-client_id="992099953263-kfvfhm63aige76ilpjlp2upt62cfigg6.apps.googleusercontent.com"
-            data-context="signin"
-            data-ux_mode="popup"
-            data-callback="handleCredentialResponse"
-            data-auto_prompt="false">
-        </div>
-        
-        <div class="g_id_signin"
-            data-type="standard"
-            data-shape="pill"
-            data-theme="outline"
-            data-text="signin"
-            data-size="large"
-            data-logo_alignment="left">
-        </div>
+        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+        <pre id="content" style="white-space: pre-wrap;"></pre>
     </header>
     <div class="templates">
         <div id="wochentag-template" class="wochentag">
