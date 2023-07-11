@@ -1,15 +1,19 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+  document.getElementById("settings_logo").addEventListener("click", (e) => {
+    show("settings");
+  });
+
   document.getElementById("hinzufuegen").addEventListener("click", (e) => {
     show("uebung");
     clearInput()
   });
 
   document.getElementById("speichern").addEventListener("click", (e) => {
-    show("home");
+    show("start");
   });
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
-    show("home");
+    show("start");
   });
   render();
 });

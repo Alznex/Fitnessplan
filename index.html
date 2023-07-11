@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link href="index.css" rel="stylesheet" type="text/css">
     <link href="home.css" rel="stylesheet" type="text/css">
     <link href="icons.css" rel="stylesheet" type="text/css">
@@ -32,6 +33,7 @@
         <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
         <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
         <pre id="content" style="white-space: pre-wrap;"></pre>
+        <span class="material-symbols-outlined" id="settings_logo">settings</span>
     </header>
     <div class="templates">
         <div id="wochentag-template" class="wochentag">
@@ -46,8 +48,9 @@
     </div>
     <div id="main">
         <input id="API_KEY"> <button onclick="gapiLoaded()">INIT</button><button onclick="listFiles()">Test</button>
-        <div class="gg-add content active" id="hinzufuegen"></div>
-        <div id="home" class="content active">
+        <div id="start" class="content active">
+            <div class="gg-add" id="hinzufuegen"></div>
+            <div id="home"></div>
         </div>
         <div id="uebung" class="content">
             <div class="uebung columns">
@@ -121,5 +124,8 @@
 
             </div>
         </div>
+    </div>
+    <div id="settings" class="content">
+        <h2>Settings</h2>
     </div>
 </body>    

@@ -9,11 +9,11 @@
     width: 22px;
     height: 22px;
     border: 2px solid;
-    transform: scale(var(--ggs,2));
+    transform: scale(var(--ggs,4));
     border-radius: 22px;
     border-color: #00aba9;
     z-index: 3;
-    box-shadow:2px, solid, red;
+    box-shadow: 2px, solid, red;
    }
    
    .gg-add::after,
@@ -50,4 +50,11 @@
     width: 2em;
     height: 2em;
     content: url('img/check.png')
+}
+
+/*Settings*/
+.material-symbols-outlined{
+    margin-top: 4.5%;
+    margin-left: 55%;
+    transform: scale(var(--ggs,2));
 }
