@@ -12,6 +12,7 @@
     transform: scale(var(--ggs,2));
     border-radius: 22px;
     border-color: #00aba9;
+    z-index: 3;
    }
    
    .gg-add::after,

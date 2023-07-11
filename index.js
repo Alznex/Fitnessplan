@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("hinzufuegen").addEventListener("click", (e) => {
     show("uebung");
-    clearInput();
+    clearInput()
   });
 
   document.getElementById("speichern").addEventListener("click", (e) => {
@@ -123,8 +123,17 @@ function clearInput() {
   let inputs = document.querySelectorAll(".normal_input");
   let checkbox = document.querySelectorAll(".wochentage-selector");
   let selector = document.getElementById("koerperteil");
+
   for (eingabe in inputs) {
-    inputs[eingabe].value = "";
+    if(eingabe == "1"){
+      inputs[eingabe].value = "3";
+    }else if (eingabe == "2"){
+      inputs[eingabe].value = "15";
+    }else if(eingabe == "3"){
+      inputs[eingabe].value = "10";
+    }else{
+      inputs[eingabe].value = "";
+    }
   }
   for (checkboxes in checkbox) {
     checkbox[checkboxes].checked = false;

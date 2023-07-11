@@ -11,7 +11,7 @@ header {
     font-size: 3em;
 }
 
-.heute, .wochentag{
+.wochentag{
     margin: 3%;
     background-color:#00aba9;
     border-radius: 1em;
@@ -27,14 +27,6 @@ header {
     display: flex;
 }
 
-.uebungen {
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 1em;
-    border-color: white;
-}
-
-.uebungen:hover{
+.uebung:hover{
     cursor: pointer;
 }

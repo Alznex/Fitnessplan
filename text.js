@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function addEventUebung() {
-  document.querySelectorAll(".uebungen").forEach((div) => {
+  document.querySelectorAll(".rows").forEach((div) => {
     div.addEventListener("click", (e) => {
-      if (div.classList.contains("uebungen")) {
+      if (div.classList.contains("rows")) {
         let name = div.id;
         name = name.replace(/-/g, " ");
         bearbeiten(name);

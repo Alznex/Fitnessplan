@@ -37,21 +37,17 @@
         <div id="wochentag-template" class="wochentag">
             <h2 data-id="wochentag">Wochentag</h2>
         </div>
-        <div id="uebung-row-template" class="uebungen">
-            <div class="uebung rows"> 
-                <div class="kategorien" >
-                    <span data-id="Name">Name</span>
-                </div>
+            <div id="uebung-row-template" class="uebung rows"> 
+                <div class="kategorien" data-id="Name">Name</div>
                 <div class="kategorien" data-id="Gewicht">Gewicht</div>
                 <div class="kategorien" data-id="Sets">Sets</div>
                 <div class="kategorien" data-id="Reps">Reps</div>
             </div>
-        </div>
     </div>
     <div id="main">
         <input id="API_KEY"> <button onclick="gapiLoaded()">INIT</button><button onclick="listFiles()">Test</button>
         <div class="gg-add content active" id="hinzufuegen"></div>
-        <div id="home" class="content active">
+        <div id="home">
         </div>
         <div id="uebung" class="content">
             <div class="uebung columns">
@@ -99,9 +95,19 @@
                     </div>
                 </div>
                 <div class="sets-reps-kg">
-                    <input type="text" class="normal_input" id="uebungsets" placeholder=" Sets" name="Sets" />
-                    <input class="normal_input" id="uebungreps" placeholder=" Reps" name="Reps"/>
-                    <input class="normal_input gewicht" id="uebunggewicht" placeholder=" Gewicht" name="Gewicht"/>
+                    <div class="data">
+                        <span class="prefix">Sets</span>
+                        <input type="number" min="0" class="normal_input" id="uebungsets"  name="Sets" />
+                    </div>
+                    <div class="data">
+                        <span class="prefix">Reps</span>
+                        <input type="number" min="0" class="normal_input" id="uebungreps" name="Reps"/>
+                    </div>
+                    <div class="data">
+                        <span class="prefix">Gewicht</span>
+                        <input type="number" min="0" class="normal_input gewicht" id="uebunggewicht" name="Gewicht"/>
+                        <span class="suffix">kg</span>
+                    </div>
                 </div>
                 <div class="absatz">
                     <input class="normal_input info" id="uebunginfo" placeholder=" Beschreibung" name="Info">

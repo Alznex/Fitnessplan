@@ -1,9 +1,19 @@
 .columns{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     flex-direction: column;
-    border-radius: 1em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
     padding: 1%; 
-    font-size: 320%;
+    font-size: 3em;
     background-color: #2d2d2d;
+    width: auto;
+    height: auto;
+    margin: 0;
+    z-index: 2;
 }
 
 .sets-reps-kg{
@@ -29,8 +39,8 @@
     outline: none;
 }
 
-.gewicht{
-    border-bottom: 0;
+.data > div:nth-child(2){
+    margin-left: auto;
 }
 
 .info{
