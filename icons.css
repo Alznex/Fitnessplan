@@ -13,6 +13,7 @@
     border-radius: 22px;
     border-color: #00aba9;
     z-index: 3;
+    box-shadow:2px, solid, red;
    }
    
    .gg-add::after,
