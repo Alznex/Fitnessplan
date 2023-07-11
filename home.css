@@ -13,7 +13,7 @@ header {
 
 .wochentag{
     margin: 3%;
-    background-color:#00aba9;
+    background-color:‎#2d2d2d;
     border-radius: 1em;
     padding: 1%;
     display: flex;
@@ -29,7 +29,7 @@ h2{
 }
 .uebung {
     margin-left: 3%;
-    background-color:#00aba9;
+    background-color:transparent;
     display: flex;
 }
 
