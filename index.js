@@ -141,3 +141,15 @@ function clearInput() {
 
   selector.value = "none";
 }
+
+function uebungorder(nth_child, position){
+  let Montag = document.getElementById('Montag').children;
+  var arr = Array.from(Montag);
+
+  for (let x in arr){
+    let id = arr[x].id;
+    if (id == nth_child){
+      document.getElementById(id).style.order = position
+    }
+  }
+}

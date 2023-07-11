@@ -116,7 +116,9 @@ function bearbeiten(uebung) {
       }
       for (selector_values of selector) {
         if (alle_uebungen[uebungen].koerperteil == selector_values.label) {
-          selector.value = alle_uebungen[uebungen].koerperteil;
+          if (alle_uebungen[uebungen].koerperteil != "Körperteil"){
+            selector.value = alle_uebungen[uebungen].koerperteil;
+          }
         }
       }
     }
