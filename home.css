@@ -20,6 +20,10 @@ header {
     flex-direction: column;
 }
 
+h2{
+    font-size: 3em;
+}
+
 .header{
     font-size: 2.4em;
 }
