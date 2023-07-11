@@ -1,20 +1,15 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-  hinzufuegen_button = document.getElementById("hinzufuegen");
-
   document.getElementById("hinzufuegen").addEventListener("click", (e) => {
     show("uebung");
     clearInput();
-    hinzufuegen_button.classList.remove("active");
   });
 
   document.getElementById("speichern").addEventListener("click", (e) => {
     show("home");
-    hinzufuegen_button.classList.add("active");
   });
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
     show("home");
-    hinzufuegen_button.classList.add("active");
   });
   render();
 });
