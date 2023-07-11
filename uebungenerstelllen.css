@@ -1,6 +1,7 @@
 .columns{
     display:flex;
     flex-direction: column;
+    position:absolut;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     padding-left: 5%; 
