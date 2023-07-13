@@ -60,6 +60,7 @@ if (!alle_uebungen) {
   alle_uebungen = {}
 }
 
+let alle_wochentage
 let alle_wochentage_string = localStorage.getItem("alle_wochentage")
 if (alle_wochentage_string) {
   alle_wochentage = JSON.parse(alle_wochentage_string);
