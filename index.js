@@ -19,82 +19,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function hatUebung(wochentag) {
-  for (const uebung in alle_uebungen) {
-    if (alle_uebungen[uebung].Wochentag && alle_uebungen[uebung].Wochentag.includes(wochentag)) return true;
-  }
-  return false;
-}
-
-function hatUebungNichtZugeordnet() {
-  for (const uebung in alle_uebungen) {
-    if (alle_uebungen[uebung].Wochentag.length == 0) return true;
-  }
-  return false;
+  return wochentag.uebungen.length > 0;
 }
 
 
 function render() {
   document.getElementById("home").innerHTML = "";
 
-  for (let wochentag of wochentage) {
+  for (let wochentag of alle_wochentage) {
     if (!hatUebung(wochentag)) continue;
     let wochentag_div = appendTemplate("wochentag-template", "home");
-    setDataElementValue(wochentag_div, "wochentag", wochentag);
-    wochentag_div.id = wochentag;
-    for (const uebung in alle_uebungen) {
-      if (alle_uebungen[uebung].Wochentag.includes(wochentag)) {
-        let uebung_div = appendTemplate("uebung-row-template", wochentag);
-        for (const [key, value] of Object.entries(alle_uebungen[uebung])) {
-          if (key == "Name") {
-            let uebung_name = value.replace(/\s/g, "-");
-            uebung_div.id = uebung_name;
-          }
-          if (key == "Gewicht") {
-            value_gewicht = value + "kg";
-            setDataElementValue(uebung_div, key, value_gewicht);
-          } else if (key == "Sets") {
-            value_sets = value + " Sets";
-            setDataElementValue(uebung_div, key, value_sets);
-          } else if (key == "Reps") {
-            value_reps = value + " Reps";
-            setDataElementValue(uebung_div, key, value_reps);
-          } else {
-            setDataElementValue(uebung_div, key, value);
-          }
+    setDataElementValue(wochentag_div, "wochentag", wochentag.tag);
+    wochentag_div.id = wochentag.tag;
+    for (const uebung_id of wochentag.uebungen) {
+      let uebung_div = appendTemplate("uebung-row-template", wochentag.tag);
+      for (const [key, value] of Object.entries(alle_uebungen[uebung_id])) {
+        if (key == "Name") {
+          let uebung_name = value.replace(/\s/g, "-");
+          uebung_div.id = uebung_name;
         }
-      }
-    }
-  }
-  if (hatUebungNichtZugeordnet()){
-    let wochentag_div = appendTemplate("wochentag-template", "home");
-    setDataElementValue(wochentag_div, "wochentag", "nicht zugeordnet");
-    wochentag_div.id = "nicht_zugeordnet";
-    for (uebung in alle_uebungen) {
-      if (
-        Array.isArray(alle_uebungen[uebung].Wochentag) &&
-        alle_uebungen[uebung].Wochentag.length == 0
-      ) {
-        let uebung_div = appendTemplate(
-          "uebung-row-template",
-          "nicht_zugeordnet"
-        );
-        for (const [key, value] of Object.entries(alle_uebungen[uebung])) {
-          if (key == "Name") {
-            let uebung_name = value.replace(/\s/g, "-");
-            uebung_div.id = uebung_name;
-          }
-          if (key == "Gewicht") {
-            value_gewicht = value + "kg";
-            setDataElementValue(uebung_div, key, value_gewicht);
-          } else if (key == "Sets") {
-            value_sets = value + " Sets";
-            setDataElementValue(uebung_div, key, value_sets);
-          } else if (key == "Reps") {
-            value_reps = value + " Reps";
-            setDataElementValue(uebung_div, key, value_reps);
-          } else {
-            setDataElementValue(uebung_div, key, value);
-          }
+        if (key == "Gewicht") {
+          let value_gewicht = value + "kg";
+          setDataElementValue(uebung_div, key, value_gewicht);
+        } else if (key == "Sets") {
+          let value_sets = value + " Sets";
+          setDataElementValue(uebung_div, key, value_sets);
+        } else if (key == "Reps") {
+          let value_reps = value + " Reps";
+          setDataElementValue(uebung_div, key, value_reps);
+        } else {
+          setDataElementValue(uebung_div, key, value);
         }
       }
     }
@@ -128,7 +82,7 @@ function clearInput() {
   let checkbox = document.querySelectorAll(".wochentage-selector");
   let selector = document.getElementById("koerperteil");
 
-  for (eingabe in inputs) {
+  for (let eingabe in inputs) {
     if(eingabe == "1"){
       inputs[eingabe].value = "3";
     }else if (eingabe == "2"){
@@ -139,7 +93,7 @@ function clearInput() {
       inputs[eingabe].value = "";
     }
   }
-  for (checkboxes in checkbox) {
+  for (let checkboxes in checkbox) {
     checkbox[checkboxes].checked = false;
   }
 

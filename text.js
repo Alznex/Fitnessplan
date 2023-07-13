@@ -22,20 +22,57 @@ function addEventUebung() {
     });
   });
 }
-const wochentage = [
-  "Montag",
-  "Dienstag",
-  "Mittwoch",
-  "Donnerstag",
-  "Freitag",
-  "Samstag",
-  "Sonntag",
+
+const wochentag_nummern = {
+  "Montag": 0,
+  "Dienstag": 1,
+  "Mittwoch": 2,
+  "Donnerstag": 3,
+  "Freitag": 4,
+  "Samstag": 5,
+  "Sonntag": 6,
+  "keiner": 7
+}
+
+const alle_wochentage_empty = [
+  { tag: "Montag", uebungen: []},
+  { tag: "Dienstag", uebungen: []},
+  { tag: "Mittwoch", uebungen: []},
+  { tag: "Donnerstag", uebungen: []},
+  { tag: "Freitag", uebungen: []},
+  { tag: "Samstag", uebungen: []},
+  { tag: "Sonntag", uebungen: []},
+  { tag: "keiner", uebungen: []}
 ];
 
-let alle_uebungen = {};
+let alle_uebungen;
+let alle_uebungen_string = localStorage.getItem("alle_uebungen")
+if (alle_uebungen_string) {
+  alle_uebungen = JSON.parse(alle_uebungen_string);
+}
+if (!alle_uebungen) {
+  alle_uebungen = {}
+}
 
-if (localStorage.getItem("alle_uebungen")) {
-  alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen"));
+let alle_wochentage_string = localStorage.getItem("alle_wochentage")
+if (alle_wochentage_string) {
+  alle_wochentage = JSON.parse(alle_wochentage_string);
+}
+if (!alle_wochentage) {
+  alle_wochentage = alle_wochentage_empty
+  if (alle_uebungen) {
+    for (let uebung_id in alle_uebungen) {
+      let uebung = alle_uebungen[uebung_id]
+      if (uebung.Wochentag.length == 0) {
+        alle_wochentage[wochentag_nummern["keiner"]].uebungen.push(uebung_id)
+      } else {
+        for (let wochentag of uebung.Wochentag) {
+          alle_wochentage[wochentag_nummern[wochentag]].uebungen.push(uebung_id)
+        }
+      }
+    }
+  }
+  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
 }
 
 function save() {
@@ -78,6 +115,7 @@ function save() {
 
   // Speichere das Array im Local Storage
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen));
+  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
 
   render();
   addEventUebung();
@@ -92,7 +130,7 @@ function bearbeiten(uebung) {
 
   for (let uebungen in alle_uebungen) {
     if (alle_uebungen[uebungen].Name == uebung) {
-      for (input_id in inputs) {
+      for (let input_id in inputs) {
         for (const [key, value] of Object.entries(alle_uebungen[uebungen])) {
           if (input_id == 0 && key == "Name") {
             inputs[input_id].value = value;
@@ -114,7 +152,7 @@ function bearbeiten(uebung) {
           checkbox[i].checked = true;
         }
       }
-      for (selector_values of selector) {
+      for (let selector_values of selector) {
         if (alle_uebungen[uebungen].koerperteil == selector_values.label) {
           if (alle_uebungen[uebungen].koerperteil != "Körperteil"){
             selector.value = alle_uebungen[uebungen].koerperteil;
