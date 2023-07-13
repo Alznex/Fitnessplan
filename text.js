@@ -45,6 +45,12 @@ const alle_wochentage_empty = [
   { tag: "keiner", uebungen: []}
 ];
 
+function swap_uebungen(uebungen, index1, index2){
+    const uebung_id = uebungen[index1]
+    uebungen[index1]= uebungen[index2]
+    uebungen[index2] = uebung_id
+}
+
 let alle_uebungen;
 let alle_uebungen_string = localStorage.getItem("alle_uebungen")
 if (alle_uebungen_string) {
@@ -121,14 +127,14 @@ function save() {
   addEventUebung();
 }
 
-function bearbeiten(uebung) {
+function bearbeiten(uebung) { 
   clearInput();
   let inputs = document.querySelectorAll(".normal_input");
   let checkbox = document.querySelectorAll(".wochentage-selector");
   let selector = document.getElementById("koerperteil");
   show("uebung");
 
-  for (let uebungen in alle_uebungen) {
+  for (let uebungen in alle_uebungen) {//TODO ID
     if (alle_uebungen[uebungen].Name == uebung) {
       for (let input_id in inputs) {
         for (const [key, value] of Object.entries(alle_uebungen[uebungen])) {

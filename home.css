@@ -28,11 +28,40 @@ h2{
     font-size: 2.4em;
 }
 .uebung {
-    margin-left: 3%;
     background-color:#2d2d2d;
     display: flex;
 }
 
 .uebungen:hover{
     cursor: pointer;
+}
+
+.hold {
+    cursor: move; /* fallback if grab cursor is unsupported */
+      cursor: grab;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+}
+
+.hold:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.empty{
+    margin-left: 3%;
+    border: 3px solid green;
+}
+
+.hovered{
+    border: 3px dashed grey;
+    /* border-style: dashed; */
+}
+.rows * {
+    pointer-events: none;
 }

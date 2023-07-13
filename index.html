@@ -12,6 +12,7 @@
     <script src="index.js" lang="text/javascript"></script>
     <script src="text.js" lang="text/javascript"></script>
     <script src="google_test.js" lang="text/javascript"></script>
+    <script src="drag.js" lang="text/javascript"></script>
 
     <script src="https://accounts.google.com/gsi/client" async></script>
     <script async defer src="https://apis.google.com/js/api.js"></script>
@@ -36,15 +37,17 @@
         <span class="material-symbols-outlined" id="settings_logo">settings</span>
     </header>
     <div class="templates">
-        <div id="wochentag-template" class="wochentag">
+        <div id="wochentag-template" class="wochentag" >
             <h2 data-id="wochentag">Wochentag</h2>
         </div>
-            <div id="uebung-row-template" class="uebung rows"> 
+        <div id="uebung-row-template" class="empty">
+            <div id="uebung-id" class="uebung rows" draggable="true">
                 <div class="kategorien" data-id="Name">Name</div>
                 <div class="kategorien" data-id="Gewicht">Gewicht</div>
                 <div class="kategorien" data-id="Sets">Sets</div>
                 <div class="kategorien" data-id="Reps">Reps</div>
             </div>
+        </div>
     </div>
     <div id="main">
         <input id="API_KEY"> <button onclick="gapiLoaded()">INIT</button><button onclick="listFiles()">Test</button>

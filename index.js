@@ -31,12 +31,17 @@ function render() {
     let wochentag_div = appendTemplate("wochentag-template", "home");
     setDataElementValue(wochentag_div, "wochentag", wochentag.tag);
     wochentag_div.id = wochentag.tag;
-    for (const uebung_id of wochentag.uebungen) {
-      let uebung_div = appendTemplate("uebung-row-template", wochentag.tag);
-      for (const [key, value] of Object.entries(alle_uebungen[uebung_id])) {
-        if (key == "Name") {
-          let uebung_name = value.replace(/\s/g, "-");
-          uebung_div.id = uebung_name;
+    for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+      let uebung_id = wochentag.uebungen[index];
+      let uebung = alle_uebungen[uebung_id];
+    
+    // for (const uebung_id of wochentag.uebungen) {
+      let uebung_container = appendTemplate("uebung-row-template", wochentag.tag);
+      let uebung_div = uebung_container.querySelector("div");
+      for (const [key, value] of Object.entries(uebung)) {
+        if (key == "ID") {
+          uebung_container.id = value + "-container";
+          uebung_div.id = value;
         }
         if (key == "Gewicht") {
           let value_gewicht = value + "kg";
@@ -51,6 +56,13 @@ function render() {
           setDataElementValue(uebung_div, key, value);
         }
       }
+      uebung_div.addEventListener('dragstart', dragStart(index));
+      uebung_div.addEventListener('dragend', dragEnd(index));
+
+      uebung_container.addEventListener('dragover', dragOver(index));
+      uebung_container.addEventListener('dragenter', dragEnter(index));
+      uebung_container.addEventListener('dragleave', dragLeave(index));
+      uebung_container.addEventListener('drop', dragDrop(index));
     }
   }
 }
@@ -98,16 +110,4 @@ function clearInput() {
   }
 
   selector.value = "none";
-}
-
-function uebungorder(nth_child, position){
-  let Montag = document.getElementById('Montag').children;
-  var arr = Array.from(Montag);
-
-  for (let x in arr){
-    let id = arr[x].id;
-    if (id == nth_child){
-      document.getElementById(id).style.order = position
-    }
-  }
 }
