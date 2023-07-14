@@ -38,9 +38,9 @@ h2{
 
 .hold {
     cursor: move; /* fallback if grab cursor is unsupported */
-      cursor: grab;
-      cursor: -moz-grab;
-      cursor: -webkit-grab;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
 }
 
 .hold:active {
@@ -55,12 +55,11 @@ h2{
 
 .empty{
     margin-left: 3%;
-    border: 3px solid green;
+    border: 3px solid transparent;
 }
 
 .hovered{
     border: 3px dashed grey;
-    /* border-style: dashed; */
 }
 .rows * {
     pointer-events: none;
