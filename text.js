@@ -15,9 +15,8 @@ function addEventUebung() {
   document.querySelectorAll(".rows").forEach((div) => {
     div.addEventListener("click", (e) => {
       if (div.classList.contains("rows")) {
-        let name = div.id;
-        name = name.replace(/-/g, " ");
-        bearbeiten(name);
+        let div_id = div.id;
+        bearbeiten(div_id);
       }
     });
   });
@@ -128,43 +127,40 @@ function save() {
   addEventUebung();
 }
 
-function bearbeiten(uebung) { 
+function bearbeiten(uebung_id) { 
   clearInput();
   let inputs = document.querySelectorAll(".normal_input");
   let checkbox = document.querySelectorAll(".wochentage-selector");
   let selector = document.getElementById("koerperteil");
+  let uebungen = alle_uebungen[uebung_id]
   show("uebung");
 
-  for (let uebungen in alle_uebungen) {//TODO ID
-    if (alle_uebungen[uebungen].Name == uebung) {
-      for (let input_id in inputs) {
-        for (const [key, value] of Object.entries(alle_uebungen[uebungen])) {
-          if (input_id == 0 && key == "Name") {
-            inputs[input_id].value = value;
-          } else if (input_id == 1 && key == "Sets") {
-            inputs[input_id].value = value;
-          } else if (input_id == 2 && key == "Reps") {
-            inputs[input_id].value = value;
-          } else if (input_id == 3 && key == "Gewicht") {
-            inputs[input_id].value = value;
-          } else if (input_id == 4 && key == "Info") {
-            inputs[input_id].value = value;
-          } else if (input_id == 5 && key == "ID") {
-            inputs[input_id].value = value;
-          }
-        }
+  for (let input_id in inputs) {
+    for (const [key, value] of Object.entries(uebungen)) {
+      if (input_id == 0 && key == "Name") {
+        inputs[input_id].value = value;
+      } else if (input_id == 1 && key == "Sets") {
+        inputs[input_id].value = value;
+      } else if (input_id == 2 && key == "Reps") {
+        inputs[input_id].value = value;
+      } else if (input_id == 3 && key == "Gewicht") {
+        inputs[input_id].value = value;
+      } else if (input_id == 4 && key == "Info") {
+        inputs[input_id].value = value;
+      } else if (input_id == 5 && key == "ID") {
+        inputs[input_id].value = value;
       }
-      for (let i = 0; i < checkbox.length; i++) {
-        if (alle_uebungen[uebungen].Wochentag.includes(checkbox[i].value)) {
-          checkbox[i].checked = true;
-        }
-      }
-      for (let selector_values of selector) {
-        if (alle_uebungen[uebungen].koerperteil == selector_values.label) {
-          if (alle_uebungen[uebungen].koerperteil != "Körperteil"){
-            selector.value = alle_uebungen[uebungen].koerperteil;
-          }
-        }
+    }
+  }
+  for (let i = 0; i < checkbox.length; i++) {
+    if (uebungen.Wochentag.includes(checkbox[i].value)) {
+      checkbox[i].checked = true;
+    }
+  }
+  for (let selector_values of selector) {
+    if (alle_uebungen[uebung_id].koerperteil == selector_values.label) {
+      if (uebungen.koerperteil != "Körperteil"){
+        selector.value = uebungen.koerperteil;
       }
     }
   }
