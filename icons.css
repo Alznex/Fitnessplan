@@ -52,6 +52,22 @@
     content: url('img/check.png')
 }
 
+/* TODO check */
+.todochecker{
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    content: url('img/uncheck.png');
+}
+
+.todochecker:checked {
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    content: url('img/check.png')
+}
+
+
 /*Settings*/
 .material-symbols-outlined{
     margin-top: 10%;

@@ -11,11 +11,8 @@
 
     <script src="index.js" lang="text/javascript"></script>
     <script src="text.js" lang="text/javascript"></script>
-    <script src="google_test.js" lang="text/javascript"></script>
     <script src="drag.js" lang="text/javascript"></script>
-
-    <script src="https://accounts.google.com/gsi/client" async></script>
-    <script async defer src="https://apis.google.com/js/api.js"></script>
+    <script src="todo.js" lang="text/javascript"></script>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/Fitnessplan/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/Fitnessplan/favicon/favicon-32x32.png">
@@ -25,15 +22,11 @@
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#ffffff">
 	
-	<meta name="google-signin-client_id" content="992099953263-kfvfhm63aige76ilpjlp2upt62cfigg6.apps.googleusercontent.com">
 	<title>Gym App</title>
 </head>
 <body>
     <header> 
         <div id="homepage" class="header">Fitnessplan</div> 
-        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-        <pre id="content" style="white-space: pre-wrap;"></pre>
         <span class="material-symbols-outlined" id="settings_logo">settings</span>
     </header>
     <div class="templates">
@@ -50,10 +43,27 @@
         </div>
     </div>
     <div id="main">
-        <input id="API_KEY"> <button onclick="gapiLoaded()">INIT</button><button onclick="listFiles()">Test</button>
-        <div id="start" class="content active">
-            <div class="gg-add" id="hinzufuegen"></div>
-            <div id="home"></div>
+        <div id="home" class="content active">
+            <div id="aktullerTag"></div>
+            <div id="showWochentage" class="button wochentag">Alle Wochentage</div>
+
+            <div id="todo" class="todo" >
+                <h2 data-id="wochentag">Daily</h2>
+                <div class="todolist">
+                    <input type="checkbox" data-id="name" name="work" class="todochecker">
+                    <label for="work"> Creatin</label><br>
+                    <input type="checkbox" data-id="name" name="work" class="todochecker">
+                    <label for="work"> Push Ups</label><br>
+                    <input type="checkbox" data-id="name" name="work" class="todochecker">
+                    <label for="work"> 10 Pull Ups</label><br>
+                </div>
+                <div class="todo_add" id="hinzufuegenTODO">+ Hinzufügen</div>
+            </div>
+
+        </div>
+        <div id="ShownWochentage" class="content ">
+            <div class="gg-add" id="hinzufuegenUebung"></div>
+            <div id="wochentage"></div>
         </div>
         <div id="uebung" class="content">
             <div class="uebung columns">
@@ -130,5 +140,9 @@
     </div>
     <div id="settings" class="content">
         <h2>Settings</h2>
+        <p> Backround<input type="color" value="#000000" class="colorChanger" id="backround"></p>
+        <p> Secondary Backround<input type="color" value="#2d2d2d" class="colorChanger" id="secondaryBackround"></p>
+        <p> Thirdary Backround<input type="color" value="#2d2d2d" class="colorChanger" id="thirdaryBackround"></p>
+        <p> Text Color<input type="color" value="#FFFFFF" class="colorChanger" id="textColor"></p>
     </div>
 </body>    

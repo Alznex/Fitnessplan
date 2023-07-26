@@ -1,41 +1,122 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+  renderStart()
+
+  document.getElementById("backround").addEventListener("change", (e) => {
+    changeColor()
+  })
+
+  document.getElementById("secondaryBackround").addEventListener("change", (e) => {
+    changeColor()
+  })
+
+  document.getElementById("thirdaryBackround").addEventListener("change", (e) => {
+    changeColor()
+  })
+
+  document.getElementById("textColor").addEventListener("change", (e) => {
+    changeColor()
+  })
+
   document.getElementById("settings_logo").addEventListener("click", (e) => {
     show("settings");
   });
 
-  document.getElementById("hinzufuegen").addEventListener("click", (e) => {
+  document.getElementById("hinzufuegenUebung").addEventListener("click", (e) => {
     show("uebung");
     clearInput()
   });
 
   document.getElementById("speichern").addEventListener("click", (e) => {
-    show("start");
+    show("ShownWochentage");
   });
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
-    show("start");
+    show("ShownWochentage");
   });
-  render();
+
+  document.getElementById("homepage").addEventListener("click", (e) => {
+    show("home");
+    renderStart()
+    addEventUebung();
+  });
+
+  document.getElementById("showWochentage").addEventListener("click", (e) => {
+    show("ShownWochentage");
+    renderwochentage()
+    addEventUebung();
+  });
 });
+
+function changeColor(){
+  const backround = document.getElementById("backround").value
+  const secondaryBackround = document.getElementById("secondaryBackround").value
+  const thirdaryBackround = document.getElementById("thirdaryBackround").value
+  const textColor = document.getElementById("textColor").value
+
+  document.documentElement.style.setProperty('--backround', backround);
+  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround);
+  document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround);
+  document.documentElement.style.setProperty('--textColor', textColor);
+  
+}
 
 function hatUebung(wochentag) {
   return wochentag.uebungen.length > 0;
 }
 
+function renderStart() {
+  document.getElementById("aktullerTag").innerHTML = "";
 
-function render() {
-  document.getElementById("home").innerHTML = "";
+  for (let wochentag of alle_wochentage) {
+    date = berechneWochentag()
+    if (wochentag.tag == date){
+      if (!hatUebung(wochentag)) continue;
+      let wochentag_div = appendTemplate("wochentag-template", "aktullerTag");
+      setDataElementValue(wochentag_div, "wochentag", "Heute");
+      wochentag_div.id = "Heute";
+      for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+        let uebung_id = wochentag.uebungen[index];
+        let uebung = alle_uebungen[uebung_id];
+      
+      // for (const uebung_id of wochentag.uebungen)
+        let uebung_container = appendTemplate("uebung-row-template", "Heute");
+        let uebung_div = uebung_container.querySelector("div");
+        for (const [key, value] of Object.entries(uebung)) {
+          if (key == "ID") {
+            uebung_container.id = value + "-container";
+            uebung_div.id = value;
+          }
+          if (key == "Gewicht") {
+            let value_gewicht = value + "kg";
+            setDataElementValue(uebung_div, key, value_gewicht);
+          } else if (key == "Sets") {
+            let value_sets = value + " Sets";
+            setDataElementValue(uebung_div, key, value_sets);
+          } else if (key == "Reps") {
+            let value_reps = value + " Reps";
+            setDataElementValue(uebung_div, key, value_reps);
+          } else {
+            setDataElementValue(uebung_div, key, value);
+          }
+        }
+      }
+    }
+  }
+}
+
+function renderwochentage() {
+  document.getElementById("wochentage").innerHTML = "";
 
   for (let wochentag of alle_wochentage) {
     if (!hatUebung(wochentag)) continue;
-    let wochentag_div = appendTemplate("wochentag-template", "home");
+    let wochentag_div = appendTemplate("wochentag-template", "wochentage");
     setDataElementValue(wochentag_div, "wochentag", wochentag.tag);
     wochentag_div.id = wochentag.tag;
     for (let index = 0 ; index < wochentag.uebungen.length; index++) {
       let uebung_id = wochentag.uebungen[index];
       let uebung = alle_uebungen[uebung_id];
     
-    // for (const uebung_id of wochentag.uebungen) {
+    // for (const uebung_id of wochentag.uebungen)
       let uebung_container = appendTemplate("uebung-row-template", wochentag.tag);
       let uebung_div = uebung_container.querySelector("div");
       for (const [key, value] of Object.entries(uebung)) {
@@ -110,4 +191,12 @@ function clearInput() {
   }
 
   selector.value = "none";
+}
+
+function berechneWochentag() {
+  var jetzt = new Date(),
+      tagZahl = jetzt.getDay(),
+      wochentag = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag' ];
+  text = wochentag[tagZahl];
+  return text
 }

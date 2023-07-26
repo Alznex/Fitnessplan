@@ -12,14 +12,14 @@
     padding-right: 5%; 
     padding-top: 5%;
     font-size: 3em;
-    background-color: #2d2d2d;
+    background-color: var(--secondaryBackround);
     width: auto;
     height: auto;
     margin: 0;
 }
 
 .sets-reps-kg{
-    background-color:gray;
+    background-color:var(--thirdaryBackround);
     display: flex;
     flex-direction: column;
     border-radius: .5em;
@@ -48,7 +48,7 @@
 .info{
     margin-top: 2%;
     border-radius: .5em;
-    background-color:gray;
+    background-color:var(--thirdaryBackround);
     border:0;
 }
 
@@ -71,14 +71,14 @@ option{
 .uebungwochentag{
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: var(--thirdaryBackround);
     border-radius: .5em;
 }
 
 .uebungkoerperteil{
     border-radius: .3em;
     width: 100%;
-    background-color: gray;
+    background-color: var(--thirdaryBackround);
     font-size: 1em;
     color: white;
 }

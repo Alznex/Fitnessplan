@@ -114,6 +114,19 @@ function save() {
   uebung[name] = [];
   checkbox_wochentage.forEach((checkbox) => {
     uebung[name].push(checkbox.value);
+    if (uebung.Wochentag.length == 0) {
+      for (let wochentage of alle_wochentage){
+        removeItemAll(alle_wochentage[wochentag_nummern["keiner"]].uebungen, uebung.ID)
+      }
+      alle_wochentage[wochentag_nummern["keiner"]].uebungen.push(uebung.ID)
+    } else {
+      for (let wochentag of uebung.Wochentag) {
+        for (let wochentage of alle_wochentage){
+          removeItemAll(alle_wochentage[wochentag_nummern[wochentage.tag]].uebungen, uebung.ID)
+        }
+        alle_wochentage[wochentag_nummern[wochentag]].uebungen.push(uebung.ID)
+      }
+    }
   });
 
   // Setze die Werte der Übung
@@ -123,7 +136,7 @@ function save() {
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen));
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
 
-  render();
+  renderwochentage();
   addEventUebung();
 }
 
@@ -168,8 +181,14 @@ function bearbeiten(uebung_id) {
 
 function loeschen(uebung) {
   delete alle_uebungen[uebung];
+
+  for (let wochentage of alle_wochentage){
+    removeItemAll(alle_wochentage[wochentag_nummern[wochentage.tag]].uebungen, uebung)
+  }
+
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen));
-  render();
+  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
+  renderwochentage();
   addEventUebung();
 }
 
@@ -184,4 +203,16 @@ function generateUniqueId() {
     }
   );
   return uniqueId;
+}
+
+function removeItemAll(arr, value) {
+  var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
 }

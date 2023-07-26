@@ -1,6 +1,13 @@
+:root {
+    --backround: #000000;
+    --secondaryBackround: #2d2d2d;
+    --thirdaryBackround: #808080;
+    --textColor: #FFFFFF;
+  }
+
 body{
-    background-color: black;
-    color: white;
+    background-color: var(--backround);
+    color: var(--textColor);
     cursor: default;
 }
 
@@ -13,7 +20,7 @@ header {
 
 .wochentag{
     margin: 3%;
-    background-color:#2d2d2d;
+    background-color:var(--secondaryBackround);
     border-radius: 1em;
     padding: 1%;
     display: flex;
@@ -28,7 +35,7 @@ h2{
     font-size: 2.4em;
 }
 .uebung {
-    background-color:#2d2d2d;
+    background-color:transparent;
     display: flex;
 }
 
@@ -63,4 +70,22 @@ h2{
 }
 .rows * {
     pointer-events: none;
+}
+
+.todo{
+    margin: 3%;
+    background-color:var(--secondaryBackround);
+    border-radius: 1em;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.todolist{
+    margin: 2%;
+    font-size: 220%;
+}
+
+.todo_add{
+   margin-left: 90%;
 }
