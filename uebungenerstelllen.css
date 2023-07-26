@@ -30,7 +30,7 @@
 }
 
 .normal_input{
-    color:white;
+    color:var(--textColor);
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -53,7 +53,7 @@
 }
 
 .normal_input::placeholder{
-    color: white;
+    color: var(--textColor);
 }
 
 .absatz{
