@@ -80,5 +80,5 @@ option{
     width: 100%;
     background-color: var(--thirdaryBackround);
     font-size: 1em;
-    color: white;
+    color: var(--textColor);
 }
