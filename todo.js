@@ -3,7 +3,7 @@ window.onload = function() {
 };
 
 var todo_per_day = 10
-var done_per_day = 2
+var done_per_day = 9
 var perzent_done_per_day = done_per_day / todo_per_day
 
 
