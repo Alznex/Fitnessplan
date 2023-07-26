@@ -10,9 +10,11 @@
     <link href="uebungenerstelllen.css" rel="stylesheet" type="text/css">
 
     <script src="index.js" lang="text/javascript"></script>
-    <script src="text.js" lang="text/javascript"></script>
+    <script src="uebungen.js" lang="text/javascript"></script>
     <script src="drag.js" lang="text/javascript"></script>
     <script src="todo.js" lang="text/javascript"></script>
+    <script src="function.js" lang="text/javascript"></script>
+    <script src="render.js" lang="text/javascript"></script>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/Fitnessplan/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/Fitnessplan/favicon/favicon-32x32.png">
@@ -42,6 +44,11 @@
                 <div class="kategorien" data-id="Reps">Reps</div>
             </div>
         </div>
+        <div id="todo-template" class="todo_flex">
+            <input type="checkbox" data-id="name" name="work" class="todochecker">
+            <input class="todoname" placeholder="Name">
+            <div class="loeschentodo">Löschen</div>
+        </div>
     </div>
     <div id="main">
         <div id="home" class="content active">
@@ -50,13 +57,7 @@
 
             <div id="todo" class="todo" >
                 <h2 data-id="wochentag">Daily</h2>
-                <div class="todolist">
-                    <input type="checkbox" data-id="name" name="work" class="todochecker">
-                    <label for="work"> Creatin</label><br>
-                    <input type="checkbox" data-id="name" name="work" class="todochecker">
-                    <label for="work"> Push Ups</label><br>
-                    <input type="checkbox" data-id="name" name="work" class="todochecker">
-                    <label for="work"> 10 Pull Ups</label><br>
+                <div class="todolist" id="todolist">
                 </div>
                 <div class="todo_add" id="hinzufuegenTODO">+ Hinzufügen</div>
             </div>
