@@ -10,10 +10,15 @@ function show(name) {
 }
   
 function setDataElementValue(root, id, value) {
-    let element = root.querySelector('[data-id="' + id + '"]')
-    if (element) element.innerHTML = value;
+  let element = root.querySelector('[data-id="' + id + '"]')
+  if (element) element.innerHTML = value;
 }
-  
+
+function setInputElementValue(root, id, value) {
+  let element = root.querySelector('[data-id="' + id + '"]')
+  if (element) element.value = value;
+}
+
 function appendTemplate(templateId, targetID) {
     const template = document.getElementById(templateId)
     const target = document.getElementById(targetID)

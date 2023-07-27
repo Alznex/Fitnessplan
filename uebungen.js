@@ -31,7 +31,7 @@ const alle_wochentage_empty = [
   { tag: "keiner", uebungen: []}
 ]
 
-let alle_uebungen;
+let alle_uebungen
 let alle_uebungen_string = localStorage.getItem("alle_uebungen")
 if (alle_uebungen_string) {
   alle_uebungen = JSON.parse(alle_uebungen_string)
@@ -66,9 +66,7 @@ function save() {
   let uebung = {};
   let inputs = document.querySelectorAll(".normal_input")
   let select_koerperteil = document.getElementById("koerperteil")
-  let checkbox_wochentage = document.querySelectorAll(
-    'input[name="wochentag"]:checked'
-  )
+  let checkbox_wochentage = document.querySelectorAll('input[name="wochentag"]:checked')
 
   for (let i = 0; i < inputs.length; i++) {
     let name = inputs[i].name

@@ -1,20 +1,24 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   addEventUebung()
+  renderTodoList()
+
+  document.querySelectorAll('.loeschentodo').forEach((item, key) => {
+    item.addEventListener('click', event => {
+      key = key - 1
+      console.log(key)
+      deletTODO(key)
+      renderTodoList()
+    })
+  })
+
+  document.querySelectorAll('.colorinput').forEach(item => {
+    item.addEventListener('click', event => {
+      changeColor()
+    })
+  })
 
   document.getElementById("backround").addEventListener("change", (e) => {
-    changeColor()
-  })
-
-  document.getElementById("secondaryBackround").addEventListener("change", (e) => {
-    changeColor()
-  })
-
-  document.getElementById("thirdaryBackround").addEventListener("change", (e) => {
-    changeColor()
-  })
-
-  document.getElementById("textColor").addEventListener("change", (e) => {
     changeColor()
   })
 

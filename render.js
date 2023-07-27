@@ -40,7 +40,16 @@ function renderStart() {
         }
     }
 }
-  
+
+function renderTodoList(){
+    document.getElementById("todolist").innerHTML = "";
+    
+    for (let todo in todolist){
+        let todo_div = appendTemplate("todo-template", "todolist")
+        setInputElementValue(todo_div, "todo", todolist[todo])
+    }
+}
+
 function renderwochentage() {
     document.getElementById("wochentage").innerHTML = "";
 

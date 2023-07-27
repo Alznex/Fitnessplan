@@ -44,8 +44,8 @@
             </div>
         </div>
         <div id="todo-template" class="todo_flex">
-            <input type="checkbox" data-id="name" name="work" class="todochecker">
-            <input class="todoname" placeholder="Name">
+            <input type="checkbox" name="work" class="todochecker">
+            <input class="todoname" data-id="todo" placeholder="Name">
             <div class="loeschentodo">Löschen</div>
         </div>
     </div>
@@ -56,8 +56,8 @@
 
             <div id="todo" class="todo" >
                 <h2 data-id="wochentag">Daily</h2>
-                <div class="todolist" id="todolist">
-                </div>
+                <div class="todolist" id="todolist"></div>
+                <button class="button speichern" onclick="saveTODO()">Speichern</button>
                 <div class="todo_add" id="hinzufuegenTODO">+ Hinzufügen</div>
             </div>
 
@@ -148,15 +148,15 @@
             </div>
             <div class="colorChanger"> 
                 <div class="colorsettings">Secondary Backround</div>
-                <input type="color" value="#2d2d2d" id="secondaryBackround">
+                <input type="color" class="colorinput" value="#2d2d2d" id="secondaryBackround">
             </div>
             <div class="colorChanger">
                 <div class="colorsettings">Thirdary Backround </div>
-                 <input type="color" value="#2d2d2d" id="thirdaryBackround">
+                 <input type="color" class="colorinput" value="#2d2d2d" id="thirdaryBackround">
                 </div>
             <div class="colorChanger"> 
                 <div class="colorsettings"> Text Color </div>
-                <input type="color" value="#FFFFFF" id="textColor">
+                <input type="color" class="colorinput" value="#FFFFFF" id="textColor">
             </div>
         </div>
     </div>
