@@ -5,13 +5,7 @@ window.onload = function() {
 function addTODO(){
     let todo_div = appendTemplate("todo-template", "todolist")
     todo_div.id = ""
-
-    document.querySelectorAll('.loeschentodo').forEach((item, key) => {
-        item.addEventListener('click', event => {
-          deletTODO(key)
-          renderTodoList()
-        })
-      })
+    todo_div.querySelector.focus() //Todo funktionrt nicht
 }
 
 var todolist;
@@ -35,13 +29,7 @@ function saveTODO(){
 function deletTODO(value){
     todolist.splice(value, 1)
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
-
-    document.querySelectorAll('.loeschentodo').forEach((item, key) => {
-        item.addEventListener('click', event => {
-          deletTODO(key)
-          renderTodoList()
-        })
-      })
+    renderTodoList()
 }
 
 var todo_per_day = todolist.length

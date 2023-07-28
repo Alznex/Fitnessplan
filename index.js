@@ -3,15 +3,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   addEventUebung()
   renderTodoList()
 
-  document.querySelectorAll('.loeschentodo').forEach((item, key) => {
-    item.addEventListener('click', event => {
-      key = key - 1
-      console.log(key)
-      deletTODO(key)
-      renderTodoList()
-    })
-  })
-
   document.querySelectorAll('.colorinput').forEach(item => {
     item.addEventListener('click', event => {
       changeColor()

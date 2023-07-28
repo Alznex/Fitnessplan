@@ -43,11 +43,17 @@ function renderStart() {
 
 function renderTodoList(){
     document.getElementById("todolist").innerHTML = "";
-    
+
     for (let todo in todolist){
         let todo_div = appendTemplate("todo-template", "todolist")
         setInputElementValue(todo_div, "todo", todolist[todo])
     }
+    document.querySelectorAll('.loeschentodo').forEach((item, key) => {
+        item.addEventListener('click', event => {
+          key = key - 1
+          deletTODO(key)
+        })
+      })
 }
 
 function renderwochentage() {
