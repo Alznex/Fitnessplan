@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
   addEventUebung()
   renderTodoList()
 
+  document.querySelectorAll('.todochecker').forEach(item => {
+    item.addEventListener('click', event => {
+      changeBackgroundColor()
+    })
+  })
+
   document.querySelectorAll('.colorinput').forEach(item => {
     item.addEventListener('click', event => {
       changeColor()

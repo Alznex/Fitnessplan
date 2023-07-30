@@ -1,5 +1,5 @@
 window.onload = function() {
-    changeBackgroundColor(perzent_done_per_day)
+    changeBackgroundColor()
 };
 
 function addTODO(){
@@ -24,6 +24,7 @@ function saveTODO(){
          }
     }
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
+
 }
 
 function deletTODO(value){
@@ -32,13 +33,13 @@ function deletTODO(value){
     renderTodoList()
 }
 
-var todo_per_day = todolist.length
-var done_per_day = 1
-var perzent_done_per_day = done_per_day / todo_per_day
 
+function changeBackgroundColor() {
+    let todo_per_day = todolist.length
+    let checked_div = document.querySelectorAll('input[name="work"]:checked')
+    let done_per_day = checked_div.length
 
-function changeBackgroundColor(durchschnite_todo) {
-    let durchschnite = durchschnite_todo
+    let durchschnite = done_per_day / todo_per_day
     let todo_div = document.getElementById("todo")
     if (durchschnite < 0.4){
         todo_div.style.backgroundColor = "red"
