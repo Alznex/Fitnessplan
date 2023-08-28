@@ -95,6 +95,15 @@ function renderwochentage() {
         uebung_container.addEventListener('dragenter', dragEnter(index));
         uebung_container.addEventListener('dragleave', dragLeave(index));
         uebung_container.addEventListener('drop', dragDrop(index));
+
+        uebung_div.addEventListener('touchstart', touchStart(index));
+        uebung_div.addEventListener('touchmove', touchMove(index));
+        uebung_div.addEventListener('touchend', touchEnd(index));
+    
+        uebung_container.addEventListener('touchover', touchOver(index));
+        uebung_container.addEventListener('touchenter', touchEnter(index));
+        uebung_container.addEventListener('touchleave', touchLeave(index));
+        uebung_container.addEventListener('touchdrop', touchDrop(index));
         }
     }
 }
