@@ -35,6 +35,7 @@ function deletTODO(value){
 
 
 function changeBackgroundColor() {
+    let todo_per_day = todolist.length
     let checked_div = document.querySelectorAll('input[name="work"]:checked')
     let done_per_day = checked_div.length
 

@@ -53,7 +53,7 @@ function dragDrop(index) {
 
 //Drag Funktion Handy
 
-function touchStart(index){
+function touchStart(index, ){
     return function (e) {
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
@@ -114,23 +114,3 @@ function swap_uebungen(uebungen, index1, index2){
     localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
     renderwochentage()
 }
-
-// // get The element on which to attach the event 
-// var btn = document.querySelector('.btn')
-
-// // attaching each event listener
-// btn.addEventListener('touchstart', function(){
-// 	console.log('btn touched')
-// })
-// btn.addEventListener('touchend', function(){
-// 	console.log('btn leaved')
-// })
-// btn.addEventListener('touchmove', function(){
-// 	console.log('btn leaved')
-// })
-// btn.addEventListener('touchleave', function(){
-// 	console.log('btn moving end')
-// })
-// btn.addEventListener('touchcancel', function(){
-// 	console.log('btn moving cancel')
-// })
