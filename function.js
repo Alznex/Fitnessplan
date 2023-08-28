@@ -57,3 +57,10 @@ function removeItemAll(arr, value) {
     }
     return arr
 }
+
+function time(){
+  var current_time = new Date()
+  var current_day = current_time.getDay()
+  console.log(current_time)
+  console.log(current_day)
+}

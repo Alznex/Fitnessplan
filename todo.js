@@ -35,7 +35,6 @@ function deletTODO(value){
 
 
 function changeBackgroundColor() {
-    let todo_per_day = todolist.length
     let checked_div = document.querySelectorAll('input[name="work"]:checked')
     let done_per_day = checked_div.length
 
@@ -50,4 +49,12 @@ function changeBackgroundColor() {
     } else if (durchschnite >= 0.8){
         todo_div.style.backgroundColor = "green"
     }
+}
+
+function save_temporarie(){
+    let current_time = new Date()
+    let current_day = current_time.getDay()
+
+    let todo_checked = document.querySelectorAll('input[name="work"]:checked')
+    console.log(todo_checked)
 }
