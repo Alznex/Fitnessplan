@@ -63,6 +63,10 @@ h2{
 .empty{
     margin-left: 3%;
     border: 3px solid transparent;
+    -ms-user-select: None;
+    -moz-user-select: None;
+    -webkit-user-select: None;
+    user-select: None;
 }
 
 .hovered{
