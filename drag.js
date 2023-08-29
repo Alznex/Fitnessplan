@@ -1,9 +1,10 @@
 // Drag Functions Pc
 
-let start = -1, end = -1, drag_enter_count = 0
+let start = -1, end = -1, drag_enter_count = 0, wochentagStart = -1
 
 function dragStart(wochentag, index) {
     return function (e) {
+        wochentagStart = wochentag
         drag_enter_count = 0
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
@@ -56,6 +57,7 @@ function dragDrop(wochentag, index) {
 
 function touchStart(wochentag, index) {
     return function (e) {
+        wochentagStart = wochentag
         e.preventDefault()
         this.classList.add("hold")
         wochentagStart = wochentag
