@@ -3,12 +3,13 @@
     --secondaryBackround: #2d2d2d;
     --thirdaryBackround: #808080;
     --textColor: #FFFFFF;
-  }
+}
 
 body{
     background-color: var(--backround);
     color: var(--textColor);
     cursor: default;
+    overscroll-behavior: auto;
 }
 
 .stopRefreshOnScroll{
