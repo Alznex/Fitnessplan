@@ -59,7 +59,6 @@ function touchStart(wochentag, index) {
         wochentagStart = wochentag
         e.preventDefault()
         this.classList.add("hold")
-        document.body.classList.add("stopRefreshOnScroll")
         wochentagStart = wochentag
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
@@ -71,7 +70,6 @@ function touchEnd(wochentag) {
         e.preventDefault()
         this.classList.remove("hold")
         this.classList.remove("hidden")
-        document.body.classList.remove("stopRefreshOnScroll")
         end = findUebungIndex(e)
         if(end === null){
             console.log(end)

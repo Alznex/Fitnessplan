@@ -9,11 +9,7 @@ body{
     background-color: var(--backround);
     color: var(--textColor);
     cursor: default;
-    overscroll-behavior: auto;
-}
-
-.stopRefreshOnScroll{
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
 }
 
 header {
