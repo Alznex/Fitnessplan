@@ -89,7 +89,7 @@ function renderwochentage() {
                 setDataElementValue(uebung_div, key, value);
                 }
             }
-            uebung_div.addEventListener('dragstart', dragStart(index));
+            uebung_div.addEventListener('dragstart', dragStart(wochentag, index));
             uebung_div.addEventListener('dragend', dragEnd(index));
 
             uebung_container.addEventListener('dragover', dragOver(index));
