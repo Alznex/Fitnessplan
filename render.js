@@ -65,45 +65,41 @@ function renderwochentage() {
         setDataElementValue(wochentag_div, "wochentag", wochentag.tag);
         wochentag_div.id = wochentag.tag;
         for (let index = 0 ; index < wochentag.uebungen.length; index++) {
-        let uebung_id = wochentag.uebungen[index];
-        let uebung = alle_uebungen[uebung_id];
-        
-        let uebung_container = appendTemplate("uebung-row-template", wochentag.tag);
-        let uebung_div = uebung_container.querySelector("div");
-        for (const [key, value] of Object.entries(uebung)) {
-            if (key == "ID") {
-            uebung_container.id = value + "-container";
-            uebung_div.id = value;
+            let uebung_id = wochentag.uebungen[index];
+            let uebung = alle_uebungen[uebung_id];
+            
+            let uebung_container = appendTemplate("uebung-row-template", wochentag.tag);
+            let uebung_div = uebung_container.querySelector("div");
+            uebung_div.dataset.index = index
+            for (const [key, value] of Object.entries(uebung)) {
+                if (key == "ID") {
+                    uebung_container.id = value + "-container";
+                    uebung_div.id = value;
+                }
+                if (key == "Gewicht") {
+                let value_gewicht = value + "kg";
+                setDataElementValue(uebung_div, key, value_gewicht);
+                } else if (key == "Sets") {
+                let value_sets = value + " Sets";
+                setDataElementValue(uebung_div, key, value_sets);
+                } else if (key == "Reps") {
+                let value_reps = value + " Reps";
+                setDataElementValue(uebung_div, key, value_reps);
+                } else {
+                setDataElementValue(uebung_div, key, value);
+                }
             }
-            if (key == "Gewicht") {
-            let value_gewicht = value + "kg";
-            setDataElementValue(uebung_div, key, value_gewicht);
-            } else if (key == "Sets") {
-            let value_sets = value + " Sets";
-            setDataElementValue(uebung_div, key, value_sets);
-            } else if (key == "Reps") {
-            let value_reps = value + " Reps";
-            setDataElementValue(uebung_div, key, value_reps);
-            } else {
-            setDataElementValue(uebung_div, key, value);
-            }
-        }
-        uebung_div.addEventListener('dragstart', dragStart(index));
-        uebung_div.addEventListener('dragend', dragEnd(index));
+            uebung_div.addEventListener('dragstart', dragStart(index));
+            uebung_div.addEventListener('dragend', dragEnd(index));
 
-        uebung_container.addEventListener('dragover', dragOver(index));
-        uebung_container.addEventListener('dragenter', dragEnter(index));
-        uebung_container.addEventListener('dragleave', dragLeave(index));
-        uebung_container.addEventListener('drop', dragDrop(index));
+            uebung_container.addEventListener('dragover', dragOver(index));
+            uebung_container.addEventListener('dragenter', dragEnter(index));
+            uebung_container.addEventListener('dragleave', dragLeave(index));
+            uebung_container.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index));
 
-        uebung_div.addEventListener('touchstart', touchStart(index));
-        uebung_div.addEventListener('touchmove', touchMove(index));
-        uebung_div.addEventListener('touchend', touchEnd(index));
-    
-        uebung_container.addEventListener('touchover', touchOver(index));
-        uebung_container.addEventListener('touchenter', touchEnter(index));
-        uebung_container.addEventListener('touchleave', touchLeave(index));
-        uebung_container.addEventListener('touchdrop', touchDrop(index));
+            uebung_div.addEventListener('touchstart', touchStart(index));
+            uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index));
+            uebung_div.addEventListener('touchmove', touchMove);
         }
     }
 }

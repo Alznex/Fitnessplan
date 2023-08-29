@@ -4,6 +4,7 @@ let start = -1, end = -1, drag_enter_count = 0
 
 function dragStart(index) {
     return function (e) {
+        drag_enter_count = 0
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
@@ -26,91 +27,83 @@ function dragOver(index) {
 function dragEnter(index) {
     return function (e) {
         e.preventDefault()
-        drag_enter_count++;
-        console.log("drag_enter_count="+drag_enter_count)
+        e.stopPropagation()
+        drag_enter_count++
+        console.log("enter: target=" + e.target.className + "; currentTarget=" + e.currentTarget.className + "; drag_enter_count=" + drag_enter_count)
         this.classList.add('hovered')
     }
 }
 
 function dragLeave(index) {
     return function (e) {
+//???        e.preventDefault()
+        e.stopPropagation()
         drag_enter_count--
-        console.log("drag_enter_count="+drag_enter_count)
+        console.log("leave: target=" + e.target.className + "; currentTarget=" + e.currentTarget.className + "; drag_enter_count=" + drag_enter_count)
         if (drag_enter_count === 0) { 
             this.classList.remove('hovered')
         }
     }
 }
 
-function dragDrop(index) {
+function dragDrop(wochentag, index) {
     return function (e) {
         this.className = 'empty'
         end = index
         console.log("swap("+start+", "+end+")")
-        swap_uebungen(0, start, end)
+        swap_uebungen(wochentag, start, end)
     }
 }
 
-//Drag Funktion Handy
-
-function touchStart(index, ){
+function touchStart(index) {
     return function (e) {
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
-    }
-
+    };
 }
 
-function touchMove(index){
-    
-}
-
-function touchEnd(index){
+function touchEnd(wochentag, index) {
     return function (e) {
         this.classList.remove("hold")
         this.classList.remove("hidden")
-    }
-}
-
-function touchOver(index){
-    return function (e) {
-        e.preventDefault()
-    }
-}
-
-function touchEnter(index){
-    return function (e) {
-        e.preventDefault()
-        drag_enter_count++;
-        console.log("drag_enter_count="+drag_enter_count)
-        this.classList.add('hovered')
-    }
-}
-
-function touchLeave(index){
-    return function (e) {
-        drag_enter_count--
-        console.log("drag_enter_count="+drag_enter_count)
-        if (drag_enter_count === 0) { 
-            this.classList.remove('hovered')
+        //this.className = 'empty'
+        end = findUebungIndex(e)
+        if(end === null){
+            console.log(end)
+            renderwochentage()
+            addEventUebung()
+        }else{
+            console.log("swap("+start+", "+end+")")
+            swap_uebungen(wochentag, start, end)
         }
+
     }
 }
 
-function touchDrop(index){
-    return function (e) {
-        this.className = 'empty'
-        end = index
-        console.log("swap("+start+", "+end+")")
-        swap_uebungen(0, start, end)
+function findUebungIndex(e) {
+    var changedTouch = e.changedTouches[0]
+    var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY)
+    if(elem == null){
+        return elem
+    }else{
+        elem = elem.closest(".uebung")
+        return elem.dataset.index
     }
 }
 
-function swap_uebungen(uebungen, index1, index2){
-    const uebung_id = alle_wochentage[uebungen].uebungen[index1]
-    alle_wochentage[uebungen].uebungen[index1]= alle_wochentage[uebungen].uebungen[index2]
-    alle_wochentage[uebungen].uebungen[index2] = uebung_id
+function touchMove(index) {
+    return function (event) {
+        event.preventDefault()
+    };
+}
+
+
+function swap_uebungen(wochentag, index1, index2) {
+    const uebung_id = alle_wochentage[wochentag].uebungen[index1]
+    alle_wochentage[wochentag].uebungen[index1]= alle_wochentage[wochentag].uebungen[index2]
+    alle_wochentage[wochentag].uebungen[index2] = uebung_id
     localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
     renderwochentage()
+    addEventUebung()
 }
