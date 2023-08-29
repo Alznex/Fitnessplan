@@ -57,14 +57,16 @@ function dragDrop(wochentag, index) {
 
 function touchStart(index) {
     return function (e) {
+        e.preventDefault()
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
     };
 }
 
-function touchEnd(wochentag, index) {
+function touchEnd(wochentag) {
     return function (e) {
+        e.preventDefault()
         this.classList.remove("hold")
         this.classList.remove("hidden")
         //this.className = 'empty'
@@ -92,7 +94,7 @@ function findUebungIndex(e) {
     }
 }
 
-function touchMove(index) {
+function touchMove() {
     return function (event) {
         event.preventDefault()
     };
@@ -107,3 +109,23 @@ function swap_uebungen(wochentag, index1, index2) {
     renderwochentage()
     addEventUebung()
 }
+
+
+// var scrollable = true;
+
+// var listener = function(e) {
+//     if (! scrollable) {
+//         e.preventDefault();
+//     }
+// }
+
+// document.addEventListener('touchmove', listener, { passive:false });
+
+// dragula([dndContainer], {
+//     direction: 'horizontal'
+// }).on('drag', function(el, source) {
+//     scrollable = false;
+// }).on('dragend', function(el, source) {
+//     scrollable = true;
+//    // your logic on dragend
+// });
