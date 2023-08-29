@@ -47,6 +47,7 @@ h2{
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+    touch-action: none;
 }
 
 .hold:active {
