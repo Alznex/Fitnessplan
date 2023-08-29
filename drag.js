@@ -2,7 +2,7 @@
 
 let start = -1, end = -1, drag_enter_count = 0
 
-function dragStart(index) {
+function dragStart(wochentag, index) {
     return function (e) {
         drag_enter_count = 0
         this.classList.add("hold")
@@ -50,15 +50,15 @@ function dragDrop(wochentag, index) {
     return function (e) {
         this.className = 'empty'
         end = index
-        console.log("swap("+start+", "+end+")")
         swap_uebungen(wochentag, start, end)
     }
 }
 
-function touchStart(index) {
+function touchStart(wochentag, index) {
     return function (e) {
         e.preventDefault()
         this.classList.add("hold")
+        wochentagStart = wochentag
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
     };
@@ -76,7 +76,6 @@ function touchEnd(wochentag) {
             renderwochentage()
             addEventUebung()
         }else{
-            console.log("swap("+start+", "+end+")")
             swap_uebungen(wochentag, start, end)
         }
 
@@ -106,26 +105,7 @@ function swap_uebungen(wochentag, index1, index2) {
     alle_wochentage[wochentag].uebungen[index1]= alle_wochentage[wochentag].uebungen[index2]
     alle_wochentage[wochentag].uebungen[index2] = uebung_id
     localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
+    console.log("swap("+start+", "+end+")")
     renderwochentage()
     addEventUebung()
 }
-
-
-// var scrollable = true;
-
-// var listener = function(e) {
-//     if (! scrollable) {
-//         e.preventDefault();
-//     }
-// }
-
-// document.addEventListener('touchmove', listener, { passive:false });
-
-// dragula([dndContainer], {
-//     direction: 'horizontal'
-// }).on('drag', function(el, source) {
-//     scrollable = false;
-// }).on('dragend', function(el, source) {
-//     scrollable = true;
-//    // your logic on dragend
-// });
