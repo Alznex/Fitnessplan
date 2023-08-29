@@ -52,12 +52,13 @@ function dragDrop(wochentag, index) {
         this.className = 'empty'
         end = index
         console.log("swap("+start+", "+end+")")
-        swap_uebungen(wochentag, start, end)
+        swap_uebungen(wochentagStart, wochentag, start, end)
     }
 }
 
 function touchStart(index) {
     return function (e) {
+        wochentagStart = wochentag
         e.preventDefault()
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
@@ -103,10 +104,13 @@ function touchMove() {
 
 
 function swap_uebungen(wochentagStart,wochentag, index1, index2) {
+    if(wochentagStart == wochentag){    
     const uebung_id = alle_wochentage[wochentag].uebungen[index1]
     alle_wochentage[wochentag].uebungen[index1]= alle_wochentage[wochentag].uebungen[index2]
     alle_wochentage[wochentag].uebungen[index2] = uebung_id
     localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
+    }
+
     renderwochentage()
     addEventUebung()
 }
