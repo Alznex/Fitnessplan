@@ -89,7 +89,7 @@ function renderwochentage() {
                 setDataElementValue(uebung_div, key, value);
                 }
             }
-            uebung_div.addEventListener('dragstart', dragStart(wochentag, index));
+            uebung_div.addEventListener('dragstart', dragStart(wochentag_nummern[wochentag.tag], index));
             uebung_div.addEventListener('dragend', dragEnd(index));
 
             uebung_container.addEventListener('dragover', dragOver(index));
@@ -97,7 +97,7 @@ function renderwochentage() {
             uebung_container.addEventListener('dragleave', dragLeave(index));
             uebung_container.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index));
 
-            uebung_div.addEventListener('touchstart', touchStart(index));
+            uebung_div.addEventListener('touchstart', touchStart(wochentag_nummern[wochentag.tag], index));
             uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index));
             uebung_div.addEventListener('touchmove', touchMove);
         }
