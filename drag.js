@@ -37,7 +37,6 @@ function dragEnter(index) {
 
 function dragLeave(index) {
     return function (e) {
-//???        e.preventDefault()
         e.stopPropagation()
         drag_enter_count--
         console.log("leave: target=" + e.target.className + "; currentTarget=" + e.currentTarget.className + "; drag_enter_count=" + drag_enter_count)
@@ -73,7 +72,6 @@ function touchEnd(wochentag) {
         this.classList.remove("hold")
         this.classList.remove("hidden")
         document.body.classList.remove("stopRefreshOnScroll")
-        //this.className = 'empty'
         end = findUebungIndex(e)
         if(end === null){
             console.log(end)
@@ -86,6 +84,12 @@ function touchEnd(wochentag) {
     }
 }
 
+function touchMove() {
+    return function (event) {
+        event.preventDefault()
+    };
+}
+
 function findUebungIndex(e) {
     var changedTouch = e.changedTouches[0]
     var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY)
@@ -96,13 +100,6 @@ function findUebungIndex(e) {
         return elem.dataset.index
     }
 }
-
-function touchMove() {
-    return function (event) {
-        event.preventDefault()
-    };
-}
-
 
 function swap_uebungen(wochentag, index1, index2) {
     const uebung_id = alle_wochentage[wochentag].uebungen[index1]
