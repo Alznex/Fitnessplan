@@ -72,6 +72,7 @@ function touchEnd(wochentag) {
         e.preventDefault()
         this.classList.remove("hold")
         this.classList.remove("hidden")
+        document.body.classList.remove("stopRefreshOnScroll")
         //this.className = 'empty'
         end = findUebungIndex(e)
         if(end === null){
