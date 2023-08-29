@@ -1,9 +1,10 @@
 // Drag Functions Pc
 
-let start = -1, end = -1, drag_enter_count = 0
+let start = -1, end = -1, drag_enter_count = 0, wochentagStart = -1
 
-function dragStart(index) {
+function dragStart(index, wochentag) {
     return function (e) {
+        wochentagStart = wochentag
         drag_enter_count = 0
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
@@ -77,7 +78,7 @@ function touchEnd(wochentag) {
             addEventUebung()
         }else{
             console.log("swap("+start+", "+end+")")
-            swap_uebungen(wochentag, start, end)
+            swap_uebungen(wochentagStart ,wochentag, start, end)
         }
 
     }
@@ -101,7 +102,7 @@ function touchMove() {
 }
 
 
-function swap_uebungen(wochentag, index1, index2) {
+function swap_uebungen(wochentagStart,wochentag, index1, index2) {
     const uebung_id = alle_wochentage[wochentag].uebungen[index1]
     alle_wochentage[wochentag].uebungen[index1]= alle_wochentage[wochentag].uebungen[index2]
     alle_wochentage[wochentag].uebungen[index2] = uebung_id
