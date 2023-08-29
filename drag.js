@@ -60,6 +60,7 @@ function touchStart(wochentag, index) {
         wochentagStart = wochentag
         e.preventDefault()
         this.classList.add("hold")
+        document.body.classList.add("stopRefreshOnScroll")
         wochentagStart = wochentag
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index

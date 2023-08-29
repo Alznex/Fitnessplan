@@ -11,6 +11,10 @@ body{
     cursor: default;
 }
 
+.stopRefreshOnScroll{
+    overscroll-behavior: contain;
+}
+
 header {
     display: flex;
     flex-direction: row;
