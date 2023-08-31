@@ -1,10 +1,9 @@
 // Drag Functions Pc
 
-let start = -1, end = -1, drag_enter_count = 0, wochentagStart = -1
+let start = -1, end = -1, drag_enter_count = 0
 
-function dragStart(wochentag, index) {
+function dragStart(index) {
     return function (e) {
-        wochentagStart = wochentag
         drag_enter_count = 0
         this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
@@ -54,15 +53,14 @@ function dragDrop(wochentag, index) {
     }
 }
 
-function touchStart(wochentag, index) {
+function touchStart(index) {
     return function (e) {
-        wochentagStart = wochentag
         e.preventDefault()
         this.classList.add("hold")
-        wochentagStart = wochentag
         setTimeout(() => (this.classList.add("hidden")), 0)
         start = index
     };
+
 }
 
 function touchEnd(wochentag) {
@@ -72,13 +70,15 @@ function touchEnd(wochentag) {
         this.classList.remove("hidden")
         end = findUebungIndex(e)
         if(end === null){
-            console.log(end)
             renderwochentage()
             addEventUebung()
-        }else{
+        } else if(end == start){
+            div_id = alle_wochentage[wochentag].uebungen[start]
+            bearbeiten(div_id)
+        } else{
             swap_uebungen(wochentag, start, end)
         }
-
+    
     }
 }
 

@@ -105,7 +105,7 @@ function save() {
         alle_wochentage[wochentag_nummern[wochentag]].uebungen.push(uebung.ID)
       }
     }
-  });
+  })
 
   // Setze die Werte der Übung
   alle_uebungen[uebung["ID"]] = uebung
