@@ -1,0 +1,34 @@
+.todo{
+    margin: 2rem;
+    background-color:var(--secondaryBackround);
+    font-size: var(--secondaryheaderFontSize);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.todolist{
+    margin: 2%;
+}
+
+.todo_add{
+    font-size: var(--normalFontSize);
+    background-color: #00aba9;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.todoname{
+    border-radius: 1rem;
+    border: 0;
+    background-color: var(--thirdaryBackround);
+    font-size: var(--normalFontSize);
+    outline: none;
+}
+
+
+.todo_flex{
+    display: flex;
+    flex-direction: row;
+}

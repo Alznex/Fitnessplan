@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link href="index.css" rel="stylesheet" type="text/css">
     <link href="home.css" rel="stylesheet" type="text/css">
     <link href="icons.css" rel="stylesheet" type="text/css">
     <link href="button.css" rel="stylesheet" type="text/css">
     <link href="template.css" rel="stylesheet" type="text/css">
     <link href="uebungenerstelllen.css" rel="stylesheet" type="text/css">
+    <link href="todo.css" rel="stylesheet" type="text/css">
 
     <script src="index.js" lang="text/javascript"></script>
     <script src="uebungen.js" lang="text/javascript"></script>
@@ -16,24 +16,16 @@
     <script src="function.js" lang="text/javascript"></script>
     <script src="render.js" lang="text/javascript"></script>
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/Fitnessplan/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Fitnessplan/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Fitnessplan/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/Fitnessplan/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/Fitnessplan/favicon/safari-pinned-tab.svg" color="#00aba9">
-    <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="theme-color" content="#000000" />
-
-	<title>Gym App</title>
 </head>
 <body>
     <header> 
-        <div id="homepage" class="header">Fitnessplan</div> 
-        <span class="material-symbols-outlined" id="settings_logo">settings</span>
+        <div id="homepage">Fitnessplanner</div> 
+        <svg id="settings_logo" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svgSettings" focusable="false"><path d="M1783 988v18q0 9 1 18v18q0 9-1 18l259 161-159 383-297-68q-24 26-50 50l68 297-383 159-161-259h-18q-9 0-18 1h-18q-9 0-18-1l-161 259-383-159 68-297q-26-24-50-50l-297 68L6 1221l259-161v-18q0-9-1-18v-18q0-9 1-18L6 827l159-383 297 68q24-26 50-50l-68-297L827 6l161 259h18q9 0 18-1h18q9 0 18 1L1221 6l383 159-68 297q26 24 50 50l297-68 159 383-259 161zm-117 130q2-24 4-47t2-48q0-23-2-47t-4-47l236-147-86-208-271 63q-31-38-63-70t-71-64l63-271-208-86-148 236q-23-2-47-4t-47-2q-24 0-47 2t-48 4L782 146l-208 86 63 271q-38 31-70 63t-64 71l-271-63-86 208 236 148q-2 24-4 47t-2 48q0 23 2 47t4 47l-236 147 86 208 271-63q31 38 63 70t71 64l-63 271 208 86 148-236q23 2 47 4t47 2q24 0 47-2t48-4l147 236 208-86-63-271q38-31 70-63t64-71l271 63 86-208-236-148zm-642-470q78 0 146 29t120 81 80 119 30 147q0 78-29 146t-81 120-119 80-147 30q-78 0-146-29t-120-81-80-119-30-147q0-78 29-146t81-120 119-80 147-30zm0 640q55 0 103-20t84-57 56-84 21-103q0-55-20-103t-57-84-84-56-103-21q-55 0-103 20t-84 57-56 84-21 103q0 55 20 103t57 84 84 56 103 21z"></path></svg>
+
     </header>
     <div class="templates">
         <div id="wochentag-template" class="wochentag" >
-            <h2 data-id="wochentag">Wochentag</h2>
+            <div class="secondheader" data-id="wochentag">Wochentag</div>
         </div>
         <div id="uebung-row-template" class="empty">
             <div id="uebung-id" class="uebung rows" draggable="true">
@@ -46,43 +38,40 @@
         <div id="todo-template" class="todo_flex">
             <input type="checkbox" name="work" class="todochecker">
             <input class="todoname" data-id="todo" placeholder="Name">
-            <div class="loeschentodo gg-trash"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="loeschentodo svgDelet" focusable="false"><path d="M1792 384h-128v1472q0 40-15 75t-41 61-61 41-75 15H448q-40 0-75-15t-61-41-41-61-15-75V384H128V256h512V128q0-27 10-50t27-40 41-28 50-10h384q27 0 50 10t40 27 28 41 10 50v128h512v128zM768 256h384V128H768v128zm768 128H384v1472q0 26 19 45t45 19h1024q26 0 45-19t19-45V384zM768 1664H640V640h128v1024zm256 0H896V640h128v1024zm256 0h-128V640h128v1024z"></path></svg>
         </div>
     </div>
     <div id="main">
         <div id="home" class="content active">
             <div id="aktullerTag"></div>
-            <div id="showWochentage" class="button wochentag button_wochentag">Alle Wochentage</div>
+            <div  id="showWochentage" class="alleWochentage button">Alle Wochentage</div>
 
             <div id="todo" class="todo" >
-                <h2 data-id="wochentag">Daily</h2>
+                <div class="secondheader" data-id="wochentag">Daily</div>
                 <div class="todolist" id="todolist"></div>
                 <button class="button speichern" onclick="saveTODO()">Speichern</button>
-                <button class="button speichern" onclick="save_temporarie()">Speichern</button>
-                <div class="todo_add" id="hinzufuegenTODO">+ Hinzufügen</div>
+                <svg id="hinzufuegenTODO"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="todo_add button" focusable="false"><path d="M0 256h2048v128H0V256zm0 640V768h2048v128H0zm0 512v-128h1280v128H0zm0 512v-128h1280v128H0zm1790-640v256h256v128h-256v256h-128v-256h-256v-128h256v-256h128z"></path></svg>
             </div>
 
         </div>
-        <div id="ShownWochentage" class="content ">
-            <div class="gg-add" id="hinzufuegenUebung"></div>
+        <div id="ShownWochentage" class="content">
+            <svg id="hinzufuegenUebung" fill="#00aba9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svgAdd" focusable="false"><path d="M960 0q132 0 255 34t229 97 194 150 150 194 97 230 35 255q0 132-34 255t-97 229-150 194-194 150-230 97-255 35q-132 0-255-34t-229-97-194-150-150-194-97-229T0 960q0-132 34-255t97-229 150-194 194-150 229-97T960 0zm576 896h-512V384H896v512H384v128h512v512h128v-512h512V896z"></path></svg>
             <div id="wochentage"></div>
         </div>
         <div id="uebung" class="content">
-            <div class="uebung columns">
-                <div class="absatz">
-                    <input class="normal_input" id="uebungname" placeholder=" Name" name="Name"/>
-                </div>
-                <div class="absatz" id="uebungkoerperteil">        
-                    <select class="uebungkoerperteil" id="koerperteil" name="koerperteil" >
-                        <option value="none" selected disabled hidden>Körperteil</option>
-                        <option value="Arme">Arme</option>
-                        <option value="Bauch">Bauch</option>
-                        <option value="Beine">Beine</option>
-                        <option value="Brust">Brust</option>
-                        <option value="Rücken">Rücken</option>
-                    </select>
-                </div>
-                <div class="absatz uebungwochentag" id="uebungwochentag">     
+            <div class="columns">
+                <input class="normal_input" id="uebungname" placeholder=" Name" name="Name"/>   
+
+                <select class="uebungkoerperteil " id="koerperteil" name="koerperteil" >
+                    <option value="none" selected disabled hidden>Körperteil</option>
+                    <option value="Arme">Arme</option>
+                    <option value="Bauch">Bauch</option>
+                    <option value="Beine">Beine</option>
+                    <option value="Brust">Brust</option>
+                    <option value="Rücken">Rücken</option>
+                </select>
+
+                <div class="wochentagChekboxes">
                     <div>
                         <input type="checkbox" class="wochentage-selector" id="montag" name="wochentag" value="Montag">
                         <label for="montag">Montag</label>
@@ -93,7 +82,7 @@
                     </div>
                     <div>
                         <input type="checkbox" class="wochentage-selector" id="mittwoch" name="wochentag" value="Mittwoch">
-                        <label class="gg-check" for="mittwoch">Mittwoch</label>
+                        <label for="mittwoch">Mittwoch</label>
                     </div>
                     <div>
                         <input type="checkbox" class="wochentage-selector" id="donnerstag" name="wochentag" value="Donnerstag">
@@ -112,48 +101,53 @@
                         <label for="sonntag">Sonntag</label>
                     </div>
                 </div>
-                <div class="sets-reps-kg">
-                    <div class="data">
-                        <span class="prefix">Sets</span>
-                        <input type="number" min="0" class="normal_input" id="uebungsets"  name="Sets" />
-                    </div>
-                    <div class="data">
-                        <span class="prefix">Reps</span>
-                        <input type="number" min="0" class="normal_input" id="uebungreps" name="Reps"/>
-                    </div>
-                    <div class="data">
-                        <span class="prefix">Gewicht</span>
-                        <input type="number" min="0" class="normal_input gewicht" id="uebunggewicht" name="Gewicht"/>
-                        <span class="suffix">kg</span>
-                    </div>
+
+                <div>
+                    <span>Sets:</span>
+                    <input type="text" class="normal_input nummbers" id="uebungsets" name="Sets"/>
                 </div>
-                <div class="absatz">
-                    <input class="normal_input info" id="uebunginfo" placeholder=" Beschreibung" name="Info">
-                </div >
+
+                <div>
+                    <span>Reps:</span>
+                    <input type="text" class="normal_input nummbers"  id="uebungreps" name="Reps"/>
+                </div>
+
+                <div>
+                    <span>Gewicht:</span>
+                    <input type="text" class="normal_input nummbers" id="uebunggewicht" name="Gewicht"/>
+                    <span>kg</span>
+                </div>
+
+                <div>
+                    <span>Info:</span>
+                    <input class="normal_input" id="uebunginfo" name="Info">
+                </div>
+
+
                 <input class="normal_input content" id="ID" name="ID">
-                <div class="absatz">
+
+                <div class="uebungButton">
                     <div class="button speichern" id="speichern">Speichern</div>
                     <div class="button loeschen" id="loeschen">Löschen</div>
                 </div>
-
-
             </div>
+
         </div>
     </div>
     <div id="settings" class="content">
         <div class="settings">
-            <h2 class="settingsheader">Settings</h2>
+            <div class="settingsheader">Settings</div>
             <div class="colorChanger"> 
-                <div class="colorsettings">Backround </div>
+                <div class="colorsettings">Background </div>
                 <input type="color" value="#000000" id="backround">
             </div>
             <div class="colorChanger"> 
-                <div class="colorsettings">Secondary Backround</div>
+                <div class="colorsettings">Secondary Background</div>
                 <input type="color" class="colorinput" value="#2d2d2d" id="secondaryBackround">
             </div>
             <div class="colorChanger">
-                <div class="colorsettings">Thirdary Backround </div>
-                 <input type="color" class="colorinput" value="#2d2d2d" id="thirdaryBackround">
+                <div class="colorsettings">Tertiary Background </div>
+                <input type="color" class="colorinput" value="#2d2d2d" id="thirdaryBackround">
                 </div>
             <div class="colorChanger"> 
                 <div class="colorsettings"> Text Color </div>

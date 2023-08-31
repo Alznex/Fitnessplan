@@ -1,7 +1,7 @@
 function hatUebung(wochentag) {
     return wochentag.uebungen.length > 0;
 }
-  
+
 function renderStart() {
     document.getElementById("aktullerTag").innerHTML = "";
 
@@ -50,10 +50,10 @@ function renderTodoList(){
     }
     document.querySelectorAll('.loeschentodo').forEach((item, key) => {
         item.addEventListener('click', event => {
-          key = key - 1
-          deletTODO(key)
+        key = key - 1
+        deletTODO(key)
         })
-      })
+    })
 }
 
 function renderwochentage() {
@@ -77,7 +77,7 @@ function renderwochentage() {
                     uebung_div.id = value;
                 }
                 if (key == "Gewicht") {
-                let value_gewicht = value + "kg";
+                let value_gewicht = value + " kg";
                 setDataElementValue(uebung_div, key, value_gewicht);
                 } else if (key == "Sets") {
                 let value_sets = value + " Sets";
