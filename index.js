@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 })
 
 function changeColor(){
-  const backround = document.getElementById("backround").value
-  const secondaryBackround = document.getElementById("secondaryBackround").value
-  const thirdaryBackround = document.getElementById("thirdaryBackround").value
+  const backround = document.getElementById("background").value
+  const secondaryBackround = document.getElementById("secondaryBackground").value
+  const thirdaryBackround = document.getElementById("tertiaryBackround").value
   const textColor = document.getElementById("textColor").value
   const fontSize = document.getElementById("fontSize").value
 
   document.documentElement.style.setProperty('--fontSize', fontSize)
-  document.documentElement.style.setProperty('--backround', backround)
-  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround)
-  document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround)
+  document.documentElement.style.setProperty('--background', backround)
+  document.documentElement.style.setProperty('--secondaryBackground', secondaryBackround)
+  document.documentElement.style.setProperty('--tertiaryBackround', thirdaryBackround)
   document.documentElement.style.setProperty('--textColor', textColor)
   
 }
