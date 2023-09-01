@@ -6,6 +6,7 @@
     --headerFontSize: 5rem;
     --secondaryheaderFontSize: 3rem;
     --normalFontSize: 2rem;
+    --fontSize: 20px;
 }
 
 html * {
@@ -18,7 +19,7 @@ html * {
 }
 
 body{
-    font-size: 30px;
+    font-size: var(--fontSize);
     background-color: var(--backround);
     color: var(--textColor);
     cursor: default;
