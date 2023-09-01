@@ -8,14 +8,13 @@
     right: 0;
     left: 0;
     padding: 2rem;
-    background-color: var(--secondaryBackround);
+    background-color: var(--secondaryBackground);
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     font-size: var(--normalFontSize);
 }
 
 .normal_input{
-    background-color: var(--thirdaryBackround);
     font: inherit;
     outline: none;
     border: 0;
@@ -31,7 +30,7 @@
 }
 
 .uebungkoerperteil{
-    background-color: var(--thirdaryBackround);
+    background-color: var(--tertiaryBackground);
     font-size: var(--normalFontSize);
     border-radius: 1rem;
     margin-bottom: 2rem;
@@ -42,7 +41,7 @@
 }
 
 .wochentagChekboxes{
-    background-color: var(--thirdaryBackround);
+    background-color: var(--tertiaryBackground);
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 2rem;

@@ -8,6 +8,7 @@
 
 /* Wochentag check */
 .wochentage-selector{
+    background-color: transparent;
     appearance: none;
     width: 1rem;
     height: 1rem;
@@ -15,6 +16,7 @@
 }
 
 .wochentage-selector:checked {
+    background-color: transparent;
     appearance: none;
     width: 1rem;
     height: 1rem;
@@ -23,6 +25,7 @@
 
 /* TODO check */
 .todochecker{
+    background-color: transparent;
     appearance: none;
     width: 2rem;
     height: 2rem;
@@ -30,6 +33,7 @@
 }
 
 .todochecker:checked {
+    background-color: transparent;
     appearance: none;
     width: 2rem;
     height: 2rem;

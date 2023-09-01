@@ -9,13 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     })
   })
 
-  document.querySelectorAll('.colorinput').forEach(item => {
-    item.addEventListener('click', event => {
-      changeColor()
-    })
-  })
-
-  document.getElementById("backround").addEventListener("change", (e) => {
+  document.getElementById("settingsSave").addEventListener("click", (e) => {
     changeColor()
   })
 
@@ -57,16 +51,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 })
 
 function changeColor(){
-  const backround = document.getElementById("background").value
-  const secondaryBackround = document.getElementById("secondaryBackground").value
-  const thirdaryBackround = document.getElementById("tertiaryBackround").value
+  const background = document.getElementById("background").value
+  const secondaryBackground = document.getElementById("secondaryBackground").value
+  const tertiaryBackground = document.getElementById("tertiaryBackground").value
   const textColor = document.getElementById("textColor").value
-  const fontSize = document.getElementById("fontSize").value
+  const fontSize = document.getElementById("fontSize").value + "px"
 
   document.documentElement.style.setProperty('--fontSize', fontSize)
-  document.documentElement.style.setProperty('--backround', backround)
-  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround)
-  document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround)
+  document.documentElement.style.setProperty('--backround', background)
+  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackground)
+  document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
   document.documentElement.style.setProperty('--textColor', textColor)
   
 }
