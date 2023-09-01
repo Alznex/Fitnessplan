@@ -61,7 +61,9 @@ function changeColor(){
   const secondaryBackround = document.getElementById("secondaryBackround").value
   const thirdaryBackround = document.getElementById("thirdaryBackround").value
   const textColor = document.getElementById("textColor").value
+  const fontSize = document.getElementByID("fontSize").value
 
+  document.documentElement.style.setProperty('--fontSize', fontsize)
   document.documentElement.style.setProperty('--backround', backround)
   document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround)
   document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround)
