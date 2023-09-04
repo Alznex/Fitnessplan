@@ -8,6 +8,7 @@
     <link href="template.css" rel="stylesheet" type="text/css">
     <link href="uebungenerstelllen.css" rel="stylesheet" type="text/css">
     <link href="todo.css" rel="stylesheet" type="text/css">
+    <link href="uebungen.css" rel="stylesheet" type="text/css">
 
     <script src="index.js" lang="text/javascript"></script>
     <script src="uebungen.js" lang="text/javascript"></script>
@@ -38,7 +39,7 @@
             <div class="secondheader" data-id="wochentag">Wochentag</div>
         </div>
         <div id="uebung-row-template" class="empty">
-            <div id="uebung-id" class="uebung rows" draggable="true">
+            <div id="uebung-id" class="uebung" draggable="true">
                 <div class="kategorien" data-id="Name">Name</div>
                 <div class="kategorien" data-id="Gewicht">Gewicht</div>
                 <div class="kategorien" data-id="Sets">Sets</div>
@@ -52,7 +53,7 @@
         </div>
     </div>
     <div id="main">
-        <div id="home" class="content active">
+        <div id="home" class="content ">
             <div id="aktullerTag"></div>
             <div  id="showWochentage" class="alleWochentage button">Alle Wochentage</div>
 
@@ -68,7 +69,7 @@
             <svg id="hinzufuegenUebung" fill="#00aba9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svgAdd" focusable="false"><path d="M960 0q132 0 255 34t229 97 194 150 150 194 97 230 35 255q0 132-34 255t-97 229-150 194-194 150-230 97-255 35q-132 0-255-34t-229-97-194-150-150-194-97-229T0 960q0-132 34-255t97-229 150-194 194-150 229-97T960 0zm576 896h-512V384H896v512H384v128h512v512h128v-512h512V896z"></path></svg>
             <div id="wochentage"></div>
         </div>
-        <div id="uebung" class="content">
+        <div id="uebung" class="content active">
             <div class="columns">
                 <input class="normal_input" id="uebungname" placeholder=" Name" name="Name"/>   
 

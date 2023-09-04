@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   addEventUebung()
   renderTodoList()
+  renderwochentage()
 
   document.querySelectorAll('.todochecker').forEach(item => {
     item.addEventListener('click', event => {
@@ -55,12 +56,9 @@ function changeColor(){
   const secondaryBackground = document.getElementById("secondaryBackground").value
   const tertiaryBackground = document.getElementById("tertiaryBackground").value
   const textColor = document.getElementById("textColor").value
-  const fontSize = document.getElementById("fontSize").value + "px"
 
-  document.documentElement.style.setProperty('--fontSize', fontSize)
-  document.documentElement.style.setProperty('--backround', background)
-  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackground)
+  document.documentElement.style.setProperty('--background', background)
+  document.documentElement.style.setProperty('--secondaryBackground', secondaryBackground)
   document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
   document.documentElement.style.setProperty('--textColor', textColor)
-  
 }

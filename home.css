@@ -22,7 +22,7 @@ input{
 }
 
 body{
-    font-size: 20px;
+    font-size: 70px;
     background-color: var(--background);
     color: var(--textColor);
     cursor: default;
@@ -47,21 +47,6 @@ header {
     font-size: var(--secondaryheaderFontSize);
     margin: 2rem;
     width: 100%;
-}
-
-.wochentag{
-    margin: 2rem;
-    background-color:var(--secondaryBackground);
-    border-radius: 1em;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.uebung {
-    background-color:transparent;
-    display: flex;
-    cursor: pointer;
 }
 
 .hold {

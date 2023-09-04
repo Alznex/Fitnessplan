@@ -1,0 +1,16 @@
+.wochentag{
+    margin: 2rem;
+    background-color:var(--secondaryBackground);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.uebung {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    cursor: pointer;
+}
+
+.kategorien{
+    font-size: var(--normalFontSize);
+}
