@@ -13,7 +13,7 @@
 
 .todo_add{
     background-color: #00aba9;
-    height: 1.5rem;
+    height: var(--normalFontSize);
     border-radius: 50%;
 }
 
@@ -21,10 +21,13 @@
     border-radius: 1rem;
     border: 0;
     outline: none;
+    font-size: var(--normalFontSize);
+    padding-left: .3em;
 }
 
 
 .todo_flex{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }

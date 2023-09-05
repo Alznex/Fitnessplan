@@ -1,9 +1,8 @@
 .columns{
     display: flex;
     flex-direction: column;
-    margin: 2rem;
     position: absolute;
-    top: 1em;
+    top: 1rem;
     bottom: 0;
     right: 0;
     left: 0;
@@ -41,6 +40,7 @@
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 2rem;
+
 }
 
 .nummbers{
@@ -55,4 +55,9 @@
 .uebungButton{
     display: flex;
     justify-content: space-between;
+}
+
+.flex-align{
+    display: flex;
+    align-items: center;
 }

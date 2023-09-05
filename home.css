@@ -3,9 +3,9 @@
     --secondaryBackground: #2d2d2d;
     --tertiaryBackground: #808080;
     --textColor: #FFFFFF;
-    --headerFontSize: 5rem;
-    --secondaryheaderFontSize: 3rem;
-    --normalFontSize: 2rem;
+    --headerFontSize: 2.75rem;
+    --secondaryheaderFontSize: 1.75rem;
+    --normalFontSize: 1rem;
 }
 
 html * {
@@ -14,7 +14,7 @@ html * {
 }
 
 html{
-    font-size: 16px;
+    font-size: 20px;
 }
 
 body{
@@ -46,7 +46,6 @@ header {
 .alleWochentage{
     background-color:var(--secondaryBackground);
     margin: 2rem;
-    width: 100%;
 }
 
 .colorChanger{
