@@ -13,6 +13,10 @@ html * {
     color: var(--textColor);
 }
 
+html{
+    font-size: 16px;
+}
+
 body{
     background-color: var(--background);
     cursor: default;
