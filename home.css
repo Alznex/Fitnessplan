@@ -5,12 +5,22 @@
     --textColor: #FFFFFF;
     --headerFontSize: 5rem;
     --secondaryheaderFontSize: 3rem;
-    --normalFontSize:2rem;
+    --normalFontSize: 2rem;
 }
 
 html * {
     font-family: sans-serif;
     color: var(--textColor);
+}
+
+body{
+    background-color: var(--background);
+    cursor: default;
+    overscroll-behavior: none;
+}
+
+.ueberschrift{
+    font-size: var(--headerFontSize);
 }
 
 input{
@@ -21,65 +31,21 @@ input{
     color: var(--textColor);
 }
 
-body{
-    font-size: 70px;
-    background-color: var(--background);
-    color: var(--textColor);
-    cursor: default;
-    overscroll-behavior: none;
-}
-
 header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin: 2rem;
-    font-size: var(--headerFontSize);
-}
-
-.secondheader{
-    font-size: var(--secondaryheaderFontSize);
 }
 
 .alleWochentage{
     background-color:var(--secondaryBackground);
-    font-size: var(--secondaryheaderFontSize);
     margin: 2rem;
     width: 100%;
 }
 
-.hold {
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-}
-
-.hold:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-}
-
-.hidden{
-    visibility: hidden;
-}
-
-.empty{
-    margin-left: 2rem;
-    border: 3px solid transparent;
-    -ms-user-select: None;
-    -moz-user-select: None;
-    -webkit-user-select: None;
-    user-select: None;
-}
-
-.hovered{
-    border: 3px dashed grey;
-}
-
 .colorChanger{
-    font-size: var(--normalFontSize);
     width: 100%;
     margin-left: 2rem;
     margin-bottom: 3rem;
@@ -99,5 +65,10 @@ header {
 }
 
 .colorsettings{
-    margin-right: 5rem
+    margin-right: 5rem;
+    font-size: var(--normalFontSize);
+}
+
+.todoUeberschrift{
+    font-size: var(--secondaryheaderFontSize);
 }

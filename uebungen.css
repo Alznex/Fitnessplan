@@ -5,12 +5,39 @@
     padding: 1rem;
 }
 
+.uebungenWochentage{
+    font-size: var(--secondaryheaderFontSize);
+}
+
 .uebung {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin-left: 2rem;
     cursor: pointer;
+    border: 3px solid transparent;
+    -ms-user-select: None;
+    -moz-user-select: None;
+    -webkit-user-select: None;
+    user-select: None;
+    font-size: var(--normalFontSize);
 }
 
-.kategorien{
-    font-size: var(--normalFontSize);
+.hold {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.hold:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.hovered{
+    border: 3px dashed grey;
 }

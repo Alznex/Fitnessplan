@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   addEventUebung()
   renderTodoList()
-  renderwochentage()
 
   document.querySelectorAll('.todochecker').forEach(item => {
     item.addEventListener('click', event => {

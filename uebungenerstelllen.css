@@ -1,7 +1,7 @@
 .columns{
-    display:grid;
-    grid-template-columns: 1;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
     position: absolute;
     top: 1em;
     bottom: 0;
@@ -21,6 +21,7 @@
     border-radius: 1rem;
     padding-inline-start: .25em;
     padding-inline-end: .25em;
+    margin-bottom: 2rem;
 }
 
 .normal_input::placeholder{
@@ -30,14 +31,16 @@
 
 .uebungkoerperteil{
     background-color: var(--tertiaryBackground);
-    font-size: var(--normalFontSize);
     border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: var(--normalFontSize);
 }
 
 .wochentagChekboxes{
     background-color: var(--tertiaryBackground);
     border-radius: 1rem;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 .nummbers{
@@ -50,6 +53,6 @@
 }
 
 .uebungButton{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
 }

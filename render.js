@@ -12,15 +12,14 @@ function renderStart() {
             let wochentag_div = appendTemplate("wochentag-template", "aktullerTag");
             setDataElementValue(wochentag_div, "wochentag", "Heute");
             wochentag_div.id = "Heute";
+            
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
                 let uebung_id = wochentag.uebungen[index];
                 let uebung = alle_uebungen[uebung_id];
             
-                let uebung_container = appendTemplate("uebung-row-template", "Heute");
-                let uebung_div = uebung_container.querySelector("div");
+                let uebung_div = appendTemplate("uebung-id", "Heute");
                 for (const [key, value] of Object.entries(uebung)) {
                     if (key == "ID") {
-                        uebung_container.id = value + "-container";
                         uebung_div.id = value;
                     }
                     if (key == "Gewicht") {
@@ -68,12 +67,10 @@ function renderwochentage() {
             let uebung_id = wochentag.uebungen[index];
             let uebung = alle_uebungen[uebung_id];
             
-            let uebung_container = appendTemplate("uebung-row-template", wochentag.tag);
-            let uebung_div = uebung_container.querySelector("div");
+            let uebung_div = appendTemplate("uebung-id", wochentag.tag);
             uebung_div.dataset.index = index
             for (const [key, value] of Object.entries(uebung)) {
                 if (key == "ID") {
-                    uebung_container.id = value + "-container";
                     uebung_div.id = value;
                 }
                 if (key == "Gewicht") {
@@ -92,10 +89,10 @@ function renderwochentage() {
             uebung_div.addEventListener('dragstart', dragStart(index));
             uebung_div.addEventListener('dragend', dragEnd(index));
 
-            uebung_container.addEventListener('dragover', dragOver(index));
-            uebung_container.addEventListener('dragenter', dragEnter(index));
-            uebung_container.addEventListener('dragleave', dragLeave(index));
-            uebung_container.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index));
+            uebung_div.addEventListener('dragover', dragOver(index));
+            uebung_div.addEventListener('dragenter', dragEnter(index));
+            uebung_div.addEventListener('dragleave', dragLeave(index));
+            uebung_div.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index));
 
             uebung_div.addEventListener('touchstart', touchStart(index));
             uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index));
