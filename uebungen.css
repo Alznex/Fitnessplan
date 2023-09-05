@@ -11,7 +11,8 @@
 
 .uebung {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
     margin-left: 2rem;
     cursor: pointer;
     border: 3px solid transparent;
@@ -40,4 +41,14 @@
 
 .hovered{
     border: 3px dashed grey;
+}
+
+.kategorien{
+    overflow: unset;
+    text-align: right;
+}
+
+.kName{
+    text-align: left;
+    grid-column: span 2;
 }
