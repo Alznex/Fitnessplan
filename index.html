@@ -24,7 +24,7 @@
 
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#000000" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
 	<title>Gym App</title>
 
@@ -40,7 +40,7 @@
         </div>
         <div id="uebung-row-template">
             <div id="uebung-id" class="uebung" draggable="true">
-                <div class="kategorien" data-id="Name">Name</div>
+                <div class="kategorien kName" data-id="Name">Name</div>
                 <div class="kategorien" data-id="Gewicht">Gewicht</div>
                 <div class="kategorien" data-id="Sets">Sets</div>
                 <div class="kategorien" data-id="Reps">Reps</div>
@@ -52,7 +52,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="loeschentodo svgDelet" focusable="false"><path d="M1792 384h-128v1472q0 40-15 75t-41 61-61 41-75 15H448q-40 0-75-15t-61-41-41-61-15-75V384H128V256h512V128q0-27 10-50t27-40 41-28 50-10h384q27 0 50 10t40 27 28 41 10 50v128h512v128zM768 256h384V128H768v128zm768 128H384v1472q0 26 19 45t45 19h1024q26 0 45-19t19-45V384zM768 1664H640V640h128v1024zm256 0H896V640h128v1024zm256 0h-128V640h128v1024z"></path></svg>
         </div>
     </div>
-    <div id="main">
+        <div id="main">
         <div id="home" class="content active">
             <div id="aktullerTag"></div>
             <div  id="showWochentage" class="alleWochentage button">Alle Wochentage</div>
@@ -63,7 +63,6 @@
                 <button class="button speichern" onclick="saveTODO()">Speichern</button>
                 <svg id="hinzufuegenTODO"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="todo_add button" focusable="false"><path d="M0 256h2048v128H0V256zm0 640V768h2048v128H0zm0 512v-128h1280v128H0zm0 512v-128h1280v128H0zm1790-640v256h256v128h-256v256h-128v-256h-256v-128h256v-256h128z"></path></svg>
             </div>
-
         </div>
         <div id="ShownWochentage" class="content">
             <svg id="hinzufuegenUebung" fill="#00aba9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svgAdd" focusable="false"><path d="M960 0q132 0 255 34t229 97 194 150 150 194 97 230 35 255q0 132-34 255t-97 229-150 194-194 150-230 97-255 35q-132 0-255-34t-229-97-194-150-150-194-97-229T0 960q0-132 34-255t97-229 150-194 194-150 229-97T960 0zm576 896h-512V384H896v512H384v128h512v512h128v-512h512V896z"></path></svg>
@@ -142,9 +141,7 @@
                     <div class="button loeschen" id="loeschen">Löschen</div>
                 </div>
             </div>
-
         </div>
-    </div>
     <div id="settings" class="content">
         <div class="settings">
             <div class="settingsheader">Settings</div>
