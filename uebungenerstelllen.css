@@ -23,11 +23,6 @@
     margin-bottom: 2rem;
 }
 
-.normal_input::placeholder{
-    left: 0;
-    position: absolute;
-}
-
 .uebungkoerperteil{
     background-color: var(--tertiaryBackground);
     border-radius: 1rem;
