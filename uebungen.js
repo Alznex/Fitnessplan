@@ -1,7 +1,7 @@
 function addEventUebung() {
-  document.querySelectorAll(".uebung").forEach((div) => {
+  document.querySelectorAll(".rows").forEach((div) => {
     div.addEventListener("click", (e) => {
-      if (div.classList.contains("uebung")) {
+      if (div.classList.contains("rows")) {
         let div_id = div.id
         bearbeiten(div_id)
       }

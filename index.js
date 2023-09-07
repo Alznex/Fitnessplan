@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
-  renderTodoList()
-  renderwochentage()
   addEventUebung()
+  renderTodoList()
 
   document.querySelectorAll('.todochecker').forEach(item => {
     item.addEventListener('click', event => {
@@ -10,7 +9,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     })
   })
 
-  document.getElementById("settingsSave").addEventListener("click", (e) => {
+  document.querySelectorAll('.colorinput').forEach(item => {
+    item.addEventListener('click', event => {
+      changeColor()
+    })
+  })
+
+  document.getElementById("backround").addEventListener("change", (e) => {
     changeColor()
   })
 
@@ -52,13 +57,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 })
 
 function changeColor(){
-  const background = document.getElementById("background").value
-  const secondaryBackground = document.getElementById("secondaryBackground").value
-  const tertiaryBackground = document.getElementById("tertiaryBackground").value
+  const backround = document.getElementById("backround").value
+  const secondaryBackround = document.getElementById("secondaryBackround").value
+  const thirdaryBackround = document.getElementById("thirdaryBackround").value
   const textColor = document.getElementById("textColor").value
 
-  document.documentElement.style.setProperty('--background', background)
-  document.documentElement.style.setProperty('--secondaryBackground', secondaryBackground)
-  document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
+  document.documentElement.style.setProperty('--backround', backround)
+  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround)
+  document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround)
   document.documentElement.style.setProperty('--textColor', textColor)
+  
 }

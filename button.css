@@ -1,18 +1,28 @@
 .button{
-    border-radius: 1em;
-    padding: .5em;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+.button:hover{
     cursor: pointer;
-    outline: none;
-    border: 0;
-    white-space: nowrap;
-    width: min-content;
-    font-size: var(--normalFontSize);
 }
 
 .speichern{
+    border-radius: 1em;
+    padding: 1%;
     background-color: green;
 }
 
 .loeschen{
+    border-radius: 1em;
+    padding: 1%;
     background-color: red;
+}
+
+/* Google */
+.g-signin2{
+    position: absolute;
+    top: 17%;
+    left: 90%;
+    margin-top: -50px;
+    margin-left: -50px;
 }

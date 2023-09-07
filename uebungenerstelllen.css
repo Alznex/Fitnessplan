@@ -1,58 +1,84 @@
 .columns{
-    display: flex;
+    display:flex;
     flex-direction: column;
     position: absolute;
-    top: 1rem;
+    top:8%;
     bottom: 0;
     right: 0;
     left: 0;
-    padding: 2rem;
-    background-color: var(--secondaryBackground);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    font-size: var(--normalFontSize);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding-left: 5%; 
+    padding-right: 5%; 
+    padding-top: 5%;
+    font-size: 3em;
+    background-color: var(--secondaryBackround);
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.sets-reps-kg{
+    background-color:var(--thirdaryBackround);
+    display: flex;
+    flex-direction: column;
+    border-radius: .5em;
+}
+
+.angaben{
+    flex: 1;
 }
 
 .normal_input{
-    font: inherit;
+    color:var(--textColor);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    flex: 2;
+    font-size: 1em;
+    border-color: white;
     outline: none;
-    border: 0;
-    border-radius: 1rem;
-    padding-inline-start: .25em;
-    padding-inline-end: .25em;
-    margin-bottom: 2rem;
+}
+
+.data > div:nth-child(2){
+    margin-left: auto;
+}
+
+.info{
+    margin-top: 2%;
+    border-radius: .5em;
+    background-color:var(--thirdaryBackround);
+    border:0;
+}
+
+.normal_input::placeholder{
+    color: var(--textColor);
+}
+
+.absatz{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
+}
+
+
+option{
+    margin: 0%;
+    font-size: 1em;
+}  
+
+.uebungwochentag{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--thirdaryBackround);
+    border-radius: .5em;
 }
 
 .uebungkoerperteil{
-    background-color: var(--tertiaryBackground);
-    border-radius: 1rem;
-    margin-bottom: 2rem;
-    font-size: var(--normalFontSize);
-}
-
-.wochentagChekboxes{
-    background-color: var(--tertiaryBackground);
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-bottom: 2rem;
-
-}
-
-.nummbers{
-    width: max-content;
-}
-
-.nummbers::placeholder{
-    padding-inline-start: .5em;
-    
-}
-
-.uebungButton{
-    display: flex;
-    justify-content: space-between;
-}
-
-.flex-align{
-    display: flex;
-    align-items: center;
+    border-radius: .3em;
+    width: 100%;
+    background-color: var(--thirdaryBackround);
+    font-size: 1em;
+    color: var(--textColor);
 }

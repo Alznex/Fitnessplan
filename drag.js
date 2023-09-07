@@ -47,6 +47,7 @@ function dragLeave(index) {
 
 function dragDrop(wochentag, index) {
     return function (e) {
+        this.className = 'empty'
         end = index
         swap_uebungen(wochentag, start, end)
     }

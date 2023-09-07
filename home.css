@@ -1,78 +1,146 @@
 :root {
-    --background: #000000;
-    --secondaryBackground: #2d2d2d;
-    --tertiaryBackground: #808080;
+    --backround: #000000;
+    --secondaryBackround: #2d2d2d;
+    --thirdaryBackround: #808080;
     --textColor: #FFFFFF;
-    --headerFontSize: 3.75rem;
-    --secondaryheaderFontSize: 2.75rem;
-    --normalFontSize: 1rem;
-}
-
-html * {
-    font-family: sans-serif;
-    color: var(--textColor);
-}
-
-html{
-    font-size: 24px;
 }
 
 body{
-    background-color: var(--background);
+    background-color: var(--backround);
+    color: var(--textColor);
     cursor: default;
     overscroll-behavior: none;
-}
-
-.ueberschrift{
-    font-size: var(--headerFontSize);
-}
-
-input{
-    background-color: #808080;
-    font-size: var(--normalFontSize);
-}
-
-::placeholder{
-    color: var(--textColor);
 }
 
 header {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2rem;
+    margin: 5%;
+    font-size: 3em;
 }
 
-.alleWochentage{
-    background-color:var(--secondaryBackground);
-    margin: 2rem;
+.wochentag{
+    margin: 3%;
+    background-color:var(--secondaryBackround);
+    border-radius: 1em;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    font-size: 4em;
+}
+
+.header{
+    font-size: 2.4em;
+}
+.uebung {
+    background-color:transparent;
+    display: flex;
+}
+
+.uebungen:hover{
+    cursor: pointer;
+}
+
+.hold {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.hold:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.empty{
+    margin-left: 3%;
+    border: 3px solid transparent;
+    -ms-user-select: None;
+    -moz-user-select: None;
+    -webkit-user-select: None;
+    user-select: None;
+}
+
+.hovered{
+    border: 3px dashed grey;
+}
+.rows * {
+    pointer-events: none;
+}
+
+.todo{
+    margin: 3%;
+    background-color:var(--secondaryBackround);
+    border-radius: 1em;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.todolist{
+    margin: 2%;
+    font-size: 3em;
+}
+
+.todo_add{
+   margin-left: 90%;
+}
+
+.todoname{
+    color:var(--textColor);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    flex: 2;
+    font-size: 1em;
+    border-color: white;
+    outline: none;
+}
+
+.todoname::placeholder{
+    color: var(--textColor);
+}
+
+.todo_flex{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
 }
 
 .colorChanger{
+    font-size: 3em;
     width: 100%;
-    margin-left: 2rem;
-    margin-bottom: 3rem;
+    margin-left: 3%;
+    margin-bottom: 5%;
     display: flex;
     flex-direction: row;
 }
 
 .settings{
-    margin-left: 2rem;
-    background-color:var(--secondaryBackground);
-    border-radius: 1rem;
-    padding: 1rem;
+    margin: 3%;
+    background-color:var(--secondaryBackround);
+    border-radius: 1em;
+    padding: 1%;
 }
 
 .settingsheader{
-    font-size: var(--secondaryheaderFontSize);
+    font-size: 4em;
+}
+
+.button_wochentag{
+    font-size: 3em;
+    border-radius: .3em;
 }
 
 .colorsettings{
-    margin-right: 5rem;
-    font-size: var(--normalFontSize);
-}
-
-.todoUeberschrift{
-    font-size: var(--secondaryheaderFontSize);
+    margin-right: 5%;
 }

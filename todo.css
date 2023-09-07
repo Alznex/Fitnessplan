@@ -11,12 +11,6 @@
     margin: 2%;
 }
 
-.todo_add{
-    background-color: #00aba9;
-    height: var(--normalFontSize);
-    border-radius: 50%;
-}
-
 .todoname{
     border-radius: 1rem;
     border: 0;
@@ -24,7 +18,6 @@
     font-size: var(--normalFontSize);
     padding-left: .3em;
 }
-
 
 .todo_flex{
     display: flex;

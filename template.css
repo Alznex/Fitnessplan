@@ -1,0 +1,10 @@
+.rows{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.kategorien{
+    margin: 2%;
+    font-size: 3em;
+}
