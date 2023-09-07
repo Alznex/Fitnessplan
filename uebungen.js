@@ -1,14 +1,3 @@
-function addEventUebung() {
-  document.querySelectorAll(".rows").forEach((div) => {
-    div.addEventListener("click", (e) => {
-      if (div.classList.contains("rows")) {
-        let div_id = div.id
-        bearbeiten(div_id)
-      }
-    });
-  });
-}
-
 const wochentag_nummern = {
   "Montag": 0,
   "Dienstag": 1,

@@ -1,10 +1,120 @@
-.content {
-    display: none;
-}
-.content.active {
-    display: block;
+:root{
+    --background: #000000;
+    --secondaryBackground: #2d2d2d;
+    --tertiaryBackground: #808080;
+    --textColor: #FFFFFF;
+    --headerFontSize: 5rem;
+    --secondaryheaderFontSize: 2.75rem;
+    --normalFontSize: 1rem;
 }
 
-.templates {
+html{
+    font-size: 20px;
+}
+
+.content{
     display: none;
+}
+.content.active{
+    display: block;
+}
+.templates{
+    display: none;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+body{
+    background-color: var(--background);
+    color: #FFFFFF;
+    margin: 2rem;
+    cursor: default;
+}
+
+header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    font-size: var(--headerFontSize);
+}
+
+::placeholder{
+    color: #FFFFFF;
+}
+
+input{
+    background-color: var(--tertiaryBackground);
+    border-radius: .4em;
+    border: 0;
+    color: var(--textColor);
+    font-size: var(--normalFontSize);
+}
+
+select{
+    background-color: var(--tertiaryBackground);
+    color: var(--textColor);
+    border-radius: .4em;
+}
+
+.boxDarkGray{
+    display: grid;
+    background-color: var(--secondaryBackground);
+    padding: 1rem;
+    border-radius: .8em;
+    margin-bottom: 1em;
+}
+
+.boxHeader{
+    font-size: var(--secondaryheaderFontSize);
+}
+
+.button{
+    border-radius: 1em;
+    padding: .5em;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    white-space: nowrap;
+    width: min-content;
+    font-size: var(--normalFontSize);
+}
+
+.button.speichern{
+    background-color: green;
+}
+
+.button.loeschen{
+    background-color: red;
+}
+
+.home{
+    display: grid;
+    gap:1rem;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.uebung{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-left: 1em;
+    cursor: pointer;
+    font-size: var(--normalFontSize);
+}
+
+.uebungName > div:not(.uebungName){
+    text-align: right;
+}
+
+.alignItems{
+    display: flex;
+    align-items: center;
+    gap: .2em;
+    padding-left: .5em;
+}
+
+.multiChecklist{
+    background-color: var(--tertiaryBackground);
+    border-radius: .5em;
 }

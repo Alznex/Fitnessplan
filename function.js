@@ -62,3 +62,14 @@ function time(){
   var current_time = new Date()
   var current_day = current_time.getDay()
 }
+
+function eventlsitener(type, id, funktion1, funktionVar, funktion2, funktion3){
+  document.getElementById(id).addEventListener(type, (e) => {
+    funktion1(funktionVar)
+    if(funktion2 != null){
+      funktion2()
+    }else if(funktion3 != null){
+      funktion3()
+    }
+  })
+}

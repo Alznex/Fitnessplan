@@ -1,37 +1,15 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
-  addEventUebung()
   renderTodoList()
+  renderwochentage()
+  addEventUebung()
+  addEventTodochecker()
 
-  document.querySelectorAll('.todochecker').forEach(item => {
-    item.addEventListener('click', event => {
-      changeBackgroundColor()
-    })
-  })
-
-  document.querySelectorAll('.colorinput').forEach(item => {
-    item.addEventListener('click', event => {
-      changeColor()
-    })
-  })
-
-  document.getElementById("backround").addEventListener("change", (e) => {
-    changeColor()
-  })
-
-  document.getElementById("settings_logo").addEventListener("click", (e) => {
-    show("settings")
-  });
-
-  document.getElementById("hinzufuegenUebung").addEventListener("click", (e) => {
-    clearInput()
-    show("uebung")
-  })
-
-  document.getElementById("speichern").addEventListener("click", (e) => {
-    save();
-    show("ShownWochentage")
-  })
+  //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
+  eventlsitener("click", "settingsSave" , changeColor,"" )
+  eventlsitener("click", "settings_logo",show, "settings")
+  eventlsitener("click", "hinzufuegenUebung", show, "uebung", clearInput)
+  eventlsitener("click", "uebungSpeichern", show, "ShownWochentage", save)
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
     let uebungen_loeschen = document.getElementById("ID")
@@ -54,17 +32,40 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("hinzufuegenTODO").addEventListener("click", (e) =>{
     addTODO()
   })
+
+  document.getElementById("todoSave").addEventListener("click", (e) =>{
+    saveTODO()
+    addEventTodochecker()
+  })
 })
 
+function addEventUebung() {
+  document.querySelectorAll(".uebung").forEach((div) => {
+    div.addEventListener("click", (e) => {
+      if (div.classList.contains("uebung")) {
+        let div_id = div.id
+        bearbeiten(div_id)
+      }
+    });
+  });
+}
+
+function addEventTodochecker() {
+  document.querySelectorAll(".todochecker").forEach((div) => {
+    div.addEventListener("click", (e) => {
+      changeBackgroundColor()
+    });
+  });
+}
+
 function changeColor(){
-  const backround = document.getElementById("backround").value
-  const secondaryBackround = document.getElementById("secondaryBackround").value
-  const thirdaryBackround = document.getElementById("thirdaryBackround").value
+  const background = document.getElementById("background").value
+  const secondaryBackground = document.getElementById("secondaryBackground").value
+  const tertiaryBackground = document.getElementById("tertiaryBackground").value
   const textColor = document.getElementById("textColor").value
 
-  document.documentElement.style.setProperty('--backround', backround)
-  document.documentElement.style.setProperty('--secondaryBackround', secondaryBackround)
-  document.documentElement.style.setProperty('--thirdaryBackround', thirdaryBackround)
+  document.documentElement.style.setProperty('--background', background)
+  document.documentElement.style.setProperty('--secondaryBackground', secondaryBackground)
+  document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
   document.documentElement.style.setProperty('--textColor', textColor)
-  
 }

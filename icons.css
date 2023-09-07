@@ -1,122 +1,59 @@
-/* Hinzufüegen Button*/
-.gg-add {
-    background-color: #00aba9;
-    box-sizing: border-box;
+/* Hinzufüegen Übung Button*/
+.svgAdd{
     position: fixed;
-    bottom: 8%;
-    right: 8%;
-    display: block;
-    width: 22px;
-    height: 22px;
-    border: 2px solid;
-    transform: scale(var(--ggs,4));
-    border-radius: 22px;
-    border-color: #00aba9;
-    z-index: 3;
-    box-shadow: 2px, solid, red;
-   }
-   
-   .gg-add::after,
-   .gg-add::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    width: 10px;
-    height: 2px;
-    background: currentColor;
-    border-radius: 5px;
-    top: 8px;
-    left: 4px
-   }
-   
-   .gg-add::after {
-    width: 2px;
-    height: 10px;
-    top: 4px;
-    left: 8px
-   } 
+    bottom: 3rem;
+    right: 3rem;
+    height: 4rem;
+    fill: #00aba9; 
+}
 
 /* Wochentag check */
 .wochentage-selector{
+    background-color: transparent;
     appearance: none;
-    width: 2em;
-    height: 2em;
-    content: url('img/uncheck.png');
+    width: 1em;
+    height: 1em;
+    content: url('img/svgUncheked.svg');
 }
 
-.wochentage-selector:checked {
+.wochentage-selector:checked{
+    background-color: transparent;
     appearance: none;
-    width: 2em;
-    height: 2em;
-    content: url('img/check.png')
+    width: 1em;
+    height: 1em;
+    content: url('img/svgCheked.svg')
 }
 
-/* TODO check */
+/* TODO */
 .todochecker{
+    background-color: transparent;
     appearance: none;
-    width: 2em;
-    height: 2em;
-    content: url('img/uncheck.png');
+    width: 1em;
+    height: 1em;
+    content: url('img/svgUncheked.svg');
 }
 
-.todochecker:checked {
+.todochecker:checked{
+    background-color: transparent;
     appearance: none;
-    width: 2em;
-    height: 2em;
-    content: url('img/check.png')
+    width: 1em;
+    height: 1em;
+    content: url('img/svgCheked.svg')
 }
 
+.todo_add{
+    background-color: #00aba9;
+    height: var(--normalFontSize);
+    border-radius: 50%;
+}
 
 /*Settings*/
-.material-symbols-outlined{
-    margin-top: 10%;
-    margin-left: 30%;
-    transform: scale(var(--ggs,2));
+.svgSettings{
+    fill: #ffffff;
+    height: 1em;
 }
 
 /*Löschen*/
-.gg-trash {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs,2));
-    width: 10px;
-    height: 12px;
-    border: 2px solid transparent;
-    box-shadow:
-    0 0 0 2px,
-    inset -2px 0 0,
-    inset 2px 0 0;
-    border-bottom-left-radius: 1px;
-    border-bottom-right-radius: 1px;
-    margin-top: 4px
-   }
-   
-   .gg-trash::after,
-   .gg-trash::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute
-   }
-   
-   .gg-trash::after {
-    background: currentColor;
-    border-radius: 3px;
-    width: 16px;
-    height: 2px;
-    top: -4px;
-    left: -5px
-   }
-   
-   .gg-trash::before {
-    width: 10px;
-    height: 4px;
-    border: 2px solid;
-    border-bottom: transparent;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    top: -7px;
-    left: -2px
-   } 
+.svgDelet{
+    height: 1em;
+}
