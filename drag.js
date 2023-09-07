@@ -4,17 +4,17 @@ let start = -1, end = -1
 
 function dragStart(index) {
     return function (e) {
+        this.classList.add("hold")
         setTimeout(() => (this.classList.add("hidden")), 0)
+        console.log("dragStart")
         start = index
     }
 }
 
 function dragEnd(index) {
     return function (e) {
+        this.classList.remove("hold")
         this.classList.remove("hidden")
-        end = index
-        console.log(index)
-        swap_uebungen(wochentag, start, end)
     }
 }
 
@@ -28,17 +28,22 @@ function dragEnter(index) {
     return function (e) {
         e.preventDefault()
         e.stopPropagation()
+        this.classList.add('hovered')
     }
 }
 
 function dragLeave(index) {
     return function (e) {
         e.stopPropagation()
+        this.classList.remove('hovered')
     }
 }
 
-function dragDrop( index) {
-    return function (e) {
+function dragDrop(wochentag, index) {
+    return function (e) { 
+        this.className = 'empty' 
+        end = index		
+        swap_uebungen(wochentag, start, end) 
     }
 }
 
