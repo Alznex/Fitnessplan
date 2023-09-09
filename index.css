@@ -56,6 +56,7 @@ select{
     background-color: var(--tertiaryBackground);
     color: var(--textColor);
     border-radius: .4em;
+    font-size: var(--normalFontSize);
 }
 
 .boxDarkGray{
@@ -112,9 +113,15 @@ select{
     align-items: center;
     gap: .2em;
     padding-left: .5em;
+    margin-bottom: .3em;
 }
 
 .multiChecklist{
     background-color: var(--tertiaryBackground);
     border-radius: .5em;
+    padding-top: .3em;
+}
+
+.uebungErstellen{
+    gap: .5em;
 }
