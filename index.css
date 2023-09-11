@@ -108,6 +108,7 @@ select{
 
 .uebungName > div:not(.uebungName){
     text-align: right;
+    grid-column: span 2;
 }
 
 .alignItems{
