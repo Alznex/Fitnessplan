@@ -34,8 +34,8 @@ body{
 }
 
 header{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: var(--headerFontSize);
     margin-bottom: .3em;
@@ -106,8 +106,11 @@ select{
     font-size: var(--normalFontSize);
 }
 
-.uebungName > div:not(.uebungName){
+.uebung > div:not(.uebungName){
     text-align: right;
+}
+
+.uebungName{
     grid-column: span 2;
 }
 
