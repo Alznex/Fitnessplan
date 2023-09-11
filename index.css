@@ -81,6 +81,7 @@ select{
     white-space: nowrap;
     width: min-content;
     font-size: var(--normalFontSize);
+    color: var(--textColor);
 }
 
 .button.speichern{
