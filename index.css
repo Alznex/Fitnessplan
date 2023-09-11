@@ -38,6 +38,7 @@ header{
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     font-size: var(--headerFontSize);
+    margin-bottom: 1em;
 }
 
 ::placeholder{
