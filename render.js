@@ -1,5 +1,5 @@
 function hatUebung(wochentag) {
-    return wochentag.uebungen.length > 0;
+    return wochentag.uebungen.length > 0
 }
 
 function renderStart() {
@@ -60,7 +60,7 @@ function renderwochentage() {
     document.getElementById("wochentage").innerHTML = ""
 
     for (let wochentag of alle_wochentage) {
-        if (!hatUebung(wochentag)) continue;
+        if (!hatUebung(wochentag)) continue
         let wochentag_div = appendTemplate("wochentag-template", "wochentage")
         setDataElementValue(wochentag_div, "wochentag", wochentag.tag);
         wochentag_div.id = wochentag.tag;
@@ -75,13 +75,13 @@ function renderwochentage() {
                     uebung_div.id = value;
                 }
                 if (key == "Gewicht") {
-                let value_gewicht = value + " kg";
+                let value_gewicht = value + " kg"
                 setDataElementValue(uebung_div, key, value_gewicht)
                 } else if (key == "Sets") {
-                let value_sets = value + " Sets";
+                let value_sets = value + " Sets"
                 setDataElementValue(uebung_div, key, value_sets)
                 } else if (key == "Reps") {
-                let value_reps = value + " Reps";
+                let value_reps = value + " Reps"
                 setDataElementValue(uebung_div, key, value_reps)
                 } else {
                 setDataElementValue(uebung_div, key, value)
@@ -100,4 +100,65 @@ function renderwochentage() {
             uebung_div.addEventListener('touchmove', touchMove)
         }
     }
+}
+
+function bearbeiten(uebung_id) { 
+    clearInput()
+    let inputs = document.querySelectorAll(".normal_input")
+    let checkbox = document.querySelectorAll(".wochentage-selector")
+    let selector = document.getElementById("koerperteil")
+    let uebungen = alle_uebungen[uebung_id]
+    show("uebung")
+
+    for (let input_id in inputs) {
+        for (const [key, value] of Object.entries(uebungen)) {
+            if (input_id == 0 && key == "Name") {
+                inputs[input_id].value = value
+            } else if (input_id == 1 && key == "Sets") {
+                inputs[input_id].value = value
+            } else if (input_id == 2 && key == "Reps") {
+                inputs[input_id].value = value
+            } else if (input_id == 3 && key == "Gewicht") {
+                inputs[input_id].value = value
+            } else if (input_id == 4 && key == "Info") {
+                inputs[input_id].value = value
+            } else if (input_id == 5 && key == "ID") {
+                inputs[input_id].value = value
+            }
+        }
+    }
+    for (let i = 0; i < checkbox.length; i++) {
+        if (uebungen.Wochentag.includes(checkbox[i].value)) {
+            checkbox[i].checked = true
+        }
+    }
+    for (let selector_values of selector) {
+        if (alle_uebungen[uebung_id].koerperteil == selector_values.label) {
+            if (uebungen.koerperteil != "Körperteil"){
+            selector.value = uebungen.koerperteil
+            }
+        }
+    }
+}
+
+function clearInput() {
+    let inputs = document.querySelectorAll(".normal_input")
+    let checkbox = document.querySelectorAll(".wochentage-selector")
+    let selector = document.getElementById("koerperteil")
+
+    for (let eingabe in inputs) {
+        if(eingabe == "1"){
+            inputs[eingabe].value = "3"
+        }else if (eingabe == "2"){
+            inputs[eingabe].value = "15"
+        }else if(eingabe == "3"){
+            inputs[eingabe].value = "10"
+        }else{
+            inputs[eingabe].value = ""
+        }
+    }
+    for (let checkboxes in checkbox) {
+        checkbox[checkboxes].checked = false
+    }
+    selector.value = "none"
 }
