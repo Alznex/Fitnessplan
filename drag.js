@@ -100,5 +100,5 @@ function swap_uebungen(wochentag, index1, index2) {
     localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
     console.log("swap("+start+", "+end+")")
     renderwochentage()
-    addEventUebung()
+    renderStart()
 }

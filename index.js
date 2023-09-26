@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
 
   //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
-  eventlsitener("click", "homepage", show, "home")
+  eventlsitener("click", "homepage", show, "home", renderStart)
 
   eventlsitener("click", "settingsSave" , changeColor,"" )
   eventlsitener("click", "settings_logo",show, "settings")
