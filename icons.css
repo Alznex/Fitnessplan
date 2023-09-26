@@ -44,7 +44,6 @@
 .todo_add{
     background-color: #00aba9;
     height: var(--normalFontSize);
-    border-radius: 50%;
 }
 
 /*Settings*/

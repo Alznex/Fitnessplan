@@ -8,6 +8,10 @@
     --normalFontSize: 1rem;
 }
 
+* body{
+    font-family: Arial;
+}
+
 html{
     font-size: 30px;
 }
