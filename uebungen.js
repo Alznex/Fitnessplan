@@ -96,16 +96,12 @@ function save() {
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
 
   renderwochentage()
-  addEventUebung()
 }
 
 function loeschen(uebung) {
   delete alle_uebungen[uebung]
-
   removeFromAllWochentage(uebung)
-
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen))
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
   renderwochentage()
-  addEventUebung()
 }
