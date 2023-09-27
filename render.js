@@ -11,64 +11,47 @@ function renderTodoList(){
         const todo_div = appendTemplate("todo-template", "todolist")
         setInputElementValue(todo_div, "todo", todo)
         todo_div.id = todo;
-        let deleteButton = todo_div.querySelector(".loeschentodo")
+        let deleteButton = todo_div.querySelector(".svgDelet")
         deleteButton.addEventListener('click', () => deletTODO(index))
     })
     addEventTodochecker()
 }
 
-function hatUebung(wochentag) {
-    return wochentag.uebungen.length > 0
-}
-
-function uebungenValueSet(targetID, ueberschrift, wochentag){
-    let wochentag_div = appendTemplate("wochentag-template", targetID)
-    setDataElementValue(wochentag_div, "wochentag", ueberschrift);
-    wochentag_div.id = ueberschrift;
-    for (let index = 0 ; index < wochentag.uebungen.length; index++) {
-        let uebung_id = wochentag.uebungen[index]
-        let uebung = alle_uebungen[uebung_id]
-        
-        let uebung_div = appendTemplate("uebung-id", ueberschrift)
-        uebung_div.dataset.index = index
-        for (const [key, value] of Object.entries(uebung)) {
-            if (key == "ID") {
-                uebung_div.id = value;
-            }else if (key == "Gewicht") {
-            let value_gewicht = value + " kg"
-            setDataElementValue(uebung_div, key, value_gewicht)
-            } else if (key == "Sets") {
-            let value_sets = value + " Sets"
-            setDataElementValue(uebung_div, key, value_sets)
-            } else if (key == "Reps") {
-            let value_reps = value + " Reps"
-            setDataElementValue(uebung_div, key, value_reps)
-            } else {
-            setDataElementValue(uebung_div, key, value)
-            }
-        }
-        uebung_div.addEventListener('dragstart', dragStart(index))
-        uebung_div.addEventListener('dragend', dragEnd(wochentag_nummern[wochentag.tag], index))
-    
-        uebung_div.addEventListener('dragover', dragOver(index))
-        uebung_div.addEventListener('dragenter', dragEnter(index))
-        uebung_div.addEventListener('dragleave', dragLeave(index))
-        uebung_div.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index))
-    
-        uebung_div.addEventListener('touchstart', touchStart(index))
-        uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index))
-        uebung_div.addEventListener('touchmove', touchMove)
-    }
-}
+function hatUebung(wochentag) { return wochentag.uebungen.length > 0 }
 
 function renderStart() {
     document.getElementById("aktullerTag").innerHTML = ""
-
     for (let wochentag of alle_wochentage) {
         date = berechneWochentag()
         if (wochentag.tag == date){
             if (!hatUebung(wochentag)) continue
-            uebungenValueSet("aktullerTag", "Heute", wochentag)
+            let wochentag_div = appendTemplate("wochentag-template", "aktullerTag")
+            let uebungenTarget = wochentag_div.querySelector("#uebungen")
+            uebungenTarget.id = "uebungenHeute"
+            setDataElementValue(wochentag_div, "wochentag", "")
+            wochentag_div.id = "Heute"
+            for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+                let uebung_id = wochentag.uebungen[index]
+                let uebung = alle_uebungen[uebung_id]
+                
+                let uebung_div = appendTemplate("uebung-row-template", "uebungenHeute")
+                for (const [key, value] of Object.entries(uebung)) {
+                    if (key == "ID") {
+                        uebung_div.id = value;
+                    }else if (key == "Gewicht") {
+                    let value_gewicht = value + " kg"
+                    setDataElementValue(uebung_div, key, value_gewicht)
+                    } else if (key == "Sets") {
+                    let value_sets = value + " Sets"
+                    setDataElementValue(uebung_div, key, value_sets)
+                    } else if (key == "Reps") {
+                    let value_reps = value + " Reps"
+                    setDataElementValue(uebung_div, key, value_reps)
+                    } else {
+                    setDataElementValue(uebung_div, key, value)
+                    }
+                }
+            }
         }
     }
     addEventUebung()
@@ -77,12 +60,50 @@ function renderStart() {
 
 function renderwochentage() {
     document.getElementById("wochentage").innerHTML = ""
-
     for (let wochentag of alle_wochentage) {
         if (!hatUebung(wochentag)) continue
-        uebungenValueSet("wochentage", wochentag.tag, wochentag)
+        let wochentag_div = appendTemplate("wochentag-template", "wochentage")
+        let uebungenTarget = wochentag_div.querySelector("#uebungen")
+        uebungenTarget.id = "uebungen" + wochentag.tag
+        setDataElementValue(wochentag_div, "wochentag", wochentag.tag)
+        wochentag_div.id = wochentag.tag
+        for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+            let uebung_id = wochentag.uebungen[index]
+            let uebung = alle_uebungen[uebung_id]
+            
+            let uebung_div = appendTemplate("uebung-row-template", "uebungen" + wochentag.tag)
+            uebung_div.dataset.index = index
+            for (const [key, value] of Object.entries(uebung)) {
+                if (key == "ID") {
+                    uebung_div.id = value;
+                }else if (key == "Gewicht") {
+                let value_gewicht = value + " kg"
+                setDataElementValue(uebung_div, key, value_gewicht)
+                } else if (key == "Sets") {
+                let value_sets = value + " Sets"
+                setDataElementValue(uebung_div, key, value_sets)
+                } else if (key == "Reps") {
+                let value_reps = value + " Reps"
+                setDataElementValue(uebung_div, key, value_reps)
+                } else {
+                setDataElementValue(uebung_div, key, value)
+                }
+            }
+            uebung_div.addEventListener('dragstart', dragStart(index))
+            uebung_div.addEventListener('dragend', dragEnd(wochentag_nummern[wochentag.tag], index))
+        
+            uebung_div.addEventListener('dragover', dragOver(index))
+            uebung_div.addEventListener('dragenter', dragEnter(index))
+            uebung_div.addEventListener('dragleave', dragLeave(index))
+            uebung_div.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index))
+        
+            uebung_div.addEventListener('touchstart', touchStart(index))
+            uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index))
+            uebung_div.addEventListener('touchmove', touchMove)
+        }
     }
     addEventUebung()
+    addEventUebersicht()
 }
 
 function bearbeiten(uebung_id) { 

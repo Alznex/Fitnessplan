@@ -42,12 +42,10 @@ function changeBackgroundColor() {
     let durchschnite = done_per_day / todo_per_day
     let todo_div = document.getElementById("todo")
     if (durchschnite < 0.4){
-        todo_div.style.backgroundColor = "red"
-    } else if (durchschnite <= 0.5 && durchschnite >0.3){
-        todo_div.style.backgroundColor = "#2d2d2d"
-    } else if (durchschnite > 0.6 && durchschnite < 0.8){
+        todo_div.style.backgroundColor = "#800020"
+    } else if (durchschnite < 0.8 && durchschnite >0.3){
         todo_div.style.backgroundColor = "#2d2d2d"
     } else if (durchschnite >= 0.8){
-        todo_div.style.backgroundColor = "green"
+        todo_div.style.backgroundColor = "#023020"
     }
 }

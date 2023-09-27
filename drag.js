@@ -1,5 +1,3 @@
-// Drag Functions Pc
-
 let start = -1, end = -1
 
 function dragStart(index) {

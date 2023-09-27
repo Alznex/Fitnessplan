@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
+  addEventSettings()
 
   //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
   eventlsitener("click", "homepage", show, "home", renderStart)
 
   eventlsitener("click", "settingsSave" , changeColor,"" )
-  eventlsitener("click", "settings_logo",show, "settings")
 
   eventlsitener("click", "showWochentage", show, "ShownWochentage", renderwochentage)
   eventlsitener("click", "hinzufuegenUebung", show, "uebung", clearInput)
@@ -36,6 +36,22 @@ function addEventTodochecker() {
   document.querySelectorAll(".todochecker").forEach((div) => {
     div.addEventListener("click", (e) => {
       changeBackgroundColor()
+    });
+  });
+}
+
+function addEventSettings() {
+  document.querySelectorAll(".svgSettings").forEach((div) => {
+    div.addEventListener("click", (e) => {
+      show("settings")
+      addEventUebersicht()
+    });
+  });
+}
+function addEventUebersicht() {
+  document.querySelectorAll(".zurueckUebersicht").forEach((div) => {
+    div.addEventListener("click", (e) => {
+      show("home")
     });
   });
 }
