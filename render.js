@@ -12,13 +12,11 @@ function renderTodoList(){
         setInputElementValue(todo_div, "todo", todo)
         todo_div.id = todo
 
-        let todoInput = todo_div.querySelector('[data-id="todo"]')
-        todoInput.addEventListener('blur', () => saveTODO())
-
         let deleteButton = todo_div.querySelector(".svgDelet")
         deleteButton.addEventListener('click', () => deletTODO(index))
     })
     addTODO()
+    addEventSaveTodo()
     addEventTodochecker()
 }
 

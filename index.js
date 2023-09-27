@@ -54,6 +54,14 @@ function addEventUebersicht() {
   })
 }
 
+function addEventSaveTodo(){
+  document.querySelectorAll('[data-id="todo"]').forEach((div, index) => {
+    div.addEventListener("blur", (e) => {
+      saveTODO(div, index)
+    })
+  })
+}
+
 function changeColor(){
   const background = document.getElementById("background").value
   const secondaryBackground = document.getElementById("secondaryBackground").value

@@ -13,15 +13,12 @@ function addTODO(){
     todo_div.id = ""
 }
 
-function saveTODO(){
-    let todolist = []
-    let todos = document.querySelectorAll('[data-id="todo"]')
-    todos.forEach((todo) => {
-        let todoValue = todo.value 
-        if(todoValue !== ""){
-            todolist.push(todoValue)
-        }
-    })
+function saveTODO(div, index){
+    let todolist = loadTODOList()
+    let todoValue = div.value 
+    if(todoValue !== ""){
+        todolist[index-1] = todoValue
+    }
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
     renderTodoList()
 }
