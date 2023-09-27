@@ -43,7 +43,7 @@ header{
     align-items: center;
     font-size: var(--headerFontSize);
     font-weight: 800;
-    margin-bottom: .3em;
+    margin-bottom: .8em;
 }
 
 ::placeholder{
@@ -149,4 +149,8 @@ select{
 .overboxBox{
     justify-content: space-between;
     margin: 0;
+}
+
+.zurueckUebersicht{
+    font-size: var(--secondaryheaderFontSize);
 }
