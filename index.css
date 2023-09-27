@@ -150,3 +150,7 @@ select{
     justify-content: space-between;
     margin: 0;
 }
+
+.addTodo{
+    margin-left: 1.5em;
+}

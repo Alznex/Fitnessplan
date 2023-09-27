@@ -9,7 +9,7 @@ function loadTODOList() {
 }
 
 function addTODO(){
-    let todo_div = appendTemplate("todo-template", "todolist")
+    let todo_div = appendTemplate("todoAdd-template", "todolist")
     todo_div.id = ""
 }
 
