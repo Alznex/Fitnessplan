@@ -1,8 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const todoList = loadTODOList()
-    changeBackgroundColor()
-})
-
 function loadTODOList() {
     const todoListString = localStorage.getItem("alle_todos");
     return todoListString ? JSON.parse(todoListString) : [];
@@ -17,7 +12,7 @@ function saveTODO(div, index){
     let todolist = loadTODOList()
     let todoValue = div.value 
     if(todoValue !== ""){
-        todolist[index-1] = todoValue
+        todolist[index-2] = todoValue
     }
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
     renderTodoList()
@@ -38,7 +33,9 @@ function changeBackgroundColor() {
 
     let durchschnite = done_per_day / todo_per_day
     let todo_div = document.getElementById("todo")
-    if (durchschnite < 0.4){
+    if(todo_per_day === 0){
+        todo_div.style.backgroundColor = "#2d2d2d"
+    }else if (durchschnite < 0.4){
         todo_div.style.backgroundColor = "#800020"
     } else if (durchschnite < 0.8 && durchschnite >0.3){
         todo_div.style.backgroundColor = "#2d2d2d"

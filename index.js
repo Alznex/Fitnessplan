@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   addEventSettings()
+  addEventSaveTodo()
 
   //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
   eventlsitener("click", "homepage", show, "home", renderStart)
@@ -55,10 +56,9 @@ function addEventUebersicht() {
 }
 
 function addEventSaveTodo(){
-  document.querySelectorAll('[data-id="todo"]').forEach((div, index) => {
-    div.addEventListener("blur", (e) => {
-      saveTODO(div, index)
-    })
+  let div = document.querySelectorAll('[data-id="todo"]')
+  div.forEach((div, index) => {
+    div.addEventListener("blur", (e) => saveTODO(div, index))
   })
 }
 

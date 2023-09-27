@@ -4,6 +4,8 @@ function renderTodoList(){
 
     if (todolist === null || todolist === undefined || todolist.length === 0) {
         addTODO()
+        addEventSaveTodo()
+        changeBackgroundColor()
         return
     }
 
@@ -18,6 +20,7 @@ function renderTodoList(){
     addTODO()
     addEventSaveTodo()
     addEventTodochecker()
+    changeBackgroundColor()
 }
 
 function hatUebung(wochentag) { return wochentag.uebungen.length > 0 }
