@@ -10,10 +10,15 @@ function renderTodoList(){
     todolist.forEach((todo, index) => {
         const todo_div = appendTemplate("todo-template", "todolist")
         setInputElementValue(todo_div, "todo", todo)
-        todo_div.id = todo;
+        todo_div.id = todo
+
+        let todoInput = todo_div.querySelector('[data-id="todo"]')
+        todoInput.addEventListener('blur', () => saveTODO())
+
         let deleteButton = todo_div.querySelector(".svgDelet")
         deleteButton.addEventListener('click', () => deletTODO(index))
     })
+    addTODO()
     addEventTodochecker()
 }
 
@@ -24,12 +29,14 @@ function renderStart() {
     for (let wochentag of alle_wochentage) {
         date = berechneWochentag()
         if (wochentag.tag == date){
-            if (!hatUebung(wochentag)) continue
             let wochentag_div = appendTemplate("wochentag-template", "aktullerTag")
             let uebungenTarget = wochentag_div.querySelector("#uebungen")
             uebungenTarget.id = "uebungenHeute"
             setDataElementValue(wochentag_div, "wochentag", "")
             wochentag_div.id = "Heute"
+            if (!hatUebung(wochentag)){
+                setDataElementValue(wochentag_div, "leer", "Kein Training Heute?")
+            }
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
                 let uebung_id = wochentag.uebungen[index]
                 let uebung = alle_uebungen[uebung_id]

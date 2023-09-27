@@ -14,11 +14,11 @@ function addTODO(){
 }
 
 function saveTODO(){
-    let todolist = loadTODOList()
+    let todolist = []
     let todos = document.querySelectorAll('[data-id="todo"]')
     todos.forEach((todo) => {
         let todoValue = todo.value 
-        if(todoValue !== "" && !todolist.includes(todoValue)){
+        if(todoValue !== ""){
             todolist.push(todoValue)
         }
     })

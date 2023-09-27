@@ -27,7 +27,7 @@
     <div class="templates">
         <div id="wochentag-template">
             <div class="boxHeader" data-id="wochentag">Wochentag</div>
-            <div id="uebungen" class="boxDarkGray"></div>
+            <div id="uebungen" class="boxDarkGray" data-id="leer"></div>
         </div>
         <div id="uebung-row-template" class="uebung" draggable="true">
                 <div class="uebungName" data-id="Name">Name</div>
@@ -37,7 +37,7 @@
         </div>
         <div id="todo-template" class="alignItems">
             <input class="todochecker" type="checkbox" name="work">
-            <input data-id="todo" placeholder="Name">
+            <input data-id="todo" placeholder=" +Neuer Todo">
             <svg class="svgDelet" viewBox="0 0 2048 2048" focusable="false"><path d="M1792 384h-128v1472q0 40-15 75t-41 61-61 41-75 15H448q-40 0-75-15t-61-41-41-61-15-75V384H128V256h512V128q0-27 10-50t27-40 41-28 50-10h384q27 0 50 10t40 27 28 41 10 50v128h512v128zM768 256h384V128H768v128zm768 128H384v1472q0 26 19 45t45 19h1024q26 0 45-19t19-45V384zM768 1664H640V640h128v1024zm256 0H896V640h128v1024zm256 0h-128V640h128v1024z"></path></svg>
         </div>
     </div>
@@ -50,10 +50,6 @@
             <div class="boxHeader">Todo</div>
             <div id="todo" class="boxDarkGray">
                 <div id="todolist"></div>
-                <div class="alignItems">
-                    <button id="todoSave" class="button speichern">Speichern</button>
-                    <svg id="hinzufuegenTODO" class="todo_add button" viewBox="0 0 2048 2048" focusable="false"><path d="M0 256h2048v128H0V256zm0 640V768h2048v128H0zm0 512v-128h1280v128H0zm0 512v-128h1280v128H0zm1790-640v256h256v128h-256v256h-128v-256h-256v-128h256v-256h128z"></path></svg>
-                </div>
             </div>
             <div class="alignItems overboxBox">
                 <div class="boxHeader">Heute</div>

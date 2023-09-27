@@ -11,9 +11,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   eventlsitener("click", "hinzufuegenUebung", show, "uebung", clearInput)
   eventlsitener("click", "uebungSpeichern", show, "ShownWochentage", save)
 
-  eventlsitener("click", "hinzufuegenTODO", addTODO)
-  eventlsitener("click", "todoSave", saveTODO)
-
   document.getElementById("loeschen").addEventListener("click", (e) => {
     let uebungen_loeschen = document.getElementById("ID")
     loeschen(uebungen_loeschen.value)
@@ -28,16 +25,16 @@ function addEventUebung() {
         let div_id = div.id
         bearbeiten(div_id)
       }
-    });
-  });
+    })
+  })
 }
 
 function addEventTodochecker() {
   document.querySelectorAll(".todochecker").forEach((div) => {
     div.addEventListener("click", (e) => {
       changeBackgroundColor()
-    });
-  });
+    })
+  })
 }
 
 function addEventSettings() {
@@ -45,15 +42,16 @@ function addEventSettings() {
     div.addEventListener("click", (e) => {
       show("settings")
       addEventUebersicht()
-    });
-  });
+    })
+  })
 }
 function addEventUebersicht() {
   document.querySelectorAll(".zurueckUebersicht").forEach((div) => {
     div.addEventListener("click", (e) => {
       show("home")
-    });
-  });
+      renderStart()
+    })
+  })
 }
 
 function changeColor(){
