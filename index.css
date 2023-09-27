@@ -33,7 +33,7 @@ html{
 body{
     background-color: var(--background);
     color: #FFFFFF;
-    margin: 2rem;
+    margin: 1.5rem;
     cursor: default;
 }
 
@@ -152,5 +152,6 @@ select{
 }
 
 .zurueckUebersicht{
+    padding: 0;
     font-size: var(--secondaryheaderFontSize);
 }

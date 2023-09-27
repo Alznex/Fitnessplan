@@ -36,7 +36,7 @@ function renderStart() {
             setDataElementValue(wochentag_div, "wochentag", "")
             wochentag_div.id = "Heute"
             if (!hatUebung(wochentag)){
-                setDataElementValue(wochentag_div, "leer", "Kein Training Heute?")
+                setDataElementValue(wochentag_div, "leer", "No Bitches?")
             }
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
                 let uebung_id = wochentag.uebungen[index]
