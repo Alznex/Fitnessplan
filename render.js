@@ -21,6 +21,7 @@ function renderTodoList(){
     addEventSaveTodo()
     addEventTodochecker()
     changeBackgroundColor()
+    renderStart()
 }
 
 function hatUebung(wochentag) { return wochentag.uebungen.length > 0 }
@@ -63,7 +64,6 @@ function renderStart() {
         }
     }
     addEventUebung()
-    renderTodoList()
 }
 
 function renderwochentage() {
