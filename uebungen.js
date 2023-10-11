@@ -1,3 +1,7 @@
+function deletWochentage(){
+  localStorage.removeItem("alle_wochentage")
+}
+
 const wochentag_nummern = {
   "Montag": 0,
   "Dienstag": 1,
