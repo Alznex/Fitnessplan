@@ -132,90 +132,11 @@
                 <input id="gewicht" type="text" value="10">
             </div>
         </div>
-    </div>
-    <div id="uebung" class="templates uebungHeader">
-        <div class="boxDarkGray uebungErstellen">
-            <input id="uebungname" class="normal_input" placeholder=" Name" name="Name"/>   
-
-            <select id="koerperteil" name="koerperteil">
-                <option value="none" selected disabled hidden>Körperteil</option>
-                <option value="Arme">Arme</option>
-                <option value="Bauch">Bauch</option>
-                <option value="Beine">Beine</option>
-                <option value="Brust">Brust</option>
-                <option value="Rücken">Rücken</option>
-            </select>
-
-            <details class="multiChecklist">
-                <summary>Wochentage</summary>
-                <div class="alignItems">
-                    <input id="montag" class="wochentage-selector" type="checkbox" name="wochentag" value="Montag">
-                    <label for="montag">Montag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="dienstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Dienstag">
-                    <label for="dienstag">Dienstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="mittwoch" class="wochentage-selector" type="checkbox" name="wochentag" value="Mittwoch">
-                    <label for="mittwoch">Mittwoch</label>
-                </div>
-                <div class="alignItems">
-                    <input id="donnerstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Donnerstag">
-                    <label for="donnerstag">Donnerstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="freitag" class="wochentage-selector" type="checkbox" name="wochentag" value="Freitag">
-                    <label for="freitag">Freitag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="samstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Samstag">
-                    <label for="samstag">Samstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="sonntag" class="wochentage-selector"  type="checkbox" name="wochentag" value="Sonntag">
-                    <label for="sonntag">Sonntag</label>
-                </div>
-            </details>
-            
-            <div class="inputtext">
-                <span>Sets:</span>
-                <input id="uebungsets" class="normal_input" type="text" name="Sets"/>
-
-                <span>Reps:</span>
-                <input id="uebungreps" class="normal_input" type="text" name="Reps"/>
-
-                <span>Gewicht:</span>
-                <div class="grid2collumns">
-                    <input id="uebunggewicht" class="normal_input" type="text" name="Gewicht"/>
-                    <span>kg</span>
-                </div>
-
-                <span>Info:</span>
-                <input id="uebunginfo" class="normal_input" name="Info">
-            </div>
-
-            <input id="ID" class="normal_input templates" name="ID">
-
-            <div class="alignItems">
-                <div id="uebungSpeichern" class="button speichern">Speichern</div>
-                <div id="loeschen" class="button loeschen" >Löschen</div>
+        <div class="boxDarkGray">
+            <div class="boxHeader">Daten Löschen</div>
+            <div class="alignItems"> 
+                <button onclick="deletWochentage()">Lösche Wochentage Anordnung</button>
             </div>
         </div>
-    </div>
-    <div id="goal" class="templates goalErstellen">
-        <div class="goalErstellen boxDarkGray">
-            <div>
-                <input placeholder=" Name" name="Name"/>   
-                <div>
-                    <span>Ziel:</span>
-                    <input name="maxValue">
-                </div>
-                <div>
-                    <span>Satus:</span>
-                    <input name="currentVAlue">
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>    
 </body>    

@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   renderwochentage()
   addEventSettings()
+  renderTodoList()
   addEventSaveTodo()
 
   //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
