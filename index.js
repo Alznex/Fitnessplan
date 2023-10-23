@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   renderStart()
   renderwochentage()
   addEventSettings()
-  renderTodoList()
   addEventSaveTodo()
 
   //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
@@ -15,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   eventlsitener("click", "uebungSpeichern",save)
   
   eventlsitener("click", "uebungSuche", renderAlleUebungen)
+
+  document.getElementById("goalAdd").addEventListener("click", (e) =>{
+    createGoal("Push Ups", 30, 100)
+  })
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
     let uebungen_loeschen = document.getElementById("ID")
