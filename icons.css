@@ -1,8 +1,8 @@
 /* Hinzufüegen Übung Button*/
 .svgAdd{
     position: fixed;
-    bottom: 3rem;
-    right: 3rem;
+    bottom: -17rem;
+    right: 0rem;
     height: 4rem;
     fill: #00aba9; 
 }

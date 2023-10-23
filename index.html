@@ -10,6 +10,7 @@
     <script src="todo.js" lang="text/javascript"></script>
     <script src="function.js" lang="text/javascript"></script>
     <script src="render.js" lang="text/javascript"></script>
+    <script src="ziele.js" lang="text/javascript"></script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/Fitnessplan/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/Fitnessplan/favicon/favicon-32x32.png">
@@ -43,9 +44,13 @@
         <div id="todoAdd-template" class="alignItems">
             <input data-id="todo" placeholder=" +Neuer Todo">
         </div>
-        
+        <div id="goals-template" class="goals">
+                <div class="goalsfirst">Ziel</div>
+                <div class="goalslast">0</div>
+                <input class="goalslider" type="range" min="0" max="100" value="40">
+        </div>
     </div>
-    <div id="home" class="content active">
+    <div id="home" class="content ">
         <header>
             <div id="homepage">Übersicht</div> 
             <svg class="svgSettings" viewBox="0 0 2048 2048" focusable="false"><path d="M1783 988v18q0 9 1 18v18q0 9-1 18l259 161-159 383-297-68q-24 26-50 50l68 297-383 159-161-259h-18q-9 0-18 1h-18q-9 0-18-1l-161 259-383-159 68-297q-26-24-50-50l-297 68L6 1221l259-161v-18q0-9-1-18v-18q0-9 1-18L6 827l159-383 297 68q24-26 50-50l-68-297L827 6l161 259h18q9 0 18-1h18q9 0 18 1L1221 6l383 159-68 297q26 24 50 50l297-68 159 383-259 161zm-117 130q2-24 4-47t2-48q0-23-2-47t-4-47l236-147-86-208-271 63q-31-38-63-70t-71-64l63-271-208-86-148 236q-23-2-47-4t-47-2q-24 0-47 2t-48 4L782 146l-208 86 63 271q-38 31-70 63t-64 71l-271-63-86 208 236 148q-2 24-4 47t-2 48q0 23 2 47t4 47l-236 147 86 208 271-63q31 38 63 70t71 64l-63 271 208 86 148-236q23 2 47 4t47 2q24 0 47-2t48-4l147 236 208-86-63-271q38-31 70-63t64-71l271 63 86-208-236-148zm-642-470q78 0 146 29t120 81 80 119 30 147q0 78-29 146t-81 120-119 80-147 30q-78 0-146-29t-120-81-80-119-30-147q0-78 29-146t81-120 119-80 147-30zm0 640q55 0 103-20t84-57 56-84 21-103q0-55-20-103t-57-84-84-56-103-21q-55 0-103 20t-84 57-56 84-21 103q0 55 20 103t57 84 84 56 103 21z"></path></svg>
@@ -61,93 +66,28 @@
             </div>
             <div id="aktullerTag">
             </div>
+            <div class="boxHeader">Ziele</div>
+            <div id="ziele" class="goalList">
+                <div id="goalAdd" class="goals">
+                    <div class="goalsfirst">Ziel</div>
+                    <div class="goalslast"> Hinzufügens +</div>
+                    <input class="goalslider" type="range" min="0" max="100" value="40">
+            </div>
+            </div>
         </div>
     </div>
-    <div id="ShownWochentage" class="content">
+    </div>
+    <div id="ShownWochentage" class="content active">
         <div class="alignItems zurueckUebersicht">
             <svg class="zurueck" viewBox="0 0 2048 2048" focusable="false"><path d="M1390 2023l-999-999 999-999 121 121-878 878 878 878-121 121z"></path></svg>
             <div class="link">Übersicht</div>
         </div>
         <header>
             <div>Übungen</div>
-            <svg class="svgSearch" viewBox="0 0 2048 2048" focusable="false"><path d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"></path></svg>
+            <svg id="uebungSuche" class="svgSearch" viewBox="0 0 2048 2048" focusable="false"><path d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"></path></svg>
         </header>
         <div id="wochentage"></div>
         <svg id="hinzufuegenUebung" class="svgAdd" viewBox="0 0 2048 2048" focusable="false"><path d="M960 0q132 0 255 34t229 97 194 150 150 194 97 230 35 255q0 132-34 255t-97 229-150 194-194 150-230 97-255 35q-132 0-255-34t-229-97-194-150-150-194-97-229T0 960q0-132 34-255t97-229 150-194 194-150 229-97T960 0zm576 896h-512V384H896v512H384v128h512v512h128v-512h512V896z"></path></svg>
-    </div>
-    <div id="uebung" class="content">
-        <div class="boxDarkGray uebungErstellen">
-            <input id="uebungname" class="normal_input" placeholder=" Name" name="Name"/>   
-
-            <select id="koerperteil" name="koerperteil">
-                <option value="none" selected disabled hidden>Körperteil</option>
-                <option value="Arme">Arme</option>
-                <option value="Bauch">Bauch</option>
-                <option value="Beine">Beine</option>
-                <option value="Brust">Brust</option>
-                <option value="Rücken">Rücken</option>
-            </select>
-
-            <div class="multiChecklist">
-                <div class="alignItems">
-                    <input id="montag" class="wochentage-selector" type="checkbox" name="wochentag" value="Montag">
-                    <label for="montag">Montag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="dienstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Dienstag">
-                    <label for="dienstag">Dienstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="mittwoch" class="wochentage-selector" type="checkbox" name="wochentag" value="Mittwoch">
-                    <label for="mittwoch">Mittwoch</label>
-                </div>
-                <div class="alignItems">
-                    <input id="donnerstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Donnerstag">
-                    <label for="donnerstag">Donnerstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="freitag" class="wochentage-selector" type="checkbox" name="wochentag" value="Freitag">
-                    <label for="freitag">Freitag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="samstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Samstag">
-                    <label for="samstag">Samstag</label>
-                </div>
-                <div class="alignItems">
-                    <input id="sonntag" class="wochentage-selector"  type="checkbox" name="wochentag" value="Sonntag">
-                    <label for="sonntag">Sonntag</label>
-                </div>
-            </div>
-
-            <div>
-                <span>Sets:</span>
-                <input id="uebungsets" class="normal_input" type="text" name="Sets"/>
-            </div>
-
-            <div>
-                <span>Reps:</span>
-                <input id="uebungreps" class="normal_input" type="text" name="Reps"/>
-            </div>
-
-            <div>
-                <span>Gewicht:</span>
-                <input id="uebunggewicht" class="normal_input" type="text" name="Gewicht"/>
-                <span>kg</span>
-            </div>
-
-            <div>
-                <span>Info:</span>
-                <input id="uebunginfo" class="normal_input" name="Info">
-            </div>
-
-
-            <input id="ID" class="normal_input templates" name="ID">
-
-            <div class="alignItems">
-                <div id="uebungSpeichern" class="button speichern">Speichern</div>
-                <div id="loeschen" class="button loeschen" >Löschen</div>
-            </div>
-        </div>
     </div>
     <div id="settings" class="content">
         <div class="alignItems zurueckUebersicht">
@@ -192,5 +132,90 @@
                 <input id="gewicht" type="text" value="10">
             </div>
         </div>
-    </div>    
+    </div>
+    <div id="uebung" class="templates uebungHeader">
+        <div class="boxDarkGray uebungErstellen">
+            <input id="uebungname" class="normal_input" placeholder=" Name" name="Name"/>   
+
+            <select id="koerperteil" name="koerperteil">
+                <option value="none" selected disabled hidden>Körperteil</option>
+                <option value="Arme">Arme</option>
+                <option value="Bauch">Bauch</option>
+                <option value="Beine">Beine</option>
+                <option value="Brust">Brust</option>
+                <option value="Rücken">Rücken</option>
+            </select>
+
+            <details class="multiChecklist">
+                <summary>Wochentage</summary>
+                <div class="alignItems">
+                    <input id="montag" class="wochentage-selector" type="checkbox" name="wochentag" value="Montag">
+                    <label for="montag">Montag</label>
+                </div>
+                <div class="alignItems">
+                    <input id="dienstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Dienstag">
+                    <label for="dienstag">Dienstag</label>
+                </div>
+                <div class="alignItems">
+                    <input id="mittwoch" class="wochentage-selector" type="checkbox" name="wochentag" value="Mittwoch">
+                    <label for="mittwoch">Mittwoch</label>
+                </div>
+                <div class="alignItems">
+                    <input id="donnerstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Donnerstag">
+                    <label for="donnerstag">Donnerstag</label>
+                </div>
+                <div class="alignItems">
+                    <input id="freitag" class="wochentage-selector" type="checkbox" name="wochentag" value="Freitag">
+                    <label for="freitag">Freitag</label>
+                </div>
+                <div class="alignItems">
+                    <input id="samstag" class="wochentage-selector" type="checkbox" name="wochentag" value="Samstag">
+                    <label for="samstag">Samstag</label>
+                </div>
+                <div class="alignItems">
+                    <input id="sonntag" class="wochentage-selector"  type="checkbox" name="wochentag" value="Sonntag">
+                    <label for="sonntag">Sonntag</label>
+                </div>
+            </details>
+            
+            <div class="inputtext">
+                <span>Sets:</span>
+                <input id="uebungsets" class="normal_input" type="text" name="Sets"/>
+
+                <span>Reps:</span>
+                <input id="uebungreps" class="normal_input" type="text" name="Reps"/>
+
+                <span>Gewicht:</span>
+                <div class="grid2collumns">
+                    <input id="uebunggewicht" class="normal_input" type="text" name="Gewicht"/>
+                    <span>kg</span>
+                </div>
+
+                <span>Info:</span>
+                <input id="uebunginfo" class="normal_input" name="Info">
+            </div>
+
+            <input id="ID" class="normal_input templates" name="ID">
+
+            <div class="alignItems">
+                <div id="uebungSpeichern" class="button speichern">Speichern</div>
+                <div id="loeschen" class="button loeschen" >Löschen</div>
+            </div>
+        </div>
+    </div>
+    <div id="goal" class="templates goalErstellen">
+        <div class="goalErstellen boxDarkGray">
+            <div>
+                <input placeholder=" Name" name="Name"/>   
+                <div>
+                    <span>Ziel:</span>
+                    <input name="maxValue">
+                </div>
+                <div>
+                    <span>Satus:</span>
+                    <input name="currentVAlue">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>    

@@ -17,7 +17,6 @@ const alle_wochentage_empty = [
   { tag: "Freitag", uebungen: []},
   { tag: "Samstag", uebungen: []},
   { tag: "Sonntag", uebungen: []},
-  { tag: "keiner", uebungen: []}
 ]
 
 let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || {}
@@ -26,13 +25,9 @@ let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || all
 if (Object.keys(alle_uebungen).length > 0) {
   for (let uebung_id in alle_uebungen) {
     let uebung = alle_uebungen[uebung_id];
-    if (uebung.Wochentag.length === 0) {
-      addToWochentage(alle_wochentage, wochentag_nummern["keiner"], uebung_id)
-    } else {
-      for (let wochentag of uebung.Wochentag) {
+    for (let wochentag of uebung.Wochentag) {
         addToWochentage(alle_wochentage, wochentag_nummern[wochentag], uebung_id);
-      }
-    }
+    } 
   }
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
 }
@@ -96,6 +91,9 @@ function save() {
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
 
   renderwochentage()
+  renderStart()
+
+  removeAbsolut("uebung")
 }
 
 function loeschen(uebung) {
@@ -104,4 +102,6 @@ function loeschen(uebung) {
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen))
   localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
   renderwochentage()
+  renderStart()
+  removeAbsolut("uebung")
 }

@@ -8,6 +8,16 @@ function show(name) {
       }
     })
 }
+
+function addAbsolut(targetId){
+  let divElement = document.getElementById(targetId)
+  divElement.classList.add("overlay")
+}
+
+function removeAbsolut(targetId){
+  let divElement = document.getElementById(targetId)
+  divElement.classList.remove("overlay")
+}
   
 function setDataElementValue(root, id, value) {
   let element = root.querySelector('[data-id="' + id + '"]')

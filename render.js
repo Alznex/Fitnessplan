@@ -36,7 +36,7 @@ function renderStart() {
             setDataElementValue(wochentag_div, "wochentag", "")
             wochentag_div.id = "Heute"
             if (!hatUebung(wochentag)){
-                setDataElementValue(wochentag_div, "leer", "No Bitches?")
+                setDataElementValue(wochentag_div, "leer", "Kein Gym?")
             }
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
                 let uebung_id = wochentag.uebungen[index]
@@ -114,13 +114,38 @@ function renderwochentage() {
     addEventUebersicht()
 }
 
+function renderAlleUebungen(){
+    document.getElementById("wochentage").innerHTML = ""
+    for(let uebung in alle_uebungen){
+        let uebung_div = appendTemplate("uebung-row-template", "wochentage")
+        for (const [key, value] of Object.entries(alle_uebungen[uebung])) {
+            if (key == "ID") {
+                uebung_div.id = value;
+            }else if (key == "Gewicht") {
+            let value_gewicht = value + " kg"
+            setDataElementValue(uebung_div, key, value_gewicht)
+            } else if (key == "Sets") {
+            let value_sets = value + " Sets"
+            setDataElementValue(uebung_div, key, value_sets)
+            } else if (key == "Reps") {
+            let value_reps = value + " Reps"
+            setDataElementValue(uebung_div, key, value_reps)
+            } else {
+            setDataElementValue(uebung_div, key, value)
+            }
+        }
+    }
+    addEventUebung()
+}
+
 function bearbeiten(uebung_id) { 
     clearInput()
     let inputs = document.querySelectorAll(".normal_input")
     let checkboxes = document.querySelectorAll(".wochentage-selector")
     let selector = document.getElementById("koerperteil")
     let uebungen = alle_uebungen[uebung_id]
-    show("uebung")
+
+    addAbsolut("uebung")
 
     for (let input_id in inputs) {
         for (const [key, value] of Object.entries(uebungen)) {
