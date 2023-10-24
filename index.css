@@ -79,7 +79,7 @@ select{
     width: 105%;
     height:fit-content;
     left: -1em;
-    bottom: 0em;
+    bottom: -2.6em;
     right: 0;
     border-radius: .8em;
     z-index: 999;
@@ -164,9 +164,8 @@ select{
 }
 
 .uebungHeader{
-    height:fit-content;
     font-size: 1.5em;
-    top: 5.7em;
+    bottom: -12.35em;
 }
 
 .normal_input{
@@ -239,6 +238,7 @@ select{
 }
 
 .goalErstellen{
+    left: -1.5em;
     gap: .5em;
     background-color: var(--absolutBackground);
     border-bottom-left-radius: 0%;
