@@ -1,10 +1,12 @@
 /* Hinzufüegen Übung Button*/
 .svgAdd{
-    position: fixed;
-    bottom: -17rem;
-    right: 0rem;
+    position: absolute;
+    top: 200%;
+    bottom: 0;
+    right: 0;
     height: 4rem;
     fill: #00aba9; 
+    z-index: 1;
 }
 
 /* Wochentag check */
