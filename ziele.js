@@ -1,23 +1,67 @@
+let alle_goals = JSON.parse(localStorage.getItem("alle_goals")) || {}
+
 function createGoal(name, currentValue, maxValue){
     let targetId = "ziele" 
     let goal = appendTemplate("goals-template", targetId)
+    goal.id = name
     let goalName = goal.querySelector(".goalsfirst")
     let input = goal.querySelector(".goalslider")
     let output = goal.querySelector(".goalslast")
+
     goalName.innerHTML = name
-    input.id = "slider"
     input.max = maxValue
     input.value = currentValue
-    output.id = "output"
-    slider(maxValue)
-}
+    output.innerHTML = currentValue + "/"+maxValue
 
-function slider(maxValue){
-    let slider = document.getElementById("slider")
-    let output = document.getElementById("output")
-    output.innerHTML = slider.value + "/"+maxValue
-
-    slider.oninput = function() {
+    input.oninput = function() {
         output.innerHTML = this.value + "/"+maxValue
     }
+}
+
+function addGoal(){
+    let div = appendTemplate("goals-template", "ziele")
+    div.id = "goalAdd"
+    let output = div.querySelector(".goalslast")
+    output.innerHTML = "+Hinzufügen"
+    eventlsitener("click", "goalAdd", addAbsolut, "goal", clearInputGoal)
+}
+
+function saveGoal(){
+    let goal = {}
+    let inputs = document.querySelectorAll("input.goal_input")
+    for (let i = 0; i < inputs.length; i++) {
+        let name = inputs[i].name
+        goal[name] = inputs[i].value
+    }
+    alle_goals[goal["Name"]] = goal
+    localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
+    renderGoals()
+}
+
+function deletGoal(goal){
+    delete alle_goals[goal]
+    removeFromAllWochentage(goal)
+    localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
+    renderGoals()
+}
+
+function bearbeitenGoals(goalName){
+    let inputs = document.querySelectorAll(".goal_input")
+    let goal = alle_goals[goalName]
+
+    for(let input in inputs){
+        if(inputs[input].name == "Name"){
+            inputs[input].value = goal.Name
+        }else if(inputs[input].name == "maxValue"){
+            inputs[input].value = goal.maxValue
+        }else if(inputs[input].name == "currentValue"){
+            inputs[input].value = goal.currentValue
+        }
+    }
+}
+
+function clearInputGoal(){
+    document.querySelectorAll(".goal_input").forEach((input) => {
+        input.value = ""
+    })
 }

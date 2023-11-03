@@ -15,8 +15,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
   
   eventlsitener("click", "uebungSuche", renderAlleUebungen)
 
-  document.getElementById("goalAdd").addEventListener("click", (e) =>{
-    createGoal("Push Ups", 30, 100)
+  eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
+
+  document.getElementById("goalDelet").addEventListener("click", (e) => {
+    let goal = document.querySelector(".goal_input[name='Name']")
+    let goalName = goal.value
+    removeAbsolut("goal")
+    deletGoal(goalName)
   })
 
   document.getElementById("loeschen").addEventListener("click", (e) => {
@@ -66,6 +71,15 @@ function addEventSaveTodo(){
   let div = document.querySelectorAll('[data-id="todo"]')
   div.forEach((div, index) => {
     div.addEventListener("blur", (e) => saveTODO(div, index))
+  })
+}
+
+function addEventGoals(){
+  document.querySelectorAll(".goals").forEach((div) => {
+    div.addEventListener("click", (e) => {
+      addAbsolut("goal")
+      bearbeitenGoals(div.id)
+    })
   })
 }
 

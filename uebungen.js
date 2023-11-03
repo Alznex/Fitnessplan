@@ -109,3 +109,67 @@ function loeschen(uebung) {
   renderStart()
   removeAbsolut("uebung")
 }
+
+function bearbeiten(uebung_id) { 
+  clearInput()
+  let inputs = document.querySelectorAll(".normal_input")
+  let checkboxes = document.querySelectorAll(".wochentage-selector")
+  let selector = document.getElementById("koerperteil")
+  let uebung = alle_uebungen[uebung_id]
+
+  addAbsolut("uebung")
+
+  for (let input_id in inputs) {
+      for (const [key, value] of Object.entries(uebung)) {
+          if (input_id == 0 && key == "Name") {
+              inputs[input_id].value = value
+          } else if (input_id == 1 && key == "Sets") {
+              inputs[input_id].value = value
+          } else if (input_id == 2 && key == "Reps") {
+              inputs[input_id].value = value
+          } else if (input_id == 3 && key == "Gewicht") {
+              inputs[input_id].value = value
+          } else if (input_id == 4 && key == "Info") {
+              inputs[input_id].value = value
+          } else if (input_id == 5 && key == "ID") {
+              inputs[input_id].value = value
+          }
+      }
+  }
+  checkboxes.forEach((checkbox) => {
+      if (uebung.Wochentag.includes(checkbox.value)) {
+          checkbox.checked = true;
+      }
+  })
+  for (let selector_values of selector) {
+      if (alle_uebungen[uebung_id].koerperteil == selector_values.label) {
+          if (uebung.koerperteil != "Körperteil"){
+          selector.value = uebung.koerperteil
+          }
+      }
+  }
+}
+
+function clearInput() {
+  let inputs = document.querySelectorAll(".normal_input")
+  let checkboxes = document.querySelectorAll(".wochentage-selector")
+  let selector = document.getElementById("koerperteil")
+
+  inputs.forEach((input, inputId) => {
+      if (inputId === 1) {
+          input.value = "3"
+      } else if (inputId === 2) {
+          input.value = "15"
+      } else if (inputId === 3) {
+          input.value = "10"
+      } else {
+          input.value = ""
+      }
+  })
+  
+  checkboxes.forEach((checkbox) => {
+      checkbox.checked = false
+  })
+  
+  selector.value = "none"
+}

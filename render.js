@@ -23,6 +23,17 @@ function renderTodoList(){
     changeBackgroundColor()
 }
 
+function renderGoals(){
+    let goals = alle_goals
+    let ElementId = "ziele"
+    document.getElementById(ElementId).innerHTML = ""
+    for(let goale in goals){
+        createGoal(goals[goale].Name, goals[goale].currentValue, goals[goale].maxValue,)
+    }
+    addEventGoals()
+    addGoal()
+}
+
 function hatUebung(wochentag) { return wochentag.uebungen.length > 0 }
 
 function renderStart() {
@@ -36,7 +47,7 @@ function renderStart() {
             setDataElementValue(wochentag_div, "wochentag", "")
             wochentag_div.id = "Heute"
             if (!hatUebung(wochentag)){
-                setDataElementValue(wochentag_div, "leer", "Kein Gym?")
+                setDataElementValue(wochentag_div, "leer", "No Gym today?")
             }
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
                 let uebung_id = wochentag.uebungen[index]
@@ -64,6 +75,7 @@ function renderStart() {
     }
     addEventUebung()
     renderTodoList()
+    renderGoals()
 }
 
 function renderwochentage() {
@@ -136,68 +148,4 @@ function renderAlleUebungen(){
         }
     }
     addEventUebung()
-}
-
-function bearbeiten(uebung_id) { 
-    clearInput()
-    let inputs = document.querySelectorAll(".normal_input")
-    let checkboxes = document.querySelectorAll(".wochentage-selector")
-    let selector = document.getElementById("koerperteil")
-    let uebungen = alle_uebungen[uebung_id]
-
-    addAbsolut("uebung")
-
-    for (let input_id in inputs) {
-        for (const [key, value] of Object.entries(uebungen)) {
-            if (input_id == 0 && key == "Name") {
-                inputs[input_id].value = value
-            } else if (input_id == 1 && key == "Sets") {
-                inputs[input_id].value = value
-            } else if (input_id == 2 && key == "Reps") {
-                inputs[input_id].value = value
-            } else if (input_id == 3 && key == "Gewicht") {
-                inputs[input_id].value = value
-            } else if (input_id == 4 && key == "Info") {
-                inputs[input_id].value = value
-            } else if (input_id == 5 && key == "ID") {
-                inputs[input_id].value = value
-            }
-        }
-    }
-    checkboxes.forEach((checkbox) => {
-        if (uebungen.Wochentag.includes(checkbox.value)) {
-            checkbox.checked = true;
-        }
-    })
-    for (let selector_values of selector) {
-        if (alle_uebungen[uebung_id].koerperteil == selector_values.label) {
-            if (uebungen.koerperteil != "Körperteil"){
-            selector.value = uebungen.koerperteil
-            }
-        }
-    }
-}
-
-function clearInput() {
-    let inputs = document.querySelectorAll(".normal_input")
-    let checkboxes = document.querySelectorAll(".wochentage-selector")
-    let selector = document.getElementById("koerperteil")
-
-    inputs.forEach((input, inputId) => {
-        if (inputId === 1) {
-            input.value = "3"
-        } else if (inputId === 2) {
-            input.value = "15"
-        } else if (inputId === 3) {
-            input.value = "10"
-        } else {
-            input.value = ""
-        }
-    })
-    
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = false
-    })
-    
-    selector.value = "none"
 }
