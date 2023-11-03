@@ -46,10 +46,11 @@ function changeBackgroundColor() {
 
 function saveTodoFinsihed(){
     let finishedToDo = []
+    let date = getDate()
     let divsFinished = document.querySelectorAll('input[name="work"]:checked')
     divsFinished.forEach(div => {
         let todo = div.parentElement.id
         finishedToDo.push(todo) 
     });
-    localStorage.setItem("finishedToDo", JSON.stringify(finishedToDo))
+    localStorage.setItem(date, JSON.stringify(finishedToDo))
 }

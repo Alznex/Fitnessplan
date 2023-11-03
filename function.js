@@ -36,7 +36,7 @@ function appendTemplate(templateId, targetID) {
 }
 
 function berechneWochentag() {
-    var jetzt = new Date(),
+    let jetzt = new Date(),
         tagZahl = jetzt.getDay(),
         wochentag = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag' ]
     text = wochentag[tagZahl]
@@ -68,11 +68,6 @@ function removeItemAll(arr, value) {
     return arr
 }
 
-function time(){
-  var current_time = new Date()
-  var current_day = current_time.getDay()
-}
-
 function eventlsitener(type, id, funktion1, funktionVar, funktion2, funktion3){
   document.getElementById(id).addEventListener(type, (e) => {
     funktion1(funktionVar)
@@ -82,4 +77,10 @@ function eventlsitener(type, id, funktion1, funktionVar, funktion2, funktion3){
       funktion3()
     }
   })
+}
+
+function getDate(){
+  let currentTime = new Date()
+  let currentDate = currentTime.getDate()+" "+currentTime.getMonth()+" "+currentTime.getFullYear()
+  return currentDate
 }
