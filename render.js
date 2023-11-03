@@ -1,10 +1,10 @@
 function renderTodoList(){
+    document.getElementById("todolist").innerHTML = ""
     let Date = getDate()
     let finishedToDo = JSON.parse(localStorage.getItem(Date)) || []
-    let todolist = loadTODOList()
-    document.getElementById("todolist").innerHTML = ""
+    let todolist = loadFromLocalStorage("alle_todos", [])
 
-    if (todolist === null || todolist === undefined || todolist.length === 0) {
+    if (!todolist || todolist.length === 0) {
         addTODO()
         addEventSaveTodo()
         changeBackgroundColor()
@@ -12,14 +12,14 @@ function renderTodoList(){
     }
 
     todolist.forEach((todo, index) => {
-        const todo_div = appendTemplate("todo-template", "todolist")
-        setInputElementValue(todo_div, "todo", todo)
-        todo_div.id = todo
-        if(finishedToDo.indexOf(todo) >= 0){
-            todo_div.querySelector(".todochecker").checked = true
+        let todoDiv = appendTemplate("todo-template", "todolist")
+        setInputElementValue(todoDiv, "todo", todo)
+        todoDiv.id = todo
+        if(finishedToDo.includes(todo)){
+            todoDiv.querySelector(".todochecker").checked = true
         }
 
-        let deleteButton = todo_div.querySelector(".svgDelet")
+        let deleteButton = todoDiv.querySelector(".svgDelet")
         deleteButton.addEventListener('click', () => deletTODO(index))
     })
     addTODO()
@@ -32,47 +32,45 @@ function renderGoals(){
     let goals = alle_goals
     let ElementId = "ziele"
     document.getElementById(ElementId).innerHTML = ""
-    for(let goale in goals){
-        createGoal(goals[goale].Name, goals[goale].currentValue, goals[goale].maxValue,)
+    for(let goal in goals){
+        createGoal(goals[goal].Name, goals[goal].currentValue, goals[goal].maxValue,)
     }
     addEventGoals()
     addGoal()
 }
 
-function hatUebung(wochentag) { return wochentag.uebungen.length > 0 }
+function hatUebung(wochentag){ return wochentag.uebungen.length > 0 }
 
 function renderStart() {
     document.getElementById("aktullerTag").innerHTML = ""
-    for (let wochentag of alle_wochentage) {
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    let wochentage = loadFromLocalStorage("alle-alle_wochentage", alle_wochentage_empty)
+    for (let wochentag of wochentage) {
         date = berechneWochentag()
         if (wochentag.tag == date){
-            let wochentag_div = appendTemplate("wochentag-template", "aktullerTag")
-            let uebungenTarget = wochentag_div.querySelector("#uebungen")
+            let wochentagDiv = appendTemplate("wochentag-template", "aktullerTag")
+            let uebungenTarget = wochentagDiv.querySelector("#uebungen")
             uebungenTarget.id = "uebungenHeute"
-            setDataElementValue(wochentag_div, "wochentag", "")
-            wochentag_div.id = "Heute"
+            setDataElementValue(wochentagDiv, "wochentag", "")
+            wochentagDiv.id = "Heute"
             if (!hatUebung(wochentag)){
-                setDataElementValue(wochentag_div, "leer", "No Gym today?")
+                setDataElementValue(wochentagDiv, "leer", "No Gym today?")
             }
             for (let index = 0 ; index < wochentag.uebungen.length; index++) {
-                let uebung_id = wochentag.uebungen[index]
-                let uebung = alle_uebungen[uebung_id]
-                
-                let uebung_div = appendTemplate("uebung-row-template", "uebungenHeute")
+                let uebungId = wochentag.uebungen[index]
+                let uebung = uebungen[uebungId]
+                let uebungDiv = appendTemplate("uebung-row-template", "uebungenHeute")
                 for (const [key, value] of Object.entries(uebung)) {
                     if (key == "ID") {
-                        uebung_div.id = value;
+                        uebungDiv.id = value;
                     }else if (key == "Gewicht") {
-                    let value_gewicht = value + " kg"
-                    setDataElementValue(uebung_div, key, value_gewicht)
+                        setDataElementValue(uebungDiv, key, value+" kg")
                     } else if (key == "Sets") {
-                    let value_sets = value + " Sets"
-                    setDataElementValue(uebung_div, key, value_sets)
+                        setDataElementValue(uebungDiv, key, value+" Sets")
                     } else if (key == "Reps") {
-                    let value_reps = value + " Reps"
-                    setDataElementValue(uebung_div, key, value_reps)
+                        setDataElementValue(uebungDiv, key, value+" Reps")
                     } else {
-                    setDataElementValue(uebung_div, key, value)
+                        setDataElementValue(uebungDiv, key, value)
                     }
                 }
             }
@@ -85,46 +83,43 @@ function renderStart() {
 
 function renderwochentage() {
     document.getElementById("wochentage").innerHTML = ""
-    for (let wochentag of alle_wochentage) {
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+    for (let wochentag of wochentage) {
         if (!hatUebung(wochentag)) continue
-        let wochentag_div = appendTemplate("wochentag-template", "wochentage")
-        let uebungenTarget = wochentag_div.querySelector("#uebungen")
+        let wochentagDiv = appendTemplate("wochentag-template", "wochentage")
+        let uebungenTarget = wochentagDiv.querySelector("#uebungen")
         uebungenTarget.id = "uebungen" + wochentag.tag
-        setDataElementValue(wochentag_div, "wochentag", wochentag.tag)
-        wochentag_div.id = wochentag.tag
+        setDataElementValue(wochentagDiv, "wochentag", wochentag.tag)
+        wochentagDiv.id = wochentag.tag
         for (let index = 0 ; index < wochentag.uebungen.length; index++) {
-            let uebung_id = wochentag.uebungen[index]
-            let uebung = alle_uebungen[uebung_id]
+            let uebungId = wochentag.uebungen[index]
+            let uebung = uebungen[uebungId]
             
-            let uebung_div = appendTemplate("uebung-row-template", "uebungen" + wochentag.tag)
-            uebung_div.dataset.index = index
+            let uebungDiv = appendTemplate("uebung-row-template", "uebungen" + wochentag.tag)
+            uebungDiv.dataset.index = index
             for (const [key, value] of Object.entries(uebung)) {
                 if (key == "ID") {
-                    uebung_div.id = value;
+                    uebungDiv.id = value;
                 }else if (key == "Gewicht") {
-                let value_gewicht = value + " kg"
-                setDataElementValue(uebung_div, key, value_gewicht)
+                    setDataElementValue(uebungDiv, key, value+" kg")
                 } else if (key == "Sets") {
-                let value_sets = value + " Sets"
-                setDataElementValue(uebung_div, key, value_sets)
+                    setDataElementValue(uebungDiv, key, value+" Sets")
                 } else if (key == "Reps") {
-                let value_reps = value + " Reps"
-                setDataElementValue(uebung_div, key, value_reps)
+                    setDataElementValue(uebungDiv, key, value+" Reps")
                 } else {
-                setDataElementValue(uebung_div, key, value)
+                    setDataElementValue(uebungDiv, key, value)
                 }
             }
-            uebung_div.addEventListener('dragstart', dragStart(index))
-            uebung_div.addEventListener('dragend', dragEnd(wochentag_nummern[wochentag.tag], index))
-        
-            uebung_div.addEventListener('dragover', dragOver(index))
-            uebung_div.addEventListener('dragenter', dragEnter(index))
-            uebung_div.addEventListener('dragleave', dragLeave(index))
-            uebung_div.addEventListener('drop', dragDrop(wochentag_nummern[wochentag.tag], index))
-        
-            uebung_div.addEventListener('touchstart', touchStart(index))
-            uebung_div.addEventListener('touchend', touchEnd(wochentag_nummern[wochentag.tag], index))
-            uebung_div.addEventListener('touchmove', touchMove)
+            uebungDiv.addEventListener('dragstart', dragStart(index))
+            uebungDiv.addEventListener('dragend', dragEnd(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('dragover', dragOver(index))
+            uebungDiv.addEventListener('dragenter', dragEnter(index))
+            uebungDiv.addEventListener('dragleave', dragLeave(index))
+            uebungDiv.addEventListener('drop', dragDrop(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('touchstart', touchStart(index))
+            uebungDiv.addEventListener('touchend', touchEnd(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('touchmove', touchMove)
         }
     }
     addEventUebung()
@@ -133,22 +128,20 @@ function renderwochentage() {
 
 function renderAlleUebungen(){
     document.getElementById("wochentage").innerHTML = ""
-    for(let uebung in alle_uebungen){
-        let uebung_div = appendTemplate("uebung-row-template", "wochentage")
-        for (const [key, value] of Object.entries(alle_uebungen[uebung])) {
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    for(let uebung in uebungen){
+        let uebungDiv = appendTemplate("uebung-row-template", "wochentage")
+        for (const [key, value] of Object.entries(uebungen[uebung])) {
             if (key == "ID") {
-                uebung_div.id = value;
+                uebungDiv.id = value;
             }else if (key == "Gewicht") {
-            let value_gewicht = value + " kg"
-            setDataElementValue(uebung_div, key, value_gewicht)
+                setDataElementValue(uebungDiv, key, value+" kg")
             } else if (key == "Sets") {
-            let value_sets = value + " Sets"
-            setDataElementValue(uebung_div, key, value_sets)
+                setDataElementValue(uebungDiv, key, value+" Sets")
             } else if (key == "Reps") {
-            let value_reps = value + " Reps"
-            setDataElementValue(uebung_div, key, value_reps)
+                setDataElementValue(uebungDiv, key, value+" Reps")
             } else {
-            setDataElementValue(uebung_div, key, value)
+                setDataElementValue(uebungDiv, key, value)
             }
         }
     }

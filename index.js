@@ -6,15 +6,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
     eventlsitener("click", "homepage", show, "home", renderStart)
-
     eventlsitener("click", "settingsSave" , changeColor,"" )
-
     eventlsitener("click", "showWochentage", show, "ShownWochentage", renderwochentage)
     eventlsitener("click", "hinzufuegenUebung", addAbsolut, "uebung", clearInput)
-    eventlsitener("click", "uebungSpeichern",save)
-    
+    eventlsitener("click", "uebungSpeichern",saveUebung)
     eventlsitener("click", "uebungSuche", renderAlleUebungen)
-
     eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
 
     document.getElementById("goalDelet").addEventListener("click", (e) => {
@@ -26,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("loeschen").addEventListener("click", (e) => {
         let uebungen_loeschen = document.getElementById("ID")
-        loeschen(uebungen_loeschen.value)
+        loeschenUebung(uebungen_loeschen.value)
         removeAbsolut("uebung")
     })
 })
@@ -36,11 +32,11 @@ function addEventUebung() {
         div.addEventListener("click", (e) => {
             if (div.classList.contains("uebung")) {
                 let div_id = div.id
-                bearbeiten(div_id)
+                bearbeitenUebung(div_id)
             }
         })
     })
-}
+} 
 
 function addEventTodochecker() {
     document.querySelectorAll(".todochecker").forEach((div) => {
@@ -69,8 +65,7 @@ function addEventUebersicht() {
 }
 
 function addEventSaveTodo(){
-    let div = document.querySelectorAll('[data-id="todo"]')
-    div.forEach((div, index) => {
+    let div = document.querySelectorAll('[data-id="todo"]').forEach((div, index) => {
         div.addEventListener("blur", (e) => saveTODO(div, index))
     })
 }
@@ -95,3 +90,7 @@ function changeColor(){
     document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
     document.documentElement.style.setProperty('--textColor', textColor)
 }
+
+function deletWochentage(){
+    localStorage.removeItem("alle_wochentage")
+} 

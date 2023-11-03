@@ -1,15 +1,10 @@
-function loadTODOList() {
-    const todoListString = localStorage.getItem("alle_todos");
-    return todoListString ? JSON.parse(todoListString) : [];
-}
-
 function addTODO(){
     let todo_div = appendTemplate("todoAdd-template", "todolist")
     todo_div.id = ""
 }
 
 function saveTODO(div, index){
-    let todolist = loadTODOList()
+    let todolist = loadFromLocalStorage("alle_todos", [])
     let todoValue = div.value 
     if(todoValue !== ""){
         todolist[index-2] = todoValue
@@ -19,14 +14,14 @@ function saveTODO(div, index){
 }
 
 function deletTODO(index){
-    let todolist = loadTODOList()
+    let todolist = loadFromLocalStorage("alle_todos", [])
     todolist.splice(index, 1)
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
     renderTodoList()
 }
 
 function changeBackgroundColor() {
-    todolist = loadTODOList()
+    todolist = loadFromLocalStorage("alle_todos", [])
     let todo_per_day = todolist.length
     let checked_div = document.querySelectorAll('input[name="work"]:checked')
     let done_per_day = checked_div.length

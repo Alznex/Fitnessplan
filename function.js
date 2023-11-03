@@ -84,3 +84,20 @@ function getDate(){
   let currentDate = currentTime.getDate()+" "+currentTime.getMonth()+" "+currentTime.getFullYear()
   return currentDate
 }
+
+function loadFromLocalStorage(key, defaultValue) {
+  try {
+      const value = JSON.parse(localStorage.getItem(key));
+      return value !== null ? value : defaultValue;
+  } catch (error) {
+      console.error(`Error loading ${key} from local storage:`, error);
+      return defaultValue;
+  }
+}
+
+function clearInput(id){
+  let element = document.getElementById(id)
+  element.querySelectorAll("input").forEach((input) => {
+      input.value = ""
+  })
+}

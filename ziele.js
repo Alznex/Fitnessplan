@@ -23,7 +23,10 @@ function addGoal(){
     div.id = "goalAdd"
     let output = div.querySelector(".goalslast")
     output.innerHTML = "+Hinzufügen"
-    eventlsitener("click", "goalAdd", addAbsolut, "goal", clearInputGoal)
+    div.addEventListener("click", () => {
+        addAbsolut("goal")
+        clearInput("goal")
+    })
 }
 
 function saveGoal(){
@@ -40,7 +43,6 @@ function saveGoal(){
 
 function deletGoal(goal){
     delete alle_goals[goal]
-    removeFromAllWochentage(goal)
     localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
     renderGoals()
 }
@@ -58,10 +60,4 @@ function bearbeitenGoals(goalName){
             inputs[input].value = goal.currentValue
         }
     }
-}
-
-function clearInputGoal(){
-    document.querySelectorAll(".goal_input").forEach((input) => {
-        input.value = ""
-    })
 }

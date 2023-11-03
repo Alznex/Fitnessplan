@@ -1,8 +1,4 @@
-function deletWochentage(){
-  localStorage.removeItem("alle_wochentage")
-}
-
-const wochentag_nummern = {
+const wochentagNummern = {
   "Montag": 0,
   "Dienstag": 1,
   "Mittwoch": 2,
@@ -12,7 +8,6 @@ const wochentag_nummern = {
   "Sonntag": 6,
   "keiner": 7
 }
-
 const alle_wochentage_empty = [
   { tag: "Montag", uebungen: []},
   { tag: "Dienstag", uebungen: []},
@@ -23,35 +18,10 @@ const alle_wochentage_empty = [
   { tag: "Sonntag", uebungen: []},
 ]
 
-let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || {}
-let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
-
-if (Object.keys(alle_uebungen).length > 0) {
-  for (let uebung_id in alle_uebungen) {
-    let uebung = alle_uebungen[uebung_id];
-    for (let wochentag of uebung.Wochentag) {
-        addToWochentage(alle_wochentage, wochentag_nummern[wochentag], uebung_id);
-    } 
-  }
-  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
-}
-
-function addToWochentage(wochentage, wochentagNum, uebung_id) {
-  if (!wochentage[wochentagNum].uebungen.includes(uebung_id)) {
-    wochentage[wochentagNum].uebungen.push(uebung_id);
-  }
-}
-
-function removeFromAllWochentage(uebungID) {
-  for (let wochentag of alle_wochentage) {
-    if(wochentag.uebungen.length >0){
-      removeItemAll(alle_wochentage[wochentag_nummern[wochentag.tag]].uebungen, uebungID)
-    }
-  }
-}
-
-function save() {
+function saveUebung() {
   let uebung = {}
+  let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+  let uebungen = loadFromLocalStorage("alle_uebungen", {})
   let inputs = document.querySelectorAll(".normal_input")
   let select_koerperteil = document.getElementById("koerperteil")
   let checkbox_wochentage = document.querySelectorAll('input[name="wochentag"]:checked')
@@ -83,16 +53,16 @@ function save() {
   })
   removeFromAllWochentage(uebung["ID"])
   for (let wochentag of uebung.Wochentag) {
-    let wochentagPushZiel = alle_wochentage[wochentag_nummern[wochentag]]
+    let wochentagPushZiel = wochentage[wochentagNummern[wochentag]]
     wochentagPushZiel.uebungen.push(uebung["ID"])
   }
 
   // Setze die Werte der Übung
-  alle_uebungen[uebung["ID"]] = uebung
+  uebungen[uebung["ID"]] = uebung
 
   // Speichere das Array im Local Storage
-  localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen))
-  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
+  localStorage.setItem("alle_uebungen", JSON.stringify(uebungen))
+  localStorage.setItem("alle_wochentage", JSON.stringify(wochentage))
 
   renderwochentage()
   renderStart()
@@ -100,7 +70,7 @@ function save() {
   removeAbsolut("uebung")
 }
 
-function loeschen(uebung) {
+function loeschenUebung(uebung) {
   delete alle_uebungen[uebung]
   removeFromAllWochentage(uebung)
   localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen))
@@ -110,12 +80,13 @@ function loeschen(uebung) {
   removeAbsolut("uebung")
 }
 
-function bearbeiten(uebung_id) { 
-  clearInput()
+function bearbeitenUebung(uebung_id) { 
+  clearInputUebungen()
+  let uebungen = loadFromLocalStorage("alle_uebungen", {})
   let inputs = document.querySelectorAll(".normal_input")
   let checkboxes = document.querySelectorAll(".wochentage-selector")
   let selector = document.getElementById("koerperteil")
-  let uebung = alle_uebungen[uebung_id]
+  let uebung = uebungen[uebung_id]
 
   addAbsolut("uebung")
 
@@ -141,8 +112,8 @@ function bearbeiten(uebung_id) {
           checkbox.checked = true;
       }
   })
-  for (let selector_values of selector) {
-      if (alle_uebungen[uebung_id].koerperteil == selector_values.label) {
+  for (let selectorValues of selector) {
+      if (uebungen[uebung_id].koerperteil == selectorValues.label) {
           if (uebung.koerperteil != "Körperteil"){
           selector.value = uebung.koerperteil
           }
@@ -150,7 +121,7 @@ function bearbeiten(uebung_id) {
   }
 }
 
-function clearInput() {
+function clearInputUebungen() {
   let inputs = document.querySelectorAll(".normal_input")
   let checkboxes = document.querySelectorAll(".wochentage-selector")
   let selector = document.getElementById("koerperteil")
@@ -172,4 +143,13 @@ function clearInput() {
   })
   
   selector.value = "none"
+}
+
+function removeFromAllWochentage(uebungID) {
+  let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+  for (let wochentag of wochentage) {
+    if(wochentag.uebungen.length >0){
+      removeItemAll(wochentage[wochentagNummern[wochentag.tag]].uebungen, uebungID)
+    }
+  }
 }
