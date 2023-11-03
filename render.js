@@ -1,5 +1,5 @@
 function renderTodoList(){
-    let finishedToDo = JSON.parse(localStorage.getItem("finishedToDo")) || {}
+    let finishedToDo = JSON.parse(localStorage.getItem("finishedToDo")) || []
     let todolist = loadTODOList()
     document.getElementById("todolist").innerHTML = ""
 
