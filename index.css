@@ -68,7 +68,7 @@ select{
     background-color: var(--secondaryBackground);
     color: var(--textColor);
     border-radius: .4em;
-    font-size: .95em;
+    font-size: 1.5rem;
 }
 
 .overlay{
@@ -162,13 +162,13 @@ select{
 }
 
 .uebungHeader{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     bottom: 0;
     z-index: 3;
 }
 
 .normal_input{
-    font-size: .95em;
+    font-size: 1.5rem;
     width: 95%;
 }
 
@@ -237,10 +237,15 @@ select{
 }
 
 .goalErstellen{
+    font-size: 1.5rem;
     gap: .5em;
     background-color: var(--absolutBackground);
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
+}
+
+.goal_input{
+    font-size: 1.5rem;
 }
 
 .inputtext{
