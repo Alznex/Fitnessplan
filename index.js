@@ -46,6 +46,7 @@ function addEventTodochecker() {
   document.querySelectorAll(".todochecker").forEach((div) => {
     div.addEventListener("click", (e) => {
       changeBackgroundColor()
+      saveTodoFinsihed()
     })
   })
 }

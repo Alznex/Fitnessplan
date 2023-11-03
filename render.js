@@ -1,4 +1,5 @@
 function renderTodoList(){
+    let finishedToDo = JSON.parse(localStorage.getItem("finishedToDo")) || {}
     let todolist = loadTODOList()
     document.getElementById("todolist").innerHTML = ""
 
@@ -13,6 +14,9 @@ function renderTodoList(){
         const todo_div = appendTemplate("todo-template", "todolist")
         setInputElementValue(todo_div, "todo", todo)
         todo_div.id = todo
+        if(finishedToDo.indexOf(todo) >= 0){
+            todo_div.querySelector(".todochecker").checked = true
+        }
 
         let deleteButton = todo_div.querySelector(".svgDelet")
         deleteButton.addEventListener('click', () => deletTODO(index))

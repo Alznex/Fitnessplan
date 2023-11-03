@@ -43,3 +43,13 @@ function changeBackgroundColor() {
         todo_div.style.backgroundColor = "#023020"
     }
 }
+
+function saveTodoFinsihed(){
+    let finishedToDo = []
+    let divsFinished = document.querySelectorAll('input[name="work"]:checked')
+    divsFinished.forEach(div => {
+        let todo = div.parentElement.id
+        finishedToDo.push(todo) 
+    });
+    localStorage.setItem("finishedToDo", JSON.stringify(finishedToDo))
+}
