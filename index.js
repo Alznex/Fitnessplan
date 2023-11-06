@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     renderStart()
-    renderwochentage()
     addEventSettings()
     addEventSaveTodo()
 
@@ -108,3 +107,15 @@ function changeColor(){
 function deletWochentage(){
     localStorage.removeItem("alle_wochentage")
 } 
+
+function deletAlleUebungen(){
+    localStorage.removeItem("alle_uebungen")
+}
+
+function deletAlleTodos(){
+    localStorage.removeItem("alle_todos")
+}
+
+function deletAlleGoals(){
+    localStorage.removeItem("alle_goals")
+}

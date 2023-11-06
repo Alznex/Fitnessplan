@@ -86,7 +86,7 @@ function saveUebung() {
 }
 
 function loeschenUebung(uebung) {
-  let uebungen = localStorage("alle_uebungen", {})
+  let uebungen = loadFromLocalStorage("alle_uebungen", {})
   delete uebungen[uebung]
   removeFromAllWochentage(uebung)
   localStorage.setItem("alle_uebungen", JSON.stringify(uebungen))
