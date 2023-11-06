@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    renderStart()
     addEventSettings()
+    renderStart()
     addEventSaveTodo()
 
     //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
