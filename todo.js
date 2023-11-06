@@ -30,7 +30,7 @@ function deletTODO(name){
 
 function changeBackgroundColor() {
     todolist = loadFromLocalStorage("alle_todos", {})
-    let todo_per_day = todolist.length
+    let todo_per_day = Object.getOwnPropertyNames(todolist).length
     let checked_div = document.querySelectorAll('input[name="work"]:checked')
     let done_per_day = checked_div.length
     let durchschnite = done_per_day / todo_per_day
@@ -38,11 +38,11 @@ function changeBackgroundColor() {
     if(todo_per_day === 0){
         todo_div.style.backgroundColor = "#2d2d2d"
     }else if (durchschnite < 0.4){
-        todo_div.style.backgroundColor = "#150009"
+        todo_div.style.backgroundColor = "#550019"
     } else if (durchschnite < 0.8 && durchschnite >0.3){
         todo_div.style.backgroundColor = "#2d2d2d"
     } else if (durchschnite >= 0.8){
-        todo_div.style.backgroundColor = "#001510"
+        todo_div.style.backgroundColor = "#002515"
     }
 }
 
