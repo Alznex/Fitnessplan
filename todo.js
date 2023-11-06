@@ -48,7 +48,7 @@ function changeBackgroundColor() {
 
 function saveTodoFinsihed(){ 
     let todos = loadFromLocalStorage("alle_todos", {})
-    let lastUsed = loadFromLocalStorage("LastUSed", "")
+    let lastUsed = loadFromLocalStorage("lastUSed", "")
     let date = getDate()
     if(lastUsed != date){
         for(let todo in todos){
