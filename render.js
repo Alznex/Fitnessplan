@@ -2,26 +2,23 @@ function renderTodoList(){
     document.getElementById("todolist").innerHTML = ""
     let Date = getDate()
     let finishedToDo = JSON.parse(localStorage.getItem(Date)) || []
-    let todolist = loadFromLocalStorage("alle_todos", [])
+    let todolist = loadFromLocalStorage("alle_todos", {})
 
-    if (!todolist || todolist.length === 0) {
+    if (!todolist || todolist.length === 0 || todolist == 0) {
         addTODO()
         addEventSaveTodo()
         changeBackgroundColor()
         return
     }
-
-    todolist.forEach((todo, index) => {
+    for(todo in todolist){
         let todoDiv = appendTemplate("todo-template", "todolist")
         setInputElementValue(todoDiv, "todo", todo)
         todoDiv.id = todo
-        if(finishedToDo.includes(todo)){
+        if(todolist[todo].checked == true){
             todoDiv.querySelector(".todochecker").checked = true
         }
-
-        let deleteButton = todoDiv.querySelector(".svgDelet")
-        deleteButton.addEventListener('click', () => deletTODO(index))
-    })
+    }
+    addEventDeletTodo()
     addTODO()
     addEventSaveTodo()
     addEventTodochecker()

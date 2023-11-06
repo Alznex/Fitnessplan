@@ -18,9 +18,23 @@ const alle_wochentage_empty = [
   { tag: "Sonntag", uebungen: []},
 ]
 
+let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || {}
+let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
+
+if (Object.keys(alle_uebungen).length > 0) {
+  for (let uebung_id in alle_uebungen) {
+    let uebung = alle_uebungen[uebung_id];
+    for (let wochentag of uebung.Wochentag) {
+        if (!alle_wochentage[wochentagNummern[wochentag]].uebungen.includes(uebung_id)) {
+          alle_wochentage[wochentagNummern[wochentag]].uebungen.push(uebung_id);
+        }
+    } 
+  }
+  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
+}
+
 function saveUebung() {
   let uebung = {}
-  let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
   let uebungen = loadFromLocalStorage("alle_uebungen", {})
   let inputs = document.querySelectorAll(".normal_input")
   let select_koerperteil = document.getElementById("koerperteil")
@@ -52,6 +66,7 @@ function saveUebung() {
     uebung[name].push(checkbox.value)
   })
   removeFromAllWochentage(uebung["ID"])
+  let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
   for (let wochentag of uebung.Wochentag) {
     let wochentagPushZiel = wochentage[wochentagNummern[wochentag]]
     wochentagPushZiel.uebungen.push(uebung["ID"])
@@ -71,10 +86,10 @@ function saveUebung() {
 }
 
 function loeschenUebung(uebung) {
-  delete alle_uebungen[uebung]
+  let uebungen = localStorage("alle_uebungen", {})
+  delete uebungen[uebung]
   removeFromAllWochentage(uebung)
-  localStorage.setItem("alle_uebungen", JSON.stringify(alle_uebungen))
-  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
+  localStorage.setItem("alle_uebungen", JSON.stringify(uebungen))
   renderwochentage()
   renderStart()
   removeAbsolut("uebung")
@@ -150,6 +165,7 @@ function removeFromAllWochentage(uebungID) {
   for (let wochentag of wochentage) {
     if(wochentag.uebungen.length >0){
       removeItemAll(wochentage[wochentagNummern[wochentag.tag]].uebungen, uebungID)
+      localStorage.setItem("alle_wochentage", JSON.stringify(wochentage))
     }
   }
 }

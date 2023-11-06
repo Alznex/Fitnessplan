@@ -79,6 +79,15 @@ function addEventGoals(){
     })
 }
 
+function addEventDeletTodo(){
+    document.querySelectorAll(".svgDelet").forEach((div) =>{
+        div.addEventListener("click", (e) =>{
+            let parentDivID = div.parentElement.id
+            deletTODO(parentDivID)
+        })
+    })
+}
+
 function changeColor(){
     const background = document.getElementById("background").value
     const secondaryBackground = document.getElementById("secondaryBackground").value

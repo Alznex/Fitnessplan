@@ -176,6 +176,10 @@ select{
     color:#00aba9;
 }
 
+.todoinput{
+    background-color: #1d1d1d;
+}
+
 .overboxBox{
     justify-content: space-between;
     margin: 0;
