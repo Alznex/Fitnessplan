@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     eventlsitener("click", "uebungSpeichern", saveUebung)
     eventlsitener("click", "uebungSuche", show, "showAlleUebungen", renderAlleUebungen)
     eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
+    eventlsitener("click", "zurueckUebungen", show, "ShownWochentage", renderwochentage)
 
     document.getElementById("goalDelet").addEventListener("click", (e) => {
         let goal = document.querySelector(".goal_input[name='Name']")
