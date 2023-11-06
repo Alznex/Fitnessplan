@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     eventlsitener("click", "settingsSave" , changeColor,"" )
     eventlsitener("click", "showWochentage", show, "ShownWochentage", renderwochentage)
     eventlsitener("click", "hinzufuegenUebung", addAbsolut, "uebung", clearInput)
-    eventlsitener("click", "uebungSpeichern",saveUebung)
-    eventlsitener("click", "uebungSuche", renderAlleUebungen)
+    eventlsitener("click", "uebungSpeichern", saveUebung)
+    eventlsitener("click", "uebungSuche", show, "showAlleUebungen", renderAlleUebungen)
     eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
 
     document.getElementById("goalDelet").addEventListener("click", (e) => {
@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let goalName = goal.value
         removeAbsolut("goal")
         deletGoal(goalName)
+})
+
+document.getElementById("kategorienSuche").addEventListener("change", (div) =>{
+    renderUebungenKoerperteile(div)
 })
 
     document.getElementById("loeschen").addEventListener("click", (e) => {

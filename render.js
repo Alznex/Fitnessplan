@@ -124,10 +124,10 @@ function renderwochentage() {
 }
 
 function renderAlleUebungen(){
-    document.getElementById("wochentage").innerHTML = ""
+    document.getElementById("alleUebungen").innerHTML = ""
     let uebungen = loadFromLocalStorage("alle_uebungen", {})
     for(let uebung in uebungen){
-        let uebungDiv = appendTemplate("uebung-row-template", "wochentage")
+        let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
         for (const [key, value] of Object.entries(uebungen[uebung])) {
             if (key == "ID") {
                 uebungDiv.id = value;
@@ -139,6 +139,46 @@ function renderAlleUebungen(){
                 setDataElementValue(uebungDiv, key, value+" Reps")
             } else {
                 setDataElementValue(uebungDiv, key, value)
+            }
+        }
+    }
+    addEventUebung()
+}
+
+function renderUebungenKoerperteile(koerperteil){
+    let selectet = document.getElementById("kategorienSuche")
+    document.getElementById("alleUebungen").innerHTML = ""
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    for(let uebung in uebungen){
+        if(selectet.value == "none"){
+            let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
+            for (const [key, value] of Object.entries(uebungen[uebung])) {
+                if (key == "ID") {
+                    uebungDiv.id = value;
+                }else if (key == "Gewicht") {
+                    setDataElementValue(uebungDiv, key, value+" kg")
+                } else if (key == "Sets") {
+                    setDataElementValue(uebungDiv, key, value+" Sets")
+                } else if (key == "Reps") {
+                    setDataElementValue(uebungDiv, key, value+" Reps")
+                } else {
+                    setDataElementValue(uebungDiv, key, value)
+                }
+            }
+        }else if(uebungen[uebung].koerperteil == selectet.value){
+            let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
+            for (const [key, value] of Object.entries(uebungen[uebung])) {
+                if (key == "ID") {
+                    uebungDiv.id = value;
+                }else if (key == "Gewicht") {
+                    setDataElementValue(uebungDiv, key, value+" kg")
+                } else if (key == "Sets") {
+                    setDataElementValue(uebungDiv, key, value+" Sets")
+                } else if (key == "Reps") {
+                    setDataElementValue(uebungDiv, key, value+" Reps")
+                } else {
+                    setDataElementValue(uebungDiv, key, value)
+                }
             }
         }
     }
