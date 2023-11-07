@@ -9,14 +9,17 @@ function addTODO(){
     todo_div.id = ""
 }
 
-function saveTODO(div, index){
+function saveTODO(div){
     let todolist = loadFromLocalStorage("alle_todos", {})
     let todo = {}
     let todoValue = div.value 
-    todo.checked = false
-    if(todoValue !== ""){
-        todolist[todoValue] = todo
+    todo.name = todoValue
+    let todoId = div.parentElement.id
+    if(todoId == undefined){
+        todo.id = generateUniqueId()
+        todo.checked = false
     }
+    todolist[todoId] = todo
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
     renderTodoList()
 }

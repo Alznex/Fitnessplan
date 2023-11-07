@@ -11,7 +11,7 @@ function renderTodoList(){
     }
     for(todo in todolist){
         let todoDiv = appendTemplate("todo-template", "todolist")
-        setInputElementValue(todoDiv, "todo", todo)
+        setInputElementValue(todoDiv, "todo", todolist[todo].name)
         todoDiv.id = todo
         if(todolist[todo].checked == true){
             todoDiv.querySelector(".todochecker").checked = true

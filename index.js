@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     addEventSettings()
     renderStart()
-    addEventSaveTodo()
 
     //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
     eventlsitener("click", "settingsSave" , changeColor,"" )
@@ -67,8 +66,8 @@ function addEventUebersicht() {
 }
 
 function addEventSaveTodo(){
-    let div = document.querySelectorAll('[data-id="todo"]').forEach((div, index) => {
-        div.addEventListener("blur", (e) => saveTODO(div, index))
+    document.querySelectorAll('[data-id="todo"]').forEach((div) => {
+        div.addEventListener("blur", (e) => saveTODO(div))
     })
 }
 
