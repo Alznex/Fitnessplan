@@ -1,7 +1,6 @@
 function renderTodoList(){
     document.getElementById("todolist").innerHTML = ""
     let Date = getDate()
-    let finishedToDo = JSON.parse(localStorage.getItem(Date)) || []
     let todolist = loadFromLocalStorage("alle_todos", {})
 
     if (!todolist || todolist.length === 0 || todolist == 0) {
@@ -40,8 +39,9 @@ function hatUebung(wochentag){ return wochentag.uebungen.length > 0 }
 
 function renderStart() {
     document.getElementById("aktullerTag").innerHTML = ""
+    renderTodoList()
     let uebungen = loadFromLocalStorage("alle_uebungen", {})
-    let wochentage = loadFromLocalStorage("alle-alle_wochentage", alle_wochentage_empty)
+    let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
     for (let wochentag of wochentage) {
         date = berechneWochentag()
         if (wochentag.tag == date){
@@ -74,8 +74,8 @@ function renderStart() {
         }
     }
     addEventUebung()
-    renderTodoList()
     renderGoals()
+    show("home")
 }
 
 function renderwochentage() {
@@ -121,6 +121,7 @@ function renderwochentage() {
     }
     addEventUebung()
     addEventUebersicht()
+    show("ShownWochentage") 
 }
 
 function renderAlleUebungen(){
@@ -143,6 +144,7 @@ function renderAlleUebungen(){
         }
     }
     addEventUebung()
+    show("showAlleUebungen")
 }
 
 function renderUebungenKoerperteile(koerperteil){

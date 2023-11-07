@@ -4,14 +4,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     addEventSaveTodo()
 
     //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
-    eventlsitener("click", "homepage", show, "home", renderStart)
     eventlsitener("click", "settingsSave" , changeColor,"" )
-    eventlsitener("click", "showWochentage", show, "ShownWochentage", renderwochentage)
-    eventlsitener("click", "hinzufuegenUebung", addAbsolut, "uebung", clearInput)
+    eventlsitener("click", "showWochentage", renderwochentage)
+    eventlsitener("click", "hinzufuegenUebung", addAbsolut, "uebung", clearInputUebungen)
     eventlsitener("click", "uebungSpeichern", saveUebung)
-    eventlsitener("click", "uebungSuche", show, "showAlleUebungen", renderAlleUebungen)
+    eventlsitener("click", "uebungSuche", renderAlleUebungen)
     eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
-    eventlsitener("click", "zurueckUebungen", show, "ShownWochentage", renderwochentage)
+    eventlsitener("click", "zurueckUebungen", renderwochentage)
 
     document.getElementById("goalDelet").addEventListener("click", (e) => {
         let goal = document.querySelector(".goal_input[name='Name']")
@@ -62,7 +61,6 @@ function addEventSettings() {
 function addEventUebersicht() {
     document.querySelectorAll(".zurueckUebersicht").forEach((div) => {
         div.addEventListener("click", (e) => {
-            show("home")
             renderStart()
         })
     })

@@ -78,20 +78,27 @@ function saveUebung() {
   // Speichere das Array im Local Storage
   localStorage.setItem("alle_uebungen", JSON.stringify(uebungen))
   localStorage.setItem("alle_wochentage", JSON.stringify(wochentage))
-
-  renderwochentage()
-  renderStart()
-
+  let currentPage = document.querySelector(".active")
+  if(currentPage.id == "home"){
+    renderStart()
+  }else{
+    renderwochentage()
+  }
   removeAbsolut("uebung")
 }
 
 function loeschenUebung(uebung) {
   let uebungen = loadFromLocalStorage("alle_uebungen", {})
+  let currentPage = document.querySelector(".active")
   delete uebungen[uebung]
   removeFromAllWochentage(uebung)
   localStorage.setItem("alle_uebungen", JSON.stringify(uebungen))
-  renderwochentage()
-  renderStart()
+  if(currentPage.id == "home"){
+    renderStart()
+  }else{
+    renderwochentage()
+  }
+
   removeAbsolut("uebung")
 }
 
