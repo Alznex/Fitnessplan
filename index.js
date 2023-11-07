@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     addEventSettings()
     renderStart()
     addEventSaveTodo()
+    renderwochentage()
 
     //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
     eventlsitener("click", "settingsSave" , changeColor,"" )
