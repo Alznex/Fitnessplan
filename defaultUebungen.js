@@ -1,0 +1,16 @@
+const default_uebungen={
+    "045a5bc6-f667-4f69-8799-adb585c2256d": {Name: 'Bensch Press',  	    Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '045a5bc6-f667-4f69-8799-adb585c2256d',koerperteil: "Brust",     Wochentag: ['']},
+    "f24d2096-de13-4497-aedf-c5035e2f2fde": {Name: 'Incline Bensch Press',  Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'f24d2096-de13-4497-aedf-c5035e2f2fde',koerperteil: "Brust",     Wochentag: ['']},
+    "c894d525-e028-4dba-ab42-3c2f5130a084": {Name: 'Chest Flys',            Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'c894d525-e028-4dba-ab42-3c2f5130a084',koerperteil: "Brust",     Wochentag: ['']},
+    "7175623b-a09d-41dd-a647-d29f66b5c815": {Name: 'Deadlift',              Sets: '3', Reps: '15', Gewicht: '50', Info: '',ID: '7175623b-a09d-41dd-a647-d29f66b5c815',koerperteil: "Rücken",    Wochentag: ['']},
+    "0d40b2e6-cf56-449f-87c6-fb9cb599c84c": {Name: 'Cabel Rows',            Sets: '3', Reps: '15', Gewicht: '50', Info: '',ID: '0d40b2e6-cf56-449f-87c6-fb9cb599c84c',koerperteil: "Rücken",    Wochentag: ['']},
+    "bc229c37-3ce2-4dd0-a1fa-1a4c23823cf3": {Name: 'Dumbbel Rows',          Sets: '3', Reps: '15', Gewicht: '50', Info: '',ID: 'bc229c37-3ce2-4dd0-a1fa-1a4c23823cf3',koerperteil: "Rücken",    Wochentag: ['']},
+    "5e7720ae-6176-4c24-8b69-f8b8de84ec1d": {Name: 'Hammercurls',           Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '5e7720ae-6176-4c24-8b69-f8b8de84ec1d',koerperteil: "Arme",      Wochentag: ['']},
+    "4850c875-6bb6-4dac-85d3-bcb193d746fa": {Name: 'Bizep Curls',           Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '4850c875-6bb6-4dac-85d3-bcb193d746fa',koerperteil: "Arme",      Wochentag: ['']},
+    "77686c8d-a043-4450-a0e2-1ad07002d908": {Name: 'Wrist Curls',           Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '77686c8d-a043-4450-a0e2-1ad07002d908',koerperteil: "Arme",      Wochentag: ['']},
+    "fd467acb-b90f-45ca-b341-672749893210": {Name: 'Overhead Press',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'fd467acb-b90f-45ca-b341-672749893210',koerperteil: "Schultern", Wochentag: ['']},
+    "b061e5f8-0dc1-4a51-9a40-122a3691e016": {Name: 'Lateral Raises',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'b061e5f8-0dc1-4a51-9a40-122a3691e016',koerperteil: "Schultern", Wochentag: ['']},
+    "e052c3cf-93d5-4a1e-bb6c-f4b7b8ebd07d": {Name: 'Squats',                Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'e052c3cf-93d5-4a1e-bb6c-f4b7b8ebd07d',koerperteil: "Beine",     Wochentag: ['']},
+    "1b47b6e4-5627-4371-bd3d-b3bfe9034d12": {Name: 'Romanian Deadlift',     Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '1b47b6e4-5627-4371-bd3d-b3bfe9034d12',koerperteil: "Beine",     Wochentag: ['']},
+    "bd7fcc27-287f-437c-bcbd-eda825791509": {Name: 'Leg Extensions',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'bd7fcc27-287f-437c-bcbd-eda825791509',koerperteil: "Beine",     sWochentag: ['']},
+}

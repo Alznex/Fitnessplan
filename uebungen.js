@@ -18,7 +18,7 @@ const alle_wochentage_empty = [
   { tag: "Sonntag", uebungen: []},
 ]
 
-let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || {}
+let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || default_uebungen
 let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
 
 if (Object.keys(alle_uebungen).length > 0) {
