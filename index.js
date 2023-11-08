@@ -34,7 +34,7 @@ function addEventUebung() {
         div.addEventListener("click", (e) => {
             if (div.classList.contains("uebung")) {
                 let div_id = div.id
-                bearbeitenUebung(div_id)
+                bearbeitenUebung(div_id, )
             }
         })
     })

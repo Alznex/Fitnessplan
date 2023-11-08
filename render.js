@@ -40,6 +40,7 @@ function hatUebung(wochentag){ return wochentag.uebungen.length > 0 }
 function renderStart() {
     document.getElementById("aktullerTag").innerHTML = ""
     renderTodoList()
+    checkForUebungen()
     let uebungen = loadFromLocalStorage("alle_uebungen", {})
     let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
     for (let wochentag of wochentage) {
@@ -80,6 +81,7 @@ function renderStart() {
 
 function renderwochentage() {
     document.getElementById("wochentage").innerHTML = ""
+    checkForUebungen()
     let uebungen = loadFromLocalStorage("alle_uebungen", {})
     let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
     for (let wochentag of wochentage) {

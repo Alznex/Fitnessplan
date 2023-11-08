@@ -6,7 +6,6 @@ const wochentagNummern = {
   "Freitag": 4,
   "Samstag": 5,
   "Sonntag": 6,
-  "keiner": 7
 }
 const alle_wochentage_empty = [
   { tag: "Montag", uebungen: []},
@@ -18,27 +17,30 @@ const alle_wochentage_empty = [
   { tag: "Sonntag", uebungen: []},
 ]
 
-let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || default_uebungen
-let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
+function checkForUebungen(){
+  let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || default_uebungen
+  let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
 
-if (Object.keys(alle_uebungen).length > 0) {
-  for (let uebung_id in alle_uebungen) {
-    let uebung = alle_uebungen[uebung_id];
-    for (let wochentag of uebung.Wochentag) {
-        if (!alle_wochentage[wochentagNummern[wochentag]].uebungen.includes(uebung_id)) {
-          alle_wochentage[wochentagNummern[wochentag]].uebungen.push(uebung_id);
-        }
-    } 
+  if (Object.keys(alle_uebungen).length > 0) {
+    for (let uebung_id in alle_uebungen) {
+      let uebung = alle_uebungen[uebung_id];
+      for (let wochentag of uebung.Wochentag) {
+          if (!alle_wochentage[wochentagNummern[wochentag]].uebungen.includes(uebung_id)) {
+            alle_wochentage[wochentagNummern[wochentag]].uebungen.push(uebung_id);
+          }
+      } 
+    }
+    localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
   }
-  localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage));
-}
 
+}
 function saveUebung() {
   let uebung = {}
   let uebungen = loadFromLocalStorage("alle_uebungen", {})
   let inputs = document.querySelectorAll(".normal_input")
   let select_koerperteil = document.getElementById("koerperteil")
   let checkbox_wochentage = document.querySelectorAll('input[name="wochentag"]:checked')
+  let startIndex = ""
 
   for (let i = 0; i < inputs.length; i++) {
     let name = inputs[i].name
@@ -50,6 +52,8 @@ function saveUebung() {
       }
     } else if (name == "Name") {
       uebung[name] = inputs[i].value.trim()
+    }else if(name == "index"){
+      startIndex = inputs[i].value
     } else {
       uebung[name] = inputs[i].value
     }
@@ -65,12 +69,17 @@ function saveUebung() {
   checkbox_wochentage.forEach((checkbox) => {
     uebung[name].push(checkbox.value)
   })
-  removeFromAllWochentage(uebung["ID"])
   let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
-  for (let wochentag of uebung.Wochentag) {
-    let wochentagPushZiel = wochentage[wochentagNummern[wochentag]]
-    wochentagPushZiel.uebungen.push(uebung["ID"])
+  for (let wochentag in wochentagNummern){
+    let wochentagUebungen = wochentage[wochentagNummern[wochentag]].uebungen
+    if(wochentagUebungen.includes(uebung["ID"]) && !uebung.Wochentag.includes(wochentag)){
+      removeItemAll(wochentage[wochentagNummern[wochentag]].uebungen, uebung["ID"])
+    }else if(!wochentagUebungen.includes(uebung["ID"]) && uebung.Wochentag.includes(wochentag)){
+      let wochentagPushZiel = wochentage[wochentagNummern[wochentag]]
+      wochentagPushZiel.uebungen.push(uebung["ID"])
+    }
   }
+
 
   // Setze die Werte der Übung
   uebungen[uebung["ID"]] = uebung

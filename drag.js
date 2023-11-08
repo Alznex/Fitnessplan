@@ -58,6 +58,7 @@ function touchStart(index) {
 function touchEnd(wochentag) {
     return function (e) {
         e.preventDefault()
+        let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
         this.classList.remove("hold")
         this.classList.remove("hidden")
         end = findUebungIndex(e)
@@ -65,8 +66,9 @@ function touchEnd(wochentag) {
             renderwochentage()
             addEventUebung()
         } else if(end == start){
-            div_id = alle_wochentage[wochentag].uebungen[start]
-            bearbeiten(div_id)
+            div_id = wochentage[wochentag].uebungen[start]
+            console.log(start)
+            bearbeitenUebung(div_id)
         } else{
             swap_uebungen(wochentag, start, end)
         }
@@ -92,11 +94,12 @@ function findUebungIndex(e) {
 }
 
 function swap_uebungen(wochentag, index1, index2) {
-    const uebung_id = alle_wochentage[wochentag].uebungen[index1]
-    alle_wochentage[wochentag].uebungen[index1]= alle_wochentage[wochentag].uebungen[index2]
-    alle_wochentage[wochentag].uebungen[index2] = uebung_id
-    localStorage.setItem("alle_wochentage", JSON.stringify(alle_wochentage))
-    console.log("swap("+start+", "+end+")")
+    let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+    let uebungenListe = wochentage[wochentag].uebungen
+    const uebung_id = uebungenListe[index1]
+    uebungenListe[index1]= uebungenListe[index2]
+    uebungenListe[index2] = uebung_id
+    localStorage.setItem("alle_wochentage", JSON.stringify(wochentage))
+    console.log("swap("+index1+", "+index2+")")
     renderwochentage()
-    renderStart()
 }
