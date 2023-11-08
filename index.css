@@ -60,9 +60,8 @@ input{
     font-size: var(--normalFontSize);
 }
 
-summary{
-    display: block;
-    padding-left: .3rem;
+label{
+    width: 100%;
 }
 
 select{
@@ -196,13 +195,14 @@ select{
 .goalList{
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .goals{
     background-color: var(--secondaryBackground);
     padding: 1rem;
     border-radius: .8em;
+    width: auto;
 }
 
 .goalsfirst{

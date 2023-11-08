@@ -21,7 +21,7 @@ function createGoal(name, currentValue, maxValue){
 function addGoal(){
     let div = appendTemplate("goals-template", "ziele")
     div.id = "goalAdd"
-    let output = div.querySelector(".goalslast")
+    let output = div.querySelector(".alignItems")
     output.innerHTML = "+Hinzufügen"
     div.addEventListener("click", () => {
         addAbsolut("goal")

@@ -47,7 +47,12 @@
         </div>
         <div id="goals-template" class="goals">
                 <div class="goalsfirst">Ziel</div>
-                <div class="goalslast">0</div>
+                <div class="alignItems">
+                    <div>+</div>
+                    <div class="goalslast">0</div>
+                    <div>-</div>
+                </div>
+                
                 <input class="goalslider" type="range" min="0" max="100" value="40">
         </div>
     </div>
@@ -165,8 +170,7 @@
                 <option value="Schultern">Schultern</option>
             </select>
 
-            <details class="multiChecklist">
-                <summary>Wochentage</summary>
+            <div class="multiChecklist">
                 <div class="alignItems">
                     <input id="montag" class="wochentage-selector" type="checkbox" name="wochentag" value="Montag">
                     <label for="montag">Montag</label>
@@ -195,7 +199,7 @@
                     <input id="sonntag" class="wochentage-selector"  type="checkbox" name="wochentag" value="Sonntag">
                     <label for="sonntag">Sonntag</label>
                 </div>
-            </details>
+            </div>
             
             <div class="inputtext">
                 <span>Sets:</span>
