@@ -15,9 +15,10 @@ function saveTODO(div){
     let todoValue = div.value 
     todo.name = todoValue
     let todoId = div.parentElement.id
-    if(todoId == undefined){
+    if(todoId == undefined || todoId == ""){
         todo.id = generateUniqueId()
         todo.checked = false
+        todoId = todo.id
     }
     todolist[todoId] = todo
     localStorage.setItem("alle_todos", JSON.stringify(todolist))
