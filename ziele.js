@@ -45,7 +45,7 @@ function saveFromSlider(name, value){
     let alle_goals = JSON.parse(localStorage.getItem("alle_goals")) || {}
     goal["currentValue"] = value
     goal["Name"] = name
-    goal["maxValue"] = alle_goals[name["maxValue"]] 
+    goal["maxValue"] = alle_goals[name.maxValue] 
     alle_goals[goal["Name"]] = goal
     localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
 } 
