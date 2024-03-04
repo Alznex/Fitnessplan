@@ -9,7 +9,7 @@ function createGoal(name, currentValue, maxValue){
     let output = goal.querySelector(".goalslast")
 
     goalName.innerHTML = name
-    input.max = maxValue
+    input.max = maxValue 
     input.value = currentValue 
     output.innerHTML = currentValue + "/"+maxValue
 
