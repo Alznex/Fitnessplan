@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let goalName = goal.value
         removeAbsolut("goal")
         deletGoal(goalName)
-})
+}) 
 
 document.querySelectorAll(".goalslider").forEach((div)=>{
     div.addEventListener("change", (div) =>{
