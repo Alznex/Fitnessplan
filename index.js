@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 document.querySelectorAll(".goalslider").forEach((div)=>{
     div.addEventListener("change", (div) =>{
         parent = div.parentElement
-        uebungName= parent.querySelect(".goalsfirst").innerHTML
+        uebungName= parent.querySelector(".goalsfirst").innerHTML
         value = div.value
         saveFromSlider(uebungName,value)
     })
