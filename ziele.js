@@ -41,7 +41,6 @@ function saveGoal(){
     renderGoals()
 }
 
-
 function saveFromSlider(name, value){
     let alle_goals = JSON.parse(localStorage.getItem("alle_goals")) || {}
     goal["currentValue"] = value
@@ -50,6 +49,7 @@ function saveFromSlider(name, value){
     alle_goals[goal["Name"]] = goal
     localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
 }
+
 function deletGoal(goal){
     delete alle_goals[goal]
     localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
