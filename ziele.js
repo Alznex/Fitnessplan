@@ -1,7 +1,7 @@
 let alle_goals = JSON.parse(localStorage.getItem("alle_goals")) || {}
 
 function createGoal(name, currentValue, maxValue){
-    let targetId = "ziele" 
+    let targetId = "ziele"
     let goal = appendTemplate("goals-template", targetId)
     goal.id = name
     let goalName = goal.querySelector(".goalsfirst")
