@@ -14,7 +14,7 @@ function createGoal(name, currentValue, maxValue){
     output.innerHTML = currentValue + "/"+maxValue
 
     input.oninput = function() {
-        output.innerHTML = this.value + "/"+maxValue  
+        output.innerHTML = this.value + "/"+maxValue
     }
 }
 
