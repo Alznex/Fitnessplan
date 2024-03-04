@@ -17,8 +17,10 @@ const alle_wochentage_empty = [
   { tag: "Sonntag", uebungen: []},
 ]
 
+const alle_uebungen_empty ={}
+
 function checkForUebungen(){
-  let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || alle_uebunegn={}
+  let alle_uebungen = JSON.parse(localStorage.getItem("alle_uebungen")) || alle_uebungen_empty
   let alle_wochentage = JSON.parse(localStorage.getItem("alle_wochentage")) || alle_wochentage_empty
 
   if (Object.keys(alle_uebungen).length > 0) {
