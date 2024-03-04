@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         deletGoal(goalName)
 })
 
-document.querySelectorAll(".goalslider").forEach(div)=>{
+document.querySelectorAll(".goalslider").forEach((div)=>{
     div.addEventListener("change", (div) =>{
         parent = div.parentElement
         uebungName= parent.querySelect(".goalsfirst").innerHTML
