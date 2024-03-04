@@ -10,7 +10,7 @@ function createGoal(name, currentValue, maxValue){
 
     goalName.innerHTML = name
     input.max = maxValue
-    input.value = currentValue
+    input.value = currentValue 
     output.innerHTML = currentValue + "/"+maxValue
 
     input.oninput = function() {
