@@ -48,7 +48,7 @@ function saveFromSlider(name, value){
     goal["maxValue"] = alle_goals[name["maxValue"]] 
     alle_goals[goal["Name"]] = goal
     localStorage.setItem("alle_goals", JSON.stringify(alle_goals))
-}
+} 
 
 function deletGoal(goal){
     delete alle_goals[goal]
