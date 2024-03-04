@@ -19,11 +19,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         deletGoal(goalName)
 })
 
-document.querySelectorAll(".goalslider").addEventListener("change", (div) =>{
-    parent = div.parentElement
-    uebungName= parent.querySelect(".goalsfirst").innerHTML
-    value = div.value
-    saveFromSlider(uebungName,value)
+document.querySelectorAll(".goalslider").forEach(div)=>{
+    div.addEventListener("change", (div) =>{
+        parent = div.parentElement
+        uebungName= parent.querySelect(".goalsfirst").innerHTML
+        value = div.value
+        saveFromSlider(uebungName,value)
+    })
+    
 })
 
 document.getElementById("kategorienSuche").addEventListener("change", (div) =>{
