@@ -1,6 +1,6 @@
 :root{
     --background: #000000;
-    --secondaryBackground: #1d1d1d;
+    --secondaryBackground: #2d2d2d;
     --tertiaryBackground: #808080;
     --absolutBackground: #1d1d1d;
     --textColor: #FFFFFF;
@@ -157,21 +157,19 @@ select{
     gap: .5em;
     background-color: var(--absolutBackground);
     margin: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .uebungHeader{
     font-size: 1.5rem;
-    height: 100%;
+    bottom: 0;
     z-index: 3;
 }
 
 .normal_input{
     font-size: 1.5rem;
     width: 95%;
-}
-
-.normal_input:focus{
-    outline: none;
 }
 
 .link{
@@ -194,9 +192,72 @@ select{
     font-size: var(--secondaryheaderFontSize);
 }
 
+.goalList{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.goals{
+    background-color: var(--secondaryBackground);
+    padding: 1rem;
+    border-radius: .8em;
+    width: auto;
+}
+
+.goalsfirst{
+    font-size: 1rem;
+}
+
+.goalslast{
+    color: greenyellow  ;
+}
+
+.goalslider{
+    -webkit-appearance: none;
+    width: 100%;
+    height: .3em;
+    border-radius: .8em;  
+    background: #000000;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.goalslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%; 
+    background: #00aba9;
+    cursor: pointer;
+}
+
+.goalslider::-moz-range-thumb {
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    background: #00aba9;
+    cursor: pointer;
+}
+
+.goalErstellen{
+    font-size: 1.5rem;
+    gap: .5em;
+    background-color: var(--absolutBackground);
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.goal_input{
+    font-size: 1.5rem;
+}
+
 .inputtext{
     display: grid;
-    grid-template-columns: .1fr 1fr 1fr;
+    grid-template-columns: .1fr 1fr;
     gap: .5em;
     text-align: left;
 }
