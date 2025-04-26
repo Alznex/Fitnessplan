@@ -1,129 +1,182 @@
-document.addEventListener("DOMContentLoaded", function (event) {
-    addEventSettings()
-    renderStart()
-    saveTodoFinsihed()
+function renderTodoList(){
+    document.getElementById("todolist").innerHTML = ""
+    let Date = getDate()
+    let todolist = loadFromLocalStorage("alle_todos", {})
 
-    //eventlsitener(type, id, funktion1, funktionVAr, funktion2, funktion3)
-    eventlsitener("click", "settingsSave" , changeColor,"" )
-    eventlsitener("click", "showWochentage", renderwochentage)
-    eventlsitener("click", "hinzufuegenUebung", addAbsolut, "uebung", clearInputUebungen)
-    eventlsitener("click", "uebungSpeichern", saveUebung)
-    eventlsitener("click", "uebungSuche", renderAlleUebungen)
-    eventlsitener("click","goalSave", removeAbsolut, "goal", saveGoal)
-    eventlsitener("click", "zurueckUebungen", renderwochentage)
-
-    document.getElementById("goalDelet").addEventListener("click", (e) => {
-        let goal = document.querySelector(".goal_input[name='Name']")
-        let goalName = goal.value
-        removeAbsolut("goal")
-        deletGoal(goalName)
-}) 
-
-document.querySelectorAll(".goalslider").forEach((div)=>{
-    div.addEventListener("change", (div) =>{
-        parent = div.srcElement.parentElement
-        uebungName= parent.querySelector(".goalsfirst").innerHTML
-        value = div.srcElement.value
-        saveFromSlider(uebungName,value)
-    })
-    
-})
-
-document.getElementById("kategorienSuche").addEventListener("change", (div) =>{
-    renderUebungenKoerperteile(div)
-})
-
-    document.getElementById("loeschen").addEventListener("click", (e) => {
-        let uebungen_loeschen = document.getElementById("ID")
-        loeschenUebung(uebungen_loeschen.value)
-        removeAbsolut("uebung")
-    })
-})
-
-function addEventUebung() {
-    document.querySelectorAll(".uebung").forEach((div) => {
-        div.addEventListener("click", (e) => {
-            if (div.classList.contains("uebung")) {
-                let div_id = div.id
-                bearbeitenUebung(div_id, )
-            }
-        })
-    })
-} 
-
-function addEventTodochecker() {
-    document.querySelectorAll(".todochecker").forEach((div) => {
-        div.addEventListener("click", (e) => {
+    if (!todolist || todolist.length === 0 || todolist == 0) {
+        addTODO()
+        addEventSaveTodo()
         changeBackgroundColor()
-        saveTodoFinsihed()
-        })
-    })
+        return
+    }
+    for(todo in todolist){
+        let todoDiv = appendTemplate("todo-template", "todolist")
+        setInputElementValue(todoDiv, "todo", todolist[todo].name)
+        todoDiv.id = todo
+        if(todolist[todo].checked == true){
+            todoDiv.querySelector(".todochecker").checked = true
+        }
+    }
+    addEventDeletTodo()
+    addTODO()
+    addEventSaveTodo()
+    addEventTodochecker()
+    changeBackgroundColor()
 }
 
-function addEventSettings() {
-    document.querySelectorAll(".svgSettings").forEach((div) => {
-        div.addEventListener("click", (e) => {
-        show("settings")
-        addEventUebersicht()
-        })
-    })
-}
-function addEventUebersicht() {
-    document.querySelectorAll(".zurueckUebersicht").forEach((div) => {
-        div.addEventListener("click", (e) => {
-            renderStart()
-        })
-    })
-}
+function hatUebung(wochentag){ return wochentag.uebungen.length > 0 }
 
-function addEventSaveTodo(){
-    document.querySelectorAll('[data-id="todo"]').forEach((div) => {
-        div.addEventListener("blur", (e) => saveTODO(div))
-    })
-}
-
-function addEventGoals(){
-    document.querySelectorAll(".goals").forEach((div) => {
-        div.addEventListener("click", (e) => {
-            addAbsolut("goal")
-            bearbeitenGoals(div.id)
-        })
-    })
-}
-
-function addEventDeletTodo(){
-    document.querySelectorAll(".svgDelet").forEach((div) =>{
-        div.addEventListener("click", (e) =>{
-            let parentDivID = div.parentElement.id
-            deletTODO(parentDivID)
-        })
-    })
-}
-
-function changeColor(){
-    const background = document.getElementById("background").value
-    const secondaryBackground = document.getElementById("secondaryBackground").value
-    const tertiaryBackground = document.getElementById("tertiaryBackground").value
-    const textColor = document.getElementById("textColor").value
-
-    document.documentElement.style.setProperty('--background', background)
-    document.documentElement.style.setProperty('--secondaryBackground', secondaryBackground)
-    document.documentElement.style.setProperty('--tertiaryBackground', tertiaryBackground)
-    document.documentElement.style.setProperty('--textColor', textColor)
+function renderStart() {
+    document.getElementById("aktullerTag").innerHTML = ""
+    renderTodoList()
+    checkForUebungen()
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+    for (let wochentag of wochentage) {
+        date = berechneWochentag()
+        if (wochentag.tag == date){
+            let wochentagDiv = appendTemplate("wochentag-template", "aktullerTag")
+            let uebungenTarget = wochentagDiv.querySelector("#uebungen")
+            uebungenTarget.id = "uebungenHeute"
+            setDataElementValue(wochentagDiv, "wochentag", "")
+            wochentagDiv.id = "Heute"
+            if (!hatUebung(wochentag)){
+                setDataElementValue(wochentagDiv, "leer", "No Gym today?")
+            }
+            for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+                let uebungId = wochentag.uebungen[index]
+                let uebung = uebungen[uebungId]
+                let uebungDiv = appendTemplate("uebung-row-template", "uebungenHeute")
+                for (const [key, value] of Object.entries(uebung)) {
+                    if (key == "ID") {
+                        uebungDiv.id = value;
+                    }else if (key == "Gewicht") {
+                        setDataElementValue(uebungDiv, key, value+" kg")
+                    } else if (key == "Sets") {
+                        setDataElementValue(uebungDiv, key, value+" Sets")
+                    } else if (key == "Reps") {
+                        setDataElementValue(uebungDiv, key, value+" Reps")
+                    } else {
+                        setDataElementValue(uebungDiv, key, value)
+                    }
+                }
+            }
+        }
+    }
+    addEventUebung()
+    show("home")
 }
 
-function deletWochentage(){
-    localStorage.removeItem("alle_wochentage")
-} 
-
-function deletAlleUebungen(){
-    localStorage.removeItem("alle_uebungen")
+function renderwochentage() {
+    document.getElementById("wochentage").innerHTML = ""
+    checkForUebungen()
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    let wochentage = loadFromLocalStorage("alle_wochentage", alle_wochentage_empty)
+    for (let wochentag of wochentage) {
+        if (!hatUebung(wochentag)) continue
+        let wochentagDiv = appendTemplate("wochentag-template", "wochentage")
+        let uebungenTarget = wochentagDiv.querySelector("#uebungen")
+        uebungenTarget.id = "uebungen" + wochentag.tag
+        setDataElementValue(wochentagDiv, "wochentag", wochentag.tag)
+        wochentagDiv.id = wochentag.tag
+        for (let index = 0 ; index < wochentag.uebungen.length; index++) {
+            let uebungId = wochentag.uebungen[index]
+            let uebung = uebungen[uebungId]
+            
+            let uebungDiv = appendTemplate("uebung-row-template", "uebungen" + wochentag.tag)
+            uebungDiv.dataset.index = index
+            for (const [key, value] of Object.entries(uebung)) {
+                if (key == "ID") {
+                    uebungDiv.id = value;
+                }else if (key == "Gewicht") {
+                    setDataElementValue(uebungDiv, key, value+" kg")
+                } else if (key == "Sets") {
+                    setDataElementValue(uebungDiv, key, value+" Sets")
+                } else if (key == "Reps") {
+                    setDataElementValue(uebungDiv, key, value+" Reps")
+                } else {
+                    setDataElementValue(uebungDiv, key, value)
+                }
+            }
+            uebungDiv.addEventListener('dragstart', dragStart(index))
+            uebungDiv.addEventListener('dragend', dragEnd(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('dragover', dragOver(index))
+            uebungDiv.addEventListener('dragenter', dragEnter(index))
+            uebungDiv.addEventListener('dragleave', dragLeave(index))
+            uebungDiv.addEventListener('drop', dragDrop(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('touchstart', touchStart(index))
+            uebungDiv.addEventListener('touchend', touchEnd(wochentagNummern[wochentag.tag], index))
+            uebungDiv.addEventListener('touchmove', touchMove)
+        }
+    }
+    addEventUebung()
+    addEventUebersicht()
+    show("ShownWochentage") 
 }
 
-function deletAlleTodos(){
-    localStorage.removeItem("alle_todos")
+function renderAlleUebungen(){
+    document.getElementById("alleUebungen").innerHTML = ""
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    for(let uebung in uebungen){
+        let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
+        for (const [key, value] of Object.entries(uebungen[uebung])) {
+            if (key == "ID") {
+                uebungDiv.id = value;
+            }else if (key == "Gewicht") {
+                setDataElementValue(uebungDiv, key, value+" kg")
+            } else if (key == "Sets") {
+                setDataElementValue(uebungDiv, key, value+" Sets")
+            } else if (key == "Reps") {
+                setDataElementValue(uebungDiv, key, value+" Reps")
+            } else {
+                setDataElementValue(uebungDiv, key, value)
+            }
+        }
+    }
+    addEventUebung()
+    show("showAlleUebungen")
 }
 
-function deletAlleGoals(){
-    localStorage.removeItem("alle_goals")
+function renderUebungenKoerperteile(koerperteil){
+    let selectet = document.getElementById("kategorienSuche")
+    document.getElementById("alleUebungen").innerHTML = ""
+    let uebungen = loadFromLocalStorage("alle_uebungen", {})
+    for(let uebung in uebungen){
+        if(selectet.value == "none"){
+            let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
+            for (const [key, value] of Object.entries(uebungen[uebung])) {
+                if (key == "ID") {
+                    uebungDiv.id = value;
+                }else if (key == "Gewicht") {
+                    setDataElementValue(uebungDiv, key, value+" kg")
+                } else if (key == "Sets") {
+                    setDataElementValue(uebungDiv, key, value+" Sets")
+                } else if (key == "Reps") {
+                    setDataElementValue(uebungDiv, key, value+" Reps")
+                } else {
+                    setDataElementValue(uebungDiv, key, value)
+                }
+            }
+        }else if(uebungen[uebung].koerperteil == selectet.value){
+            let uebungDiv = appendTemplate("uebung-row-template", "alleUebungen")
+            for (const [key, value] of Object.entries(uebungen[uebung])) {
+                if (key == "ID") {
+                    uebungDiv.id = value;
+                }else if (key == "Gewicht") {
+                    setDataElementValue(uebungDiv, key, value+" kg")
+                } else if (key == "Sets") {
+                    setDataElementValue(uebungDiv, key, value+" Sets")
+                } else if (key == "Reps") {
+                    setDataElementValue(uebungDiv, key, value+" Reps")
+                } else {
+                    setDataElementValue(uebungDiv, key, value)
+                }
+            }
+        }
+    }
+    addEventUebung()
+}
+
+function renderWorkouts(){
+    show("ShownWorkouts")
 }

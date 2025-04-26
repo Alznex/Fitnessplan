@@ -24,28 +24,6 @@
     content: url('img/svgCheked.svg')
 }
 
-/* TODO */
-.todochecker{
-    background-color: transparent;
-    appearance: none;
-    width: 1em;
-    height: 1em;
-    content: url('img/svgUncheked.svg');
-}
-
-.todochecker:checked{
-    background-color: transparent;
-    appearance: none;
-    width: 1em;
-    height: 1em;
-    content: url('img/svgCheked.svg')
-}
-
-.todo_add{
-    background-color: #00aba9;
-    height: var(--normalFontSize);
-}
-
 /*Settings*/
 .svgSettings{
     fill: #ffffff;

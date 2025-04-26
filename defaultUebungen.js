@@ -12,5 +12,5 @@ const default_uebungen={
     "b061e5f8-0dc1-4a51-9a40-122a3691e016": {Name: 'Lateral Raises',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'b061e5f8-0dc1-4a51-9a40-122a3691e016',koerperteil: "Schultern", Wochentag: ['']},
     "e052c3cf-93d5-4a1e-bb6c-f4b7b8ebd07d": {Name: 'Squats',                Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'e052c3cf-93d5-4a1e-bb6c-f4b7b8ebd07d',koerperteil: "Beine",     Wochentag: ['']},
     "1b47b6e4-5627-4371-bd3d-b3bfe9034d12": {Name: 'Romanian Deadlift',     Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: '1b47b6e4-5627-4371-bd3d-b3bfe9034d12',koerperteil: "Beine",     Wochentag: ['']},
-    "bd7fcc27-287f-437c-bcbd-eda825791509": {Name: 'Leg Extensions',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'bd7fcc27-287f-437c-bcbd-eda825791509',koerperteil: "Beine",     sWochentag: ['']},
+    "bd7fcc27-287f-437c-bcbd-eda825791509": {Name: 'Leg Extensions',        Sets: '3', Reps: '15', Gewicht: '10', Info: '',ID: 'bd7fcc27-287f-437c-bcbd-eda825791509',koerperteil: "Beine",     Wochentag: ['']},
 }

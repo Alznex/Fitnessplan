@@ -11,7 +11,6 @@
     <script src="todo.js" lang="text/javascript"></script>
     <script src="function.js" lang="text/javascript"></script>
     <script src="render.js" lang="text/javascript"></script>
-    <script src="ziele.js" lang="text/javascript"></script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/Fitnessplan/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/Fitnessplan/favicon/favicon-32x32.png">
@@ -38,22 +37,21 @@
                 <div data-id="Reps">Reps</div>
         </div>
         <div id="todo-template" class="alignItems">
-            <input class="todochecker" type="checkbox" name="work">
             <input class="todoinput" data-id="todo" placeholder="Todo">
             <svg class="svgDelet" viewBox="0 0 2048 2048" focusable="false"><path d="M1792 384h-128v1472q0 40-15 75t-41 61-61 41-75 15H448q-40 0-75-15t-61-41-41-61-15-75V384H128V256h512V128q0-27 10-50t27-40 41-28 50-10h384q27 0 50 10t40 27 28 41 10 50v128h512v128zM768 256h384V128H768v128zm768 128H384v1472q0 26 19 45t45 19h1024q26 0 45-19t19-45V384zM768 1664H640V640h128v1024zm256 0H896V640h128v1024zm256 0h-128V640h128v1024z"></path></svg>
         </div>
         <div id="todoAdd-template" class="alignItems">
             <input class="todoinput" data-id="todo" placeholder=" +Todo">
         </div>
-        <div id="goals-template" class="goals">
-                <div class="goalsfirst">Ziel</div>
-                <div class="alignItems">
-                    <div>+</div>
-                    <div class="goalslast">0</div>
-                    <div>-</div>
-                </div>
-                
-                <input class="goalslider" type="range" min="0" max="100" value="40">
+        <div id="UebungInfo-template" class="inputtext">
+            <span>Set</span>
+            <span>KG</span>
+            <span>Reps</span>
+
+            <div id="Set">1</div>
+            <input data-id="uebunggewicht" class="normal_input" value="10" type="text" name="Gewicht"/>
+            <input data-id="uebungreps" class="normal_input" value="15" type="text" name="Reps"/>
+
         </div>
     </div>
     <div id="home" class="content active">
@@ -71,8 +69,8 @@
                 <div id="showWochentage" class="link">Mehr Ansehen</div>
             </div>
             <div id="aktullerTag"></div>
-            <div class="boxHeader">Ziele</div>
-            <div id="ziele" class="goalList"></div>
+            <div class="boxHeader">Workouts</div>
+            <div id="showWorkouts" class="link">Mehr Ansehen</div>
         </div>
     </div>
     <div id="ShownWochentage" class="content ">
@@ -82,6 +80,18 @@
         </div>
         <header>
             <div>Übungen</div>
+            <svg id="uebungSuche" class="svgSearch" viewBox="0 0 2048 2048" focusable="false"><path d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"></path></svg>
+        </header>
+        <div id="wochentage"></div>
+        <svg id="hinzufuegenUebung" class="svgAdd" viewBox="0 0 2048 2048" focusable="false"><path d="M960 0q132 0 255 34t229 97 194 150 150 194 97 230 35 255q0 132-34 255t-97 229-150 194-194 150-230 97-255 35q-132 0-255-34t-229-97-194-150-150-194-97-229T0 960q0-132 34-255t97-229 150-194 194-150 229-97T960 0zm576 896h-512V384H896v512H384v128h512v512h128v-512h512V896z"></path></svg>
+    </div>
+    <div id="ShownWorkouts" class="content ">
+        <div class="alignItems zurueckUebersicht">
+            <svg class="zurueck" viewBox="0 0 2048 2048" focusable="false"><path d="M1390 2023l-999-999 999-999 121 121-878 878 878 878-121 121z"></path></svg>
+            <div class="link">Übersicht</div>
+        </div>
+        <header>
+            <div>Workouts</div>
             <svg id="uebungSuche" class="svgSearch" viewBox="0 0 2048 2048" focusable="false"><path d="M1344 0q97 0 187 25t168 71 142 110 111 143 71 168 25 187q0 97-25 187t-71 168-110 142-143 111-168 71-187 25q-125 0-239-42t-211-121l-785 784q-19 19-45 19t-45-19-19-45q0-26 19-45l784-785q-79-96-121-210t-42-240q0-97 25-187t71-168 110-142T989 96t168-71 187-25zm0 1280q119 0 224-45t183-124 123-183 46-224q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T937 297 814 480t-46 224q0 119 45 224t124 183 183 123 224 46z"></path></svg>
         </header>
         <div id="wochentage"></div>
@@ -150,13 +160,9 @@
                 <div>Alle_Todos:</div>
                 <Button class="button loeschen" onclick="deletAlleTodos()">Löschen</Button>
             </div>
-            <div class="alignItems">
-                <div>Alle_Goals:</div>
-                <Button class="button loeschen" onclick="deletAlleGoals()">Löschen</Button>
-            </div>
         </div>
     </div>
-    <div id="uebung" class="templates uebungHeader">
+    <div id="uebung" class="templates uebungHeader"> 
         <div class="boxDarkGray uebungErstellen">
             <input id="uebungname" class="normal_input" placeholder=" Name" name="Name"/>   
 
@@ -202,20 +208,13 @@
             </div>
             
             <div class="inputtext">
-                <span>Sets:</span>
-                <input id="uebungsets" class="normal_input" value="3" type="text" name="Sets"/>
+                <span>Set</span>
+                <span>KG</span>
+                <span>Reps</span>
 
-                <span>Reps:</span>
+                <div id="Set">1</div>
+                <input id="uebunggewicht" class="normal_input" value="10" type="text" name="Gewicht"/>
                 <input id="uebungreps" class="normal_input" value="15" type="text" name="Reps"/>
-
-                <span>Gewicht:</span>
-                <div class="grid2collumns">
-                    <input id="uebunggewicht" class="normal_input" value="10" type="text" name="Gewicht"/>
-                    <span>kg</span>
-                </div>
-
-                <span>Info:</span>
-                <input id="uebunginfo" class="normal_input" name="Info">
             </div>
 
             <input id="ID" class="normal_input templates" name="ID">
@@ -224,23 +223,6 @@
                 <div id="uebungSpeichern" class="button speichern">Speichern</div>
                 <div id="loeschen" class="button loeschen" >Löschen</div>
             </div>
-        </div>
-    </div>
-    <div id="goal" class="templates goalErstellen">
-        <div class="goalErstellen boxDarkGray">
-                <input class="goal_input" placeholder="Goal" name="Name"/>   
-                <div>
-                    <span>Ziel:</span>
-                    <input class="goal_input" type="number" name="maxValue">
-                </div>
-                <div>
-                    <span>Satus:</span>
-                    <input class="goal_input" type="number" name="currentValue">
-                </div>
-                <div class="alignItems">
-                    <div id="goalSave" class="button speichern">Speichern</div>
-                    <div id="goalDelet" class="button loeschen" >Löschen</div>
-                </div>
         </div>
     </div>
 </body>    
